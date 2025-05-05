@@ -1,5 +1,12 @@
 {
-  "itemGroup.oresplus": "Example Mod Tab",
-  "block.oresplus.example_block": "Example Block",
-  "item.oresplus.example_item": "Example Item"
+  "item.oresplus.aluminum_ingot": "Aluminum Ingot",
+  "item.oresplus.alumina": "Alumina",
+  "item.oresplus.bauxite_dust": "Bauxite Dust",
+  "item.oresplus.raw_bauxite": " Raw Bauxite",
+
+  "block.oresplus.bauxite_block": "Block of Bauxite",
+  "block.oresplus.aluminum_block": "Block of Aluminum",
+
+  "creativetab.oresplus.oresplus_items": "OresPlus Items",
+  "creativetab.oresplus.oresplus_blocks": "OresPlus Block"
 }
