@@ -21,9 +21,13 @@ public class ModModelProvider extends ModelProvider {
 
         blockModels.createTrivialCube(ModBlocks.ALUMINUM_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.BAUXITE_BLOCK.get());
+        blockModels.createTrivialCube(ModBlocks.SALT_BLOCK.get());
 
         //Items
         itemModels.generateFlatItem(ModItems.ALUMINA.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.ALUMINUM_INGOT.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.RAW_BAUXITE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.BAUXITE_DUST.get(), ModelTemplates.FLAT_ITEM);
 
     }
 }

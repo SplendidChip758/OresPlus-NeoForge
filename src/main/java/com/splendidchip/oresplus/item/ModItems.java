@@ -1,6 +1,8 @@
 package com.splendidchip.oresplus.item;
 
 import com.splendidchip.oresplus.OresPlus;
+import com.splendidchip.oresplus.block.ModBlocks;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -24,6 +26,22 @@ public class ModItems {
     public static final DeferredItem<Item> BAUXITE_DUST = ITEMS.registerItem("bauxite_dust",
             Item::new,
             new Item.Properties());
+
+    //Block Items
+    public static final DeferredItem<BlockItem> BAUXITE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
+            ModBlocks.BAUXITE_BLOCK,
+            new Item.Properties()
+    );
+
+    public static final DeferredItem<BlockItem> ALUMINUM_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
+            ModBlocks.ALUMINUM_BLOCK,
+            new Item.Properties()
+    );
+
+    public static final DeferredItem<BlockItem> SALT_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
+            ModBlocks.SALT_BLOCK,
+            new Item.Properties()
+    );
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

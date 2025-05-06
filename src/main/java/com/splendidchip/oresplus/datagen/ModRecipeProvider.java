@@ -42,7 +42,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         0.25f,
                         100)
                 .unlockedBy("has_alumina", this.has(ModItems.ALUMINA))
-                .save(this.output, "aluminum_ingot_smelting");
+                .save(this.output, "aluminum_ingot_blasting");
 
     }
 

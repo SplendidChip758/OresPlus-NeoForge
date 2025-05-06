@@ -33,6 +33,7 @@ public class ModCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModBlocks.BAUXITE_BLOCK.get());
                         output.accept(ModBlocks.ALUMINUM_BLOCK.get());
+                        output.accept(ModBlocks.SALT_BLOCK.get());
                     }).build());
 
     public static void register(IEventBus eventBus){

@@ -27,6 +27,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(ModBlocks.ALUMINUM_BLOCK.get());
+        dropSelf(ModBlocks.SALT_BLOCK.get());
 
         add(ModBlocks.BAUXITE_BLOCK.get(),
                 block -> createMultipleOreDrops(ModBlocks.BAUXITE_BLOCK.get(), ModItems.RAW_BAUXITE.get(), 2, 5));
