@@ -1,0 +1,7 @@
+// 1.21.5	2025-05-05T22:20:15.2489453	
+d3de0e3d70e67b4d4cafe4b451dd2d6d061f6405 data/minecraft/advancement/recipes/misc/aluminum_ingot_blasting.json
+174b4a743acb1fbd3d92cbe918630375fb6d5ea6 data/minecraft/advancement/recipes/misc/aluminum_ingot_smelting.json
+f19011dfc4be77fd72eb25a4579df4e104be7c43 data/minecraft/recipe/aluminum_ingot_blasting.json
+244a8f68e4d15207edb8727300b245352c1078fd data/minecraft/recipe/aluminum_ingot_smelting.json
+e0cb1882665f2919f33d08d472c6c8305a3786a8 data/oresplus/advancement/recipes/misc/aluminum_block.json
+e03ece34a76e68723fcfc9f182faa0823fa72c08 data/oresplus/recipe/aluminum_block.json
