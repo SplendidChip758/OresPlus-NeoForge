@@ -26,7 +26,7 @@
                   }
                 }
               ],
-              "name": "oresplus:bauxite_block"
+              "name": "oresplus:bauxite_ore"
             },
             {
               "type": "minecraft:item",
@@ -57,5 +57,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "oresplus:blocks/bauxite_block"
+  "random_sequence": "oresplus:blocks/bauxite_ore"
 }

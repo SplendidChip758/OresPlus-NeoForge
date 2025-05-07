@@ -27,13 +27,13 @@ public class ModCreativeModeTabs {
                     }).build());
 
     public static final Supplier<CreativeModeTab> ORESPLUS_BLOCKS_TAB = CREATIVE_MODE_TABS.register("oresplus_blocks_tab",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.BAUXITE_BLOCK.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.BAUXITE_ORE.get()))
                     .withTabsBefore(ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "oresplus_items_tab"))
                     .title(Component.translatable("creativetab.oresplus.oresplus_blocks"))
                     .displayItems((itemDisplayParameters, output) -> {
-                        output.accept(ModBlocks.BAUXITE_BLOCK.get());
+                        output.accept(ModBlocks.BAUXITE_ORE.get());
                         output.accept(ModBlocks.ALUMINUM_BLOCK.get());
-                        output.accept(ModBlocks.SALT_BLOCK.get());
+                        output.accept(ModBlocks.SALT_ORE.get());
                     }).build());
 
     public static void register(IEventBus eventBus){

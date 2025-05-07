@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "oresplus:salt_block"
+          "name": "oresplus:salt_ore"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "oresplus:blocks/salt_block"
+  "random_sequence": "oresplus:blocks/salt_ore"
 }

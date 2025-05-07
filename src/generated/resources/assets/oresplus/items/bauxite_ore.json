@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "oresplus:block/salt_block"
+    "model": "oresplus:block/bauxite_ore"
   }
 }

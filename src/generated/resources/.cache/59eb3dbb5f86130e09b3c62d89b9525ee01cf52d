@@ -1,4 +1,4 @@
-// 1.21.5	2025-05-05T23:59:33.3427414	Loot Tables
+// 1.21.5	2025-05-06T22:43:33.5108684	Loot Tables
 37d309cd690c7fee8e7f821bb73d44ad49284b59 data/oresplus/loot_table/blocks/aluminum_block.json
-2802be25dc058ff4de08fbc68d6ab48ae29c9bfb data/oresplus/loot_table/blocks/bauxite_block.json
-c0cdb6b4aeae2ed32d3127e9558d1a458fca10d6 data/oresplus/loot_table/blocks/salt_block.json
+3c5dabcab894ad8c03ca48a023b2c296a180d090 data/oresplus/loot_table/blocks/bauxite_ore.json
+afe38ae2dfc5c3e167b8271257db742b19aae627 data/oresplus/loot_table/blocks/salt_ore.json

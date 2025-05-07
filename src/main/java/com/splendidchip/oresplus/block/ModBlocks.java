@@ -13,7 +13,7 @@ public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(OresPlus.MOD_ID);
 
-    public static final DeferredBlock<Block> BAUXITE_BLOCK = BLOCKS.registerBlock("bauxite_block",
+    public static final DeferredBlock<Block> BAUXITE_ORE = BLOCKS.registerBlock("bauxite_ore",
             Block::new,
             BlockBehaviour.Properties.of()
                     .strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE));
@@ -23,7 +23,7 @@ public class ModBlocks {
             BlockBehaviour.Properties.of()
                     .strength(5f).requiresCorrectToolForDrops().sound(SoundType.IRON));
 
-    public static final DeferredBlock<Block> SALT_BLOCK = BLOCKS.registerBlock("salt_block",
+    public static final DeferredBlock<Block> SALT_ORE = BLOCKS.registerBlock("salt_ore",
             Block::new,
             BlockBehaviour.Properties.of()
                     .strength(5f).requiresCorrectToolForDrops().sound(SoundType.BASALT));

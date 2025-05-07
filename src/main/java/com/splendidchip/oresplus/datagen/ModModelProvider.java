@@ -20,8 +20,8 @@ public class ModModelProvider extends ModelProvider {
         //Blocks
 
         blockModels.createTrivialCube(ModBlocks.ALUMINUM_BLOCK.get());
-        blockModels.createTrivialCube(ModBlocks.BAUXITE_BLOCK.get());
-        blockModels.createTrivialCube(ModBlocks.SALT_BLOCK.get());
+        blockModels.createTrivialCube(ModBlocks.BAUXITE_ORE.get());
+        blockModels.createTrivialCube(ModBlocks.SALT_ORE.get());
 
         //Items
         itemModels.generateFlatItem(ModItems.ALUMINA.get(), ModelTemplates.FLAT_ITEM);

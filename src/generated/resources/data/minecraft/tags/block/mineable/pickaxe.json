@@ -1,7 +1,7 @@
 {
   "values": [
     "oresplus:aluminum_block",
-    "oresplus:bauxite_block",
-    "oresplus:salt_block"
+    "oresplus:bauxite_ore",
+    "oresplus:salt_ore"
   ]
 }

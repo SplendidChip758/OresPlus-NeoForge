@@ -1,8 +1,6 @@
 package com.splendidchip.oresplus.datagen;
 
 import com.splendidchip.oresplus.OresPlus;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -38,5 +36,7 @@ public class DataGenerators {
 
         //event.createProvider(ModItemModelProvider::new);
         event.createProvider(ModModelProvider::new);
+
+        event.createProvider(ModDatapackProvider::new);
     }
 }

@@ -28,8 +28,8 @@ public class ModItems {
             new Item.Properties());
 
     //Block Items
-    public static final DeferredItem<BlockItem> BAUXITE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
-            ModBlocks.BAUXITE_BLOCK,
+    public static final DeferredItem<BlockItem> BAUXITE_ORE_ITEM = ITEMS.registerSimpleBlockItem(
+            ModBlocks.BAUXITE_ORE,
             new Item.Properties()
     );
 
@@ -38,8 +38,8 @@ public class ModItems {
             new Item.Properties()
     );
 
-    public static final DeferredItem<BlockItem> SALT_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
-            ModBlocks.SALT_BLOCK,
+    public static final DeferredItem<BlockItem> SALT_ORE_ITEM = ITEMS.registerSimpleBlockItem(
+            ModBlocks.SALT_ORE,
             new Item.Properties()
     );
 
