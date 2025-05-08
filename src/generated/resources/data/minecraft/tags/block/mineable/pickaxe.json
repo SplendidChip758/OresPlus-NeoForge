@@ -2,6 +2,8 @@
   "values": [
     "oresplus:aluminum_block",
     "oresplus:bauxite_ore",
-    "oresplus:salt_ore"
+    "oresplus:salt_ore",
+    "oresplus:test_block_1",
+    "oresplus:test_block_2"
   ]
 }

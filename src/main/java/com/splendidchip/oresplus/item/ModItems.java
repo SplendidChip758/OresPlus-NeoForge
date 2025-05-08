@@ -27,6 +27,14 @@ public class ModItems {
             Item::new,
             new Item.Properties());
 
+    public static final DeferredItem<Item> RAW_SALT = ITEMS.registerItem("raw_salt",
+            Item::new,
+            new Item.Properties());
+
+    public static final DeferredItem<Item> SALT = ITEMS.registerItem("salt",
+            Item::new,
+            new Item.Properties());
+
     //Block Items
     public static final DeferredItem<BlockItem> BAUXITE_ORE_ITEM = ITEMS.registerSimpleBlockItem(
             ModBlocks.BAUXITE_ORE,
@@ -40,6 +48,16 @@ public class ModItems {
 
     public static final DeferredItem<BlockItem> SALT_ORE_ITEM = ITEMS.registerSimpleBlockItem(
             ModBlocks.SALT_ORE,
+            new Item.Properties()
+    );
+
+    public static final DeferredItem<BlockItem> TEST_BLOCK_1 = ITEMS.registerSimpleBlockItem(
+            ModBlocks.TEST_BLOCK_1,
+            new Item.Properties()
+    );
+
+    public static final DeferredItem<BlockItem> TEST_BLOCK_2 = ITEMS.registerSimpleBlockItem(
+            ModBlocks.TEST_BLOCK_2,
             new Item.Properties()
     );
 

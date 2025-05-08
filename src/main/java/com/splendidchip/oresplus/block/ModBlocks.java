@@ -26,7 +26,17 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SALT_ORE = BLOCKS.registerBlock("salt_ore",
             Block::new,
             BlockBehaviour.Properties.of()
-                    .strength(5f).requiresCorrectToolForDrops().sound(SoundType.BASALT));
+                    .strength(5f).requiresCorrectToolForDrops().sound(SoundType.CALCITE));
+
+    public static final DeferredBlock<Block> TEST_BLOCK_1 = BLOCKS.registerBlock("test_block_1",
+            Block::new,
+            BlockBehaviour.Properties.of()
+                    .strength(5f).requiresCorrectToolForDrops().sound(SoundType.CALCITE));
+
+    public static final DeferredBlock<Block> TEST_BLOCK_2 = BLOCKS.registerBlock("test_block_2",
+            Block::new,
+            BlockBehaviour.Properties.of()
+                    .strength(5f).requiresCorrectToolForDrops().sound(SoundType.CALCITE));
 
 
 

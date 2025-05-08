@@ -24,6 +24,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ALUMINA.get());
                         output.accept(ModItems.RAW_BAUXITE.get());
                         output.accept(ModItems.BAUXITE_DUST.get());
+                        output.accept(ModItems.RAW_SALT.get());
+                        output.accept(ModItems.SALT.get());
                     }).build());
 
     public static final Supplier<CreativeModeTab> ORESPLUS_BLOCKS_TAB = CREATIVE_MODE_TABS.register("oresplus_blocks_tab",
@@ -34,6 +36,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.BAUXITE_ORE.get());
                         output.accept(ModBlocks.ALUMINUM_BLOCK.get());
                         output.accept(ModBlocks.SALT_ORE.get());
+                        output.accept(ModBlocks.TEST_BLOCK_1.get());
+                        output.accept(ModBlocks.TEST_BLOCK_2.get());
                     }).build());
 
     public static void register(IEventBus eventBus){

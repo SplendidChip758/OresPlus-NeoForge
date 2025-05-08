@@ -1,18 +1,28 @@
-// 1.21.5	2025-05-06T22:43:33.5128677	Model Definitions - oresplus
+// 1.21.5	2025-05-07T23:09:35.1026976	Model Definitions - oresplus
 f77a176a0b419185782a71d51f85c3829536a4f2 assets/oresplus/blockstates/aluminum_block.json
 8a8acb55a3da722a6edfc7453209da0401df06ff assets/oresplus/blockstates/bauxite_ore.json
 0d7a844dd95ff68b2344f138cec43a90728123af assets/oresplus/blockstates/salt_ore.json
+69cbe9afa511e873910ad0fa7938b1e8149c21f6 assets/oresplus/blockstates/test_block_1.json
+f305894546e634ab0dccb00a7d97443678c121ba assets/oresplus/blockstates/test_block_2.json
 d3ec1e9515f36aa29f9124f882e75b6177682446 assets/oresplus/items/alumina.json
 39f4548ee7c1eabdb8f0524c0ddc46865900073a assets/oresplus/items/aluminum_block.json
 1091b4b2c414843489ef74883a93470b076cdede assets/oresplus/items/aluminum_ingot.json
 6c63b80b2b88c5e226d3eeea1cdfd0bd19dc18e6 assets/oresplus/items/bauxite_dust.json
 4af93a3e3504d4d5700d66e3d5b85fd4be90bc07 assets/oresplus/items/bauxite_ore.json
 30e78ae4adb5d306c7799c3b8f86c36a21d27d81 assets/oresplus/items/raw_bauxite.json
+b7a46b6a0e550e49a99d650bc0568d5ccd2403c5 assets/oresplus/items/raw_salt.json
+1bbd8d860ac8198dac0eb56f819ecb7ab908251c assets/oresplus/items/salt.json
 68c15272be8533a071d6feca2e2060cf13ba5d40 assets/oresplus/items/salt_ore.json
+6e79e55df74b8f5c4a7c0f54a7c48388e5ed9791 assets/oresplus/items/test_block_1.json
+249e1ac54a91a3fe0a22560e67fc343c4278ec15 assets/oresplus/items/test_block_2.json
 5786661409808702b6f79f4dd90347c6ba9c490f assets/oresplus/models/block/aluminum_block.json
 7a9133f872cc0d1dd28c4ec2e8cd803b35cac78a assets/oresplus/models/block/bauxite_ore.json
 2b3353c975248f295041ded5a4aac1005b594185 assets/oresplus/models/block/salt_ore.json
+8525b65b161e3d5ec07f452aec11b1e7618f2654 assets/oresplus/models/block/test_block_1.json
+b9d642e972829c1b8bc691a8cb9eb44ceb6b3d06 assets/oresplus/models/block/test_block_2.json
 12bc6767642412a5f492f0173f0d7aa864fa758e assets/oresplus/models/item/alumina.json
 23fb2719dbbd81e9968122bea81ce51f213b2afe assets/oresplus/models/item/aluminum_ingot.json
 d00324650f8c85a1a59630e76becc3897ae38dc6 assets/oresplus/models/item/bauxite_dust.json
 4f4284ba96ea9e1dbe87236fc70929463f3e2f4a assets/oresplus/models/item/raw_bauxite.json
+80b3a0e863a68db30fa7f81193b47e1a4fb24aa8 assets/oresplus/models/item/raw_salt.json
+72f09b087964ba63f5c58b31ed77ca60225f1461 assets/oresplus/models/item/salt.json
