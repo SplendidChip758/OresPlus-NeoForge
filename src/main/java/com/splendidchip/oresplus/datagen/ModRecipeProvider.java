@@ -3,11 +3,16 @@ package com.splendidchip.oresplus.datagen;
 import com.splendidchip.oresplus.OresPlus;
 import com.splendidchip.oresplus.block.ModBlocks;
 import com.splendidchip.oresplus.item.ModItems;
+import com.splendidchip.oresplus.recipe.builder.GrinderRecipeBuilder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -43,6 +48,22 @@ public class ModRecipeProvider extends RecipeProvider {
                         100)
                 .unlockedBy("has_alumina", this.has(ModItems.ALUMINA))
                 .save(this.output, "aluminum_ingot_blasting");
+
+        new GrinderRecipeBuilder(
+                // Our constructor parameters. This example adds the ever-popular dirt -> diamond conversion.
+                new ItemStack((ItemLike) ModItems.BAUXITE_DUST),
+                Ingredient.of(ModItems.RAW_BAUXITE)
+        )
+                .unlockedBy("has_raw_bauxite", has(ModItems.RAW_BAUXITE))
+                .save(this.output);
+
+        new GrinderRecipeBuilder(
+                // Our constructor parameters. This example adds the ever-popular dirt -> diamond conversion.
+                new ItemStack((ItemLike) ModItems.SALT),
+                Ingredient.of(ModItems.RAW_SALT)
+        )
+                .unlockedBy("has_raw_salt", has(ModItems.RAW_SALT))
+                .save(this.output);
 
     }
 

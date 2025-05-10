@@ -2,8 +2,13 @@ package com.splendidchip.oresplus;
 
 import com.mojang.logging.LogUtils;
 import com.splendidchip.oresplus.block.ModBlocks;
+import com.splendidchip.oresplus.block.entity.ModBlockEntities;
 import com.splendidchip.oresplus.item.ModCreativeModeTabs;
 import com.splendidchip.oresplus.item.ModItems;
+import com.splendidchip.oresplus.recipe.ModRecipeBookCategory;
+import com.splendidchip.oresplus.recipe.ModRecipes;
+import com.splendidchip.oresplus.screen.ModMenuTypes;
+import com.splendidchip.oresplus.screen.custom.GrinderScreen;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -13,6 +18,8 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import net.neoforged.neoforge.client.event.RegisterRecipeBookSearchCategoriesEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
@@ -42,6 +49,13 @@ public class OresPlus {
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
 
+        ModBlockEntities.register(modEventBus);
+
+        ModMenuTypes.register(modEventBus);
+
+        ModRecipes.register(modEventBus);
+        ModRecipeBookCategory.register(modEventBus);
+
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
 
@@ -70,6 +84,21 @@ public class OresPlus {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
 
+        }
+
+        @SubscribeEvent
+        public static void registerSearchCategories(RegisterRecipeBookSearchCategoriesEvent event) {
+            event.register(
+                    // The search category
+                    ModRecipeBookCategory.GRINDER_SEARCH_CATEGORY,
+                    // All recipe categories within the search category as varargs
+                    ModRecipeBookCategory.GRINDER_CATEGORY.get()
+            );
+        }
+
+        @SubscribeEvent
+        public static void registerScreens(RegisterMenuScreensEvent event) {
+            event.register(ModMenuTypes.GRINDER_MENU.get(), GrinderScreen::new);
         }
     }
 }

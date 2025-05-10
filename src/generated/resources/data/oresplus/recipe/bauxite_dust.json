@@ -1,0 +1,8 @@
+{
+  "type": "oresplus:grinder_block",
+  "ingredient": "oresplus:raw_bauxite",
+  "result": {
+    "count": 1,
+    "id": "oresplus:bauxite_dust"
+  }
+}

@@ -51,6 +51,12 @@ public class ModItems {
             new Item.Properties()
     );
 
+    public static final DeferredItem<BlockItem> GRINDER_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
+            ModBlocks.GRINDER_BLOCK,
+            new Item.Properties()
+    );
+
+
     public static final DeferredItem<BlockItem> TEST_BLOCK_1 = ITEMS.registerSimpleBlockItem(
             ModBlocks.TEST_BLOCK_1,
             new Item.Properties()

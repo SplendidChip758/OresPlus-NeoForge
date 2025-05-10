@@ -2,10 +2,14 @@
   "item.oresplus.aluminum_ingot": "Aluminum Ingot",
   "item.oresplus.alumina": "Alumina",
   "item.oresplus.bauxite_dust": "Bauxite Dust",
-  "item.oresplus.raw_bauxite": " Raw Bauxite",
+  "item.oresplus.raw_bauxite": "Raw Bauxite",
+  "item.oresplus.raw_salt": "Raw Salt",
+  "item.oresplus.salt": "Salt",
 
   "block.oresplus.bauxite_ore": "Bauxite Ore",
+  "block.oresplus.salt_ore": "Salt Ore",
   "block.oresplus.aluminum_block": "Block of Aluminum",
+  "block.oresplus.grinder_block": "Grinder",
 
   "creativetab.oresplus.oresplus_items": "OresPlus Items",
   "creativetab.oresplus.oresplus_blocks": "OresPlus Block"
