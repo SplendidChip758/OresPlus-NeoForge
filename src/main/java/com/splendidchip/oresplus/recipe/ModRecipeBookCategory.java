@@ -19,6 +19,7 @@ public class ModRecipeBookCategory {
     );
 
     public static void register(IEventBus eventBus) {
+
         RECIPE_BOOK_CATEGORIES.register(eventBus);
     }
 

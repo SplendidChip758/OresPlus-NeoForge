@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "minecraft:cobblestone",
+    "Y": "minecraft:iron_ingot"
+  },
+  "pattern": [
+    "X X",
+    "XYX",
+    "XXX"
+  ],
+  "result": {
+    "count": 1,
+    "id": "oresplus:grinder_block"
+  }
+}

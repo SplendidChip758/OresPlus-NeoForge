@@ -1,7 +1,7 @@
-// 1.21.4	2025-05-09T21:39:01.5381723	Model Definitions - oresplus
+// 1.21.4	2025-05-10T02:01:22.9391415	Model Definitions - oresplus
 f77a176a0b419185782a71d51f85c3829536a4f2 assets/oresplus/blockstates/aluminum_block.json
 8a8acb55a3da722a6edfc7453209da0401df06ff assets/oresplus/blockstates/bauxite_ore.json
-65052c58c03f47368787a3d0f37f10581d539f42 assets/oresplus/blockstates/grinder_block.json
+c1eb44b837d702f7a8ae9a4f52dfd919358c8924 assets/oresplus/blockstates/grinder_block.json
 0d7a844dd95ff68b2344f138cec43a90728123af assets/oresplus/blockstates/salt_ore.json
 69cbe9afa511e873910ad0fa7938b1e8149c21f6 assets/oresplus/blockstates/test_block_1.json
 f305894546e634ab0dccb00a7d97443678c121ba assets/oresplus/blockstates/test_block_2.json
@@ -19,7 +19,6 @@ b7a46b6a0e550e49a99d650bc0568d5ccd2403c5 assets/oresplus/items/raw_salt.json
 249e1ac54a91a3fe0a22560e67fc343c4278ec15 assets/oresplus/items/test_block_2.json
 5786661409808702b6f79f4dd90347c6ba9c490f assets/oresplus/models/block/aluminum_block.json
 7a9133f872cc0d1dd28c4ec2e8cd803b35cac78a assets/oresplus/models/block/bauxite_ore.json
-d3da71cc0b7b3847af63d1c752e304b88703c764 assets/oresplus/models/block/grinder_block.json
 2b3353c975248f295041ded5a4aac1005b594185 assets/oresplus/models/block/salt_ore.json
 8525b65b161e3d5ec07f452aec11b1e7618f2654 assets/oresplus/models/block/test_block_1.json
 b9d642e972829c1b8bc691a8cb9eb44ceb6b3d06 assets/oresplus/models/block/test_block_2.json

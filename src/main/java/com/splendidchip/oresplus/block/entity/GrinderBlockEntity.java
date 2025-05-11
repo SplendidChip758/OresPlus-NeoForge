@@ -5,6 +5,7 @@ import com.splendidchip.oresplus.recipe.grinder.GrinderRecipeInput;
 import com.splendidchip.oresplus.recipe.ModRecipes;
 import com.splendidchip.oresplus.screen.custom.GrinderMenu;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -14,6 +15,8 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.WorldlyContainer;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -23,12 +26,18 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
+import net.neoforged.neoforge.capabilities.BlockCapability;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
+import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Optional;
 
-public class GrinderBlockEntity extends BlockEntity implements MenuProvider {
+public class GrinderBlockEntity extends BlockEntity implements MenuProvider, WorldlyContainer {
     public final ItemStackHandler itemHandler = new ItemStackHandler(2) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -38,6 +47,9 @@ public class GrinderBlockEntity extends BlockEntity implements MenuProvider {
             }
         }
     };
+
+    public static final BlockCapability<IItemHandler, Direction> ITEM_HANDLER_CAPABILITY =
+            Capabilities.ItemHandler.BLOCK;
 
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
@@ -94,21 +106,21 @@ public class GrinderBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     @Override
-    protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
-        pTag.put("inventory", itemHandler.serializeNBT(pRegistries));
-        pTag.putInt("grinder_block.progress", progress);
-        pTag.putInt("grinder_block.max_progress", maxProgress);
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        tag.put("inventory", itemHandler.serializeNBT(registries));
+        tag.putInt("grinder_block.progress", progress);
+        tag.putInt("grinder_block.max_progress", maxProgress);
 
-        super.saveAdditional(pTag, pRegistries);
+        super.saveAdditional(tag, registries);
     }
 
     @Override
-    protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
-        super.loadAdditional(pTag, pRegistries);
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
 
-        itemHandler.deserializeNBT(pRegistries, pTag.getCompound("inventory"));
-        progress = pTag.getInt("grinder_block.progress");
-        maxProgress = pTag.getInt("grinder_block.max_progress");
+        itemHandler.deserializeNBT(registries, tag.getCompound("inventory"));
+        progress = tag.getInt("grinder_block.progress");
+        maxProgress = tag.getInt("grinder_block.max_progress");
     }
 
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {
@@ -122,6 +134,25 @@ public class GrinderBlockEntity extends BlockEntity implements MenuProvider {
             }
         } else {
             resetProgress();
+        }
+
+        if (level.isClientSide) return;
+
+        AABB areaAbove = new AABB(
+                blockPos.getX(),     blockPos.getY() + 1.0, blockPos.getZ(),
+                blockPos.getX() + 1, blockPos.getY() + 1.5, blockPos.getZ() + 1
+        );
+        List<ItemEntity> items = level.getEntitiesOfClass(ItemEntity.class, areaAbove);
+
+        for (ItemEntity item : items) {
+            if (!item.isAlive() || item.getItem().isEmpty()) continue;
+
+            ItemStack leftover = itemHandler.insertItem(0, item.getItem(), false);
+            if (leftover.isEmpty()) {
+                item.discard();
+            } else {
+                item.setItem(leftover);
+            }
         }
     }
 
@@ -174,14 +205,108 @@ public class GrinderBlockEntity extends BlockEntity implements MenuProvider {
         return maxCount >= currentCount + count;
     }
 
+    private void suckInDroppedItems(Level level, BlockPos pos) {
+        var itemEntities = level.getEntitiesOfClass(
+                ItemEntity.class,
+                new AABB(pos.above())
+        );
+
+        for (var itemEntity : itemEntities) {
+            if (!itemEntity.isAlive() || itemEntity.hasPickUpDelay()) continue;
+
+            ItemStack stack = itemEntity.getItem();
+            if (stack.isEmpty()) continue;
+
+            // Try inserting into the input slot (0)
+            ItemStack leftover = itemHandler.insertItem(INPUT_SLOT, stack.copy(), false);
+
+            if (leftover.isEmpty()) {
+                itemEntity.discard(); // fully consumed
+            } else if (leftover.getCount() < stack.getCount()) {
+                itemEntity.setItem(leftover); // partially consumed
+            }
+            // else: nothing inserted, leave entity as-is
+        }
+    }
+
     @Override
-    public CompoundTag getUpdateTag(HolderLookup.Provider pRegistries) {
-        return saveWithoutMetadata(pRegistries);
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        return saveWithoutMetadata(registries);
     }
 
     @Nullable
     @Override
     public Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public int[] getSlotsForFace(Direction side) {
+        if (side == Direction.DOWN) {
+            return new int[]{OUTPUT_SLOT};
+        } else if (side == Direction.UP) {
+            return new int[]{INPUT_SLOT};
+        } else {
+            return new int[]{INPUT_SLOT};
+        }
+    }
+
+    @Override
+    public boolean canPlaceItemThroughFace(int index, ItemStack itemStack, @Nullable Direction direction) {
+        return index == INPUT_SLOT;
+    }
+
+    @Override
+    public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) {
+        return index == OUTPUT_SLOT;
+    }
+
+    @Override
+    public int getContainerSize() {
+        return itemHandler.getSlots();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        for (int i = 0; i < itemHandler.getSlots(); i++) {
+            if (!itemHandler.getStackInSlot(i).isEmpty()) return false;
+        }
+        return true;
+    }
+
+    @Override
+    public ItemStack getItem(int slot) {
+        return itemHandler.getStackInSlot(slot);
+    }
+
+    @Override
+    public ItemStack removeItem(int slot, int amount) {
+        ItemStack stack = itemHandler.extractItem(slot, amount, false);
+        setChanged();
+        return stack;
+    }
+
+    @Override
+    public ItemStack removeItemNoUpdate(int slot) {
+        ItemStack stack = itemHandler.getStackInSlot(slot);
+        itemHandler.setStackInSlot(slot, ItemStack.EMPTY);
+        return stack;
+    }
+
+    @Override
+    public void setItem(int slot, ItemStack stack) {
+        itemHandler.setStackInSlot(slot, stack);
+    }
+
+    @Override
+    public boolean stillValid(Player player) {
+        return player.distanceToSqr(worldPosition.getX() + 0.5, worldPosition.getY() + 0.5, worldPosition.getZ() + 0.5) <= 64;
+    }
+
+    @Override
+    public void clearContent() {
+        for (int i = 0; i < itemHandler.getSlots(); i++) {
+            itemHandler.setStackInSlot(i, ItemStack.EMPTY);
+        }
     }
 }

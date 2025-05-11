@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:block/orientable_with_bottom",
-  "textures": {
-    "bottom": "oresplus:block/grinder_bottom",
-    "front": "oresplus:block/grinder_front",
-    "side": "oresplus:block/grinder_side",
-    "top": "oresplus:block/grinder_top"
-  }
-}

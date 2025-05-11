@@ -13,6 +13,7 @@ import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -24,16 +25,35 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class GrinderBlock extends BaseEntityBlock {
     public static final MapCodec<GrinderBlock> CODEC = simpleCodec(GrinderBlock::new);
+    public static final VoxelShape SHAPE = Shapes.or(
+            // base
+            Block.box(0, 0, 0, 16, 11, 16),
+            // north wall
+            Block.box(0, 11, 0, 16, 16, 2),
+            // east wall
+            Block.box(14, 11, 2, 16, 16, 14),
+            // south wall
+            Block.box(0, 11, 14, 16, 16, 16),
+            // west wall
+            Block.box(0, 11, 2, 2, 16, 14));
 
     public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
 
     public GrinderBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
+    }
+
+    @Override
+    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return SHAPE;
     }
 
     @Override
@@ -74,24 +94,24 @@ public class GrinderBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
-        if (pState.getBlock() != pNewState.getBlock()) {
-            BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (state.getBlock() != newState.getBlock()) {
+            BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof GrinderBlockEntity grinderBlockEntity) {
                 grinderBlockEntity.drops();
             }
         }
 
-        super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
+        super.onRemove(state, level, pos, newState, isMoving);
     }
 
     @Override
-    protected InteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos,
-                                          Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
-        if (!pLevel.isClientSide()) {
-            BlockEntity entity = pLevel.getBlockEntity(pPos);
+    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+                                          Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if (!level.isClientSide()) {
+            BlockEntity entity = level.getBlockEntity(pos);
             if(entity instanceof GrinderBlockEntity grinderBlockEntity) {
-                ((ServerPlayer) pPlayer).openMenu(new SimpleMenuProvider(grinderBlockEntity, Component.literal("Grinder")), pPos);
+                ((ServerPlayer) player).openMenu(new SimpleMenuProvider(grinderBlockEntity, Component.literal("Grinder")), pos);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }

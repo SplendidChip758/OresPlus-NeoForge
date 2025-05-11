@@ -31,6 +31,14 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('X', ModItems.ALUMINUM_INGOT.get())
                 .unlockedBy("has_aluminum_ingot", has(ModItems.ALUMINUM_INGOT)).save(this.output);
 
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModBlocks.GRINDER_BLOCK.get())
+                .pattern("X X")
+                .pattern("XYX")
+                .pattern("XXX")
+                .define('X', Blocks.COBBLESTONE)
+                .define('Y', Items.IRON_INGOT)
+                .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT)).save(this.output);
+
         SimpleCookingRecipeBuilder.smelting(
                 Ingredient.of(ModItems.ALUMINA),
                 RecipeCategory.MISC,

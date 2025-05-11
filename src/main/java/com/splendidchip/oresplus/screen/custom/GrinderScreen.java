@@ -5,7 +5,6 @@ import com.splendidchip.oresplus.OresPlus;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.CoreShaders;
-import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -14,8 +13,8 @@ import net.minecraft.world.entity.player.Inventory;
 public class GrinderScreen extends AbstractContainerScreen<GrinderMenu> {
     private static final ResourceLocation GUI_TEXTURE =
             ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID,"textures/gui/grinder_block/grinder_block_gui.png");
-    private static final ResourceLocation ARROW_TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID,"textures/gui/arrow_progress.png");
+    private static final ResourceLocation GRINDING_TEXTURE =
+            ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID,"textures/gui/grinding_progress.png");
 
     public GrinderScreen(GrinderMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
@@ -32,18 +31,18 @@ public class GrinderScreen extends AbstractContainerScreen<GrinderMenu> {
 
         guiGraphics.blit(RenderType::guiTextured, GUI_TEXTURE, x, y, 0, 0, imageWidth, imageHeight, 256, 256);
 
-        renderProgressArrow(guiGraphics, x, y);
+        renderProgressGrinding(guiGraphics, x, y);
     }
 
-    private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
+    private void renderProgressGrinding(GuiGraphics guiGraphics, int x, int y) {
         if(menu.isCrafting()) {
-            guiGraphics.blit(RenderType::guiTextured, ARROW_TEXTURE,x + 73, y + 35, 0, 0, menu.getScaledArrowProgress(), 16, 24, 16);
+            guiGraphics.blit(RenderType::guiTextured, GRINDING_TEXTURE,x + 81, y + 28, 0, 0, 13, menu.getScaledGrindingProgress(), 13, 21);
         }
     }
 
     @Override
-    public void render(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
-        super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
-        this.renderTooltip(pGuiGraphics, pMouseX, pMouseY);
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+        super.render(guiGraphics, mouseX, mouseY, partialTick);
+        this.renderTooltip(guiGraphics, mouseX, mouseY);
     }
 }

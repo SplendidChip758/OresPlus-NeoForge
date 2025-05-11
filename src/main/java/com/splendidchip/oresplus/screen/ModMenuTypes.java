@@ -18,8 +18,7 @@ public class ModMenuTypes {
     public static final DeferredHolder<MenuType<?>, MenuType<GrinderMenu>> GRINDER_MENU =
             registerMenuType("grinder_menu", GrinderMenu::new);
 
-    private static <T extends AbstractContainerMenu>DeferredHolder<MenuType<?>, MenuType<T>> registerMenuType(String name,
-                                                                                                              IContainerFactory<T> factory) {
+    private static <T extends AbstractContainerMenu>DeferredHolder<MenuType<?>, MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {
         return MENUS.register(name, () -> IMenuTypeExtension.create(factory));
     }
 

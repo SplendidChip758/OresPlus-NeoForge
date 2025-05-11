@@ -23,7 +23,7 @@ public class ModRecipes {
     public static final DeferredRegister<RecipeDisplay.Type<?>> RECIPE_DISPLAY_TYPES =
             DeferredRegister.create(Registries.RECIPE_DISPLAY, OresPlus.MOD_ID);
 
-
+    //Grinder
     public static final Supplier<RecipeSerializer<GrinderRecipe>> GRINDER_SERIALIZER =
             RECIPE_SERIALIZERS.register("grinder_block", GrinderRecipeSerializer::new);
 

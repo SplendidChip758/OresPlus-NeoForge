@@ -35,7 +35,7 @@ public class ModBlocks {
     public static final DeferredBlock<GrinderBlock> GRINDER_BLOCK = BLOCKS.registerBlock("grinder_block",
             GrinderBlock::new,
             BlockBehaviour.Properties.of()
-                    .strength(3.5F).requiresCorrectToolForDrops());
+                    .strength(3.5F).requiresCorrectToolForDrops().noOcclusion());
 
     //Test Blocks
     public static final DeferredBlock<Block> TEST_BLOCK_1 = BLOCKS.registerBlock("test_block_1",

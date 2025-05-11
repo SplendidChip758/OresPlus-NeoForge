@@ -7,13 +7,10 @@ import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.client.data.models.model.ModelTemplates;
-import net.minecraft.client.data.models.model.TextureSlot;
-import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.level.block.FurnaceBlock;
-import net.neoforged.neoforge.client.extensions.ITexturedModelExtension;
+import net.minecraft.resources.ResourceLocation;
+import net.neoforged.fml.common.Mod;
 
-import static net.minecraft.client.data.models.model.TexturedModel.ORIENTABLE_ONLY_TOP;
 
 public class ModModelProvider extends ModelProvider {
     public ModModelProvider(PackOutput output) {
@@ -24,20 +21,9 @@ public class ModModelProvider extends ModelProvider {
     protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
 
         //Blocks
-
         blockModels.createTrivialCube(ModBlocks.ALUMINUM_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.BAUXITE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.SALT_ORE.get());
-
-        blockModels.createHorizontallyRotatedBlock(
-                ModBlocks.GRINDER_BLOCK.get(),
-                TexturedModel.ORIENTABLE.updateTexture(mapping ->
-                        mapping.put(TextureSlot.SIDE, this.modLocation("block/grinder_side"))
-                                .put(TextureSlot.FRONT, this.modLocation("block/grinder_front"))
-                                .put(TextureSlot.TOP, this.modLocation("block/grinder_top"))
-                                .put(TextureSlot.BOTTOM, this.modLocation("block/grinder_bottom"))
-                )
-        );
 
         blockModels.createTrivialCube(ModBlocks.TEST_BLOCK_1.get());
         blockModels.createTrivialCube(ModBlocks.TEST_BLOCK_2.get());
