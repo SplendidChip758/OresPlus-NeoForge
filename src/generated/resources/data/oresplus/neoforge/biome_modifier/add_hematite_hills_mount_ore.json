@@ -1,0 +1,14 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "minecraft:windswept_hills",
+    "minecraft:stony_peaks",
+    "minecraft:jagged_peaks",
+    "minecraft:frozen_peaks",
+    "minecraft:stony_peaks",
+    "minecraft:meadow",
+    "minecraft:grove"
+  ],
+  "features": "oresplus:hematite_ore_hills_mount_placed",
+  "step": "underground_ores"
+}

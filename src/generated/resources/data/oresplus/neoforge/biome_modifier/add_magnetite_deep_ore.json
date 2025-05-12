@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "minecraft:dripstone_caves",
+    "minecraft:deep_dark",
+    "minecraft:lush_caves"
+  ],
+  "features": "oresplus:magnetite_ore_deep_placed",
+  "step": "underground_ores"
+}

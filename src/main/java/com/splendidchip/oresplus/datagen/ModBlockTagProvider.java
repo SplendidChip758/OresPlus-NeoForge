@@ -6,6 +6,7 @@ import com.splendidchip.oresplus.block.ModBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 
 import java.util.concurrent.CompletableFuture;
@@ -21,6 +22,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.ALUMINUM_BLOCK.get())
                 .add(ModBlocks.BAUXITE_ORE.get())
                 .add(ModBlocks.SALT_ORE.get())
+                .add(ModBlocks.HEMATITE_ORE.get())
+                .add(ModBlocks.MAGNETITE_ORE.get())
                 .add(ModBlocks.TEST_BLOCK_1.get())
                 .add(ModBlocks.TEST_BLOCK_2.get());
 

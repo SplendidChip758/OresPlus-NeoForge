@@ -1,7 +1,10 @@
-// 1.21.4	2025-05-09T19:39:56.2892285	Loot Tables
+// 1.21.4	2025-05-11T20:43:35.7699071	Loot Tables
 37d309cd690c7fee8e7f821bb73d44ad49284b59 data/oresplus/loot_table/blocks/aluminum_block.json
 3c5dabcab894ad8c03ca48a023b2c296a180d090 data/oresplus/loot_table/blocks/bauxite_ore.json
 9c1ffa37f8b4ddb61e50670b9bc77bad2300ebe2 data/oresplus/loot_table/blocks/grinder_block.json
+e2ad9e58587c99ab3ca35a629d4fffdd1c487c03 data/oresplus/loot_table/blocks/hematite_ore.json
+6d12a4c1c80f9c56bb53ff4387d90b3cdd9bf59d data/oresplus/loot_table/blocks/magnetite_ore.json
 db64bd32b5a6ecf69e6aa295d53725605480115e data/oresplus/loot_table/blocks/salt_ore.json
 327be2fa3cf12431a00ccd58093f7820c56c116a data/oresplus/loot_table/blocks/test_block_1.json
 746b9d428e65f66216bda550ba82ffe6c1700a73 data/oresplus/loot_table/blocks/test_block_2.json
+1995234df21ff4c53e502d67f2904cd33509640a data/oresplus/loot_table/blocks/test_block_3.json

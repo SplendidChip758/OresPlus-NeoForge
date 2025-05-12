@@ -1,0 +1,13 @@
+{
+  "type": "neoforge:remove_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": [
+    "minecraft:ore_iron_middle",
+    "minecraft:ore_iron_small",
+    "minecraft:ore_iron_upper"
+  ],
+  "steps": [
+    "local_modifications",
+    "underground_ores"
+  ]
+}

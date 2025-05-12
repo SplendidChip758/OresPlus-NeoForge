@@ -16,7 +16,6 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.neoforged.fml.common.Mod;
 
 import java.util.Set;
 
@@ -29,8 +28,13 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     protected void generate() {
         dropSelf(ModBlocks.ALUMINUM_BLOCK.get());
         dropSelf(ModBlocks.GRINDER_BLOCK.get());
+
+        dropSelf(ModBlocks.HEMATITE_ORE.get());
+        dropSelf(ModBlocks.MAGNETITE_ORE.get());
+
         dropSelf(ModBlocks.TEST_BLOCK_1.get());
         dropSelf(ModBlocks.TEST_BLOCK_2.get());
+        dropSelf(ModBlocks.TEST_BLOCK_3.get());
 
         add(ModBlocks.BAUXITE_ORE.get(),
                 block -> createMultipleOreDrops(ModBlocks.BAUXITE_ORE.get(), ModItems.RAW_BAUXITE.get(), 2, 5));

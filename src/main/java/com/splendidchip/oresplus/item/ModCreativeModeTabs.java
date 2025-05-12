@@ -36,9 +36,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.BAUXITE_ORE.get());
                         output.accept(ModBlocks.ALUMINUM_BLOCK.get());
                         output.accept(ModBlocks.SALT_ORE.get());
+                        output.accept(ModBlocks.HEMATITE_ORE.get());
+                        output.accept(ModBlocks.MAGNETITE_ORE.get());
                         output.accept(ModBlocks.GRINDER_BLOCK.get());
                         output.accept(ModBlocks.TEST_BLOCK_1.get());
                         output.accept(ModBlocks.TEST_BLOCK_2.get());
+                        output.accept(ModBlocks.TEST_BLOCK_3.get());
                     }).build());
 
     public static void register(IEventBus eventBus){

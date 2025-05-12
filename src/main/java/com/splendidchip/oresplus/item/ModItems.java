@@ -36,13 +36,14 @@ public class ModItems {
             new Item.Properties());
 
     //Block Items
-    public static final DeferredItem<BlockItem> BAUXITE_ORE_ITEM = ITEMS.registerSimpleBlockItem(
-            ModBlocks.BAUXITE_ORE,
+    public static final DeferredItem<BlockItem> ALUMINUM_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
+            ModBlocks.ALUMINUM_BLOCK,
             new Item.Properties()
     );
 
-    public static final DeferredItem<BlockItem> ALUMINUM_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
-            ModBlocks.ALUMINUM_BLOCK,
+    //Block Ores Items
+    public static final DeferredItem<BlockItem> BAUXITE_ORE_ITEM = ITEMS.registerSimpleBlockItem(
+            ModBlocks.BAUXITE_ORE,
             new Item.Properties()
     );
 
@@ -51,12 +52,23 @@ public class ModItems {
             new Item.Properties()
     );
 
+    public static final DeferredItem<BlockItem> HEMATITE_ORE_ITEM = ITEMS.registerSimpleBlockItem(
+            ModBlocks.HEMATITE_ORE,
+            new Item.Properties()
+    );
+
+    public static final DeferredItem<BlockItem> MAGNETITE_ORE_ITEM = ITEMS.registerSimpleBlockItem(
+            ModBlocks.MAGNETITE_ORE,
+            new Item.Properties()
+    );
+
+    //Block Entities ITems
     public static final DeferredItem<BlockItem> GRINDER_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
             ModBlocks.GRINDER_BLOCK,
             new Item.Properties()
     );
 
-
+    //Test Blocks Items
     public static final DeferredItem<BlockItem> TEST_BLOCK_1 = ITEMS.registerSimpleBlockItem(
             ModBlocks.TEST_BLOCK_1,
             new Item.Properties()
@@ -64,6 +76,11 @@ public class ModItems {
 
     public static final DeferredItem<BlockItem> TEST_BLOCK_2 = ITEMS.registerSimpleBlockItem(
             ModBlocks.TEST_BLOCK_2,
+            new Item.Properties()
+    );
+
+    public static final DeferredItem<BlockItem> TEST_BLOCK_3 = ITEMS.registerSimpleBlockItem(
+            ModBlocks.TEST_BLOCK_3,
             new Item.Properties()
     );
 
