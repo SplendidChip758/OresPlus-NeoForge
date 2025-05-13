@@ -11,6 +11,9 @@ import net.minecraft.world.level.block.Block;
 public class ModTags {
     public static class Blocks {
 
+        public static final TagKey<Block> BAUXITE_ORE_REPLACABLES = createTag("bauxite_ore_replacables");
+        public static final TagKey<Block> SALT_ORE_REPLACABLES = createTag("salt_ore_replacables");
+
         private static TagKey<Block> createTag(String name) {
             return BlockTags.create(ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, name));
         }

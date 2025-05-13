@@ -26,6 +26,9 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_BAUXITE_ORE = registerKey("add_bauxite_ore");
     public static final ResourceKey<BiomeModifier> ADD_BAUXITE_JUNGLE_SAVANNA_ORE = registerKey("add_bauxite_jungle_savanna_ore");
 
+    public static final ResourceKey<BiomeModifier> ADD_SALT_ORE = registerKey("add_salt_ore");
+    public static final ResourceKey<BiomeModifier> ADD_SALT_SHORE_DESERT_ORE = registerKey("add_salt_shore_desert_ore");
+
     public static final ResourceKey<BiomeModifier> ADD_HEMATITE_ORE = registerKey("add_hematite_ore");
     public static final ResourceKey<BiomeModifier> ADD_HEMATITE_HILLS_MOUNT_ORE = registerKey("add_hematite_hills_mount_ore");
 
@@ -66,6 +69,23 @@ public class ModBiomeModifiers {
                         biomes.getOrThrow(Biomes.WINDSWEPT_SAVANNA)
                 ),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.BAUXITE_ORE_PLACED_JUNGLE_SAVANNA_KEY)),
+                GenerationStep.Decoration.UNDERGROUND_ORES));
+
+        context.register(ADD_SALT_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.SALT_ORE_PLACED_KEY)),
+                GenerationStep.Decoration.UNDERGROUND_ORES));
+
+        context.register(ADD_SALT_SHORE_DESERT_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(
+                        biomes.getOrThrow(Biomes.BEACH),
+                        biomes.getOrThrow(Biomes.STONY_SHORE),
+                        biomes.getOrThrow(Biomes.OCEAN),
+                        biomes.getOrThrow(Biomes.LUKEWARM_OCEAN),
+                        biomes.getOrThrow(Biomes.WARM_OCEAN),
+                        biomes.getOrThrow(Biomes.DESERT)
+                ),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.SALT_ORE_PLACED_SHORE_DESERT_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
 
         context.register(ADD_HEMATITE_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(

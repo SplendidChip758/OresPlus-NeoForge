@@ -2,6 +2,7 @@ package com.splendidchip.oresplus.worldgen;
 
 import com.splendidchip.oresplus.OresPlus;
 import com.splendidchip.oresplus.block.ModBlocks;
+import com.splendidchip.oresplus.util.ModTags;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
@@ -20,17 +21,24 @@ import java.util.List;
 
 public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_BAUXITE_ORE_KEY = registerKey("bauxite_ore");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_SALT_ORE_KEY = registerKey("salt_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_HEMATITE_ORE_KEY = registerKey("hematite_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_MAGNETITE_ORE_KEY = registerKey("magnetite_ore");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_HEMATITE_VEIN_KEY = registerKey("hematite_vein");
+
 
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplaceables = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplacebles = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
+        RuleTest bauxiteReplacables = new TagMatchTest(ModTags.Blocks.BAUXITE_ORE_REPLACABLES);
+        RuleTest saltReplacebles = new TagMatchTest(ModTags.Blocks.SALT_ORE_REPLACABLES);
 
-        List<OreConfiguration.TargetBlockState> overworldBauxiteOres = List.of(OreConfiguration.target(stoneReplaceables, ModBlocks.BAUXITE_ORE.get().defaultBlockState()));
+
+        List<OreConfiguration.TargetBlockState> overworldBauxiteOres = List.of(OreConfiguration.target(bauxiteReplacables, ModBlocks.BAUXITE_ORE.get().defaultBlockState()));
         register(context, OVERWORLD_BAUXITE_ORE_KEY, Feature.ORE, new OreConfiguration(overworldBauxiteOres, 8, 0f));
+
+        List<OreConfiguration.TargetBlockState> overworldSaltOres = List.of(OreConfiguration.target(saltReplacebles, ModBlocks.SALT_ORE.get().defaultBlockState()));
+        register(context, OVERWORLD_SALT_ORE_KEY, Feature.ORE, new OreConfiguration(overworldSaltOres, 6, 0f));
 
         List<OreConfiguration.TargetBlockState> overworldHematiteOres = List.of(OreConfiguration.target(stoneReplaceables, ModBlocks.HEMATITE_ORE.get().defaultBlockState()));
         register(context, OVERWORLD_HEMATITE_ORE_KEY, Feature.ORE, new OreConfiguration(overworldHematiteOres, 7, 0.20f));

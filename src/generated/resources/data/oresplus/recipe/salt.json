@@ -2,7 +2,7 @@
   "type": "oresplus:grinder_block",
   "ingredient": "oresplus:raw_salt",
   "result": {
-    "count": 1,
+    "count": 2,
     "id": "oresplus:salt"
   }
 }

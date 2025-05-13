@@ -37,10 +37,16 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.TEST_BLOCK_3.get());
 
         add(ModBlocks.BAUXITE_ORE.get(),
-                block -> createMultipleOreDrops(ModBlocks.BAUXITE_ORE.get(), ModItems.RAW_BAUXITE.get(), 2, 5));
+                block -> createMultipleOreDrops(ModBlocks.BAUXITE_ORE.get(), ModItems.RAW_BAUXITE.get(), 2, 4));
 
         add(ModBlocks.SALT_ORE.get(),
-                block -> createMultipleOreDrops(ModBlocks.SALT_ORE.get(), ModItems.RAW_SALT.get(), 2, 5));
+                block -> createMultipleOreDrops(ModBlocks.SALT_ORE.get(), ModItems.RAW_SALT.get(), 3, 6));
+
+        add(ModBlocks.HEMATITE_ORE.get(),
+                block -> createMultipleOreDrops(ModBlocks.HEMATITE_ORE.get(), ModItems.RAW_HEMATITE.get(), 1, 2));
+
+        add(ModBlocks.MAGNETITE_ORE.get(),
+                block -> createMultipleOreDrops(ModBlocks.MAGNETITE_ORE.get(), ModItems.RAW_MAGNETITE.get(), 1, 3));
 
     }
 

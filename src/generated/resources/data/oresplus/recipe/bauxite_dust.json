@@ -2,7 +2,7 @@
   "type": "oresplus:grinder_block",
   "ingredient": "oresplus:raw_bauxite",
   "result": {
-    "count": 1,
+    "count": 2,
     "id": "oresplus:bauxite_dust"
   }
 }

@@ -26,6 +26,13 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BAUXITE_DUST.get());
                         output.accept(ModItems.RAW_SALT.get());
                         output.accept(ModItems.SALT.get());
+                        output.accept(ModItems.RAW_HEMATITE.get());
+                        output.accept(ModItems.RAW_MAGNETITE.get());
+                        //Test Items
+                        output.accept(ModItems.TEST_ITEM_1.get());
+                        output.accept(ModItems.TEST_ITEM_2.get());
+                        output.accept(ModItems.TEST_ITEM_3.get());
+                        output.accept(ModItems.TEST_ITEM_4.get());
                     }).build());
 
     public static final Supplier<CreativeModeTab> ORESPLUS_BLOCKS_TAB = CREATIVE_MODE_TABS.register("oresplus_blocks_tab",
@@ -39,6 +46,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.HEMATITE_ORE.get());
                         output.accept(ModBlocks.MAGNETITE_ORE.get());
                         output.accept(ModBlocks.GRINDER_BLOCK.get());
+                        //Test Blocks
                         output.accept(ModBlocks.TEST_BLOCK_1.get());
                         output.accept(ModBlocks.TEST_BLOCK_2.get());
                         output.accept(ModBlocks.TEST_BLOCK_3.get());

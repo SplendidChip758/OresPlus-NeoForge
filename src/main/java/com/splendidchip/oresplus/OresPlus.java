@@ -1,6 +1,7 @@
 package com.splendidchip.oresplus;
 
 import com.mojang.logging.LogUtils;
+import com.splendidchip.oresplus.block.ModBlockItems;
 import com.splendidchip.oresplus.block.ModBlocks;
 import com.splendidchip.oresplus.block.entity.ModBlockEntities;
 import com.splendidchip.oresplus.item.ModCreativeModeTabs;
@@ -48,6 +49,7 @@ public class OresPlus {
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModBlockItems.register(modEventBus);
 
         ModBlockEntities.register(modEventBus);
 

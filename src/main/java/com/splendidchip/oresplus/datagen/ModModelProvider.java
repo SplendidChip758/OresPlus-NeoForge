@@ -30,6 +30,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.HEMATITE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.MAGNETITE_ORE.get());
 
+        //Test Blocks
         blockModels.createTrivialCube(ModBlocks.TEST_BLOCK_1.get());
         blockModels.createTrivialCube(ModBlocks.TEST_BLOCK_2.get());
         blockModels.createTrivialCube(ModBlocks.TEST_BLOCK_3.get());
@@ -55,6 +56,15 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.BAUXITE_DUST.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.RAW_SALT.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.SALT.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.RAW_HEMATITE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.RAW_MAGNETITE.get(), ModelTemplates.FLAT_ITEM);
+
+        //Test Items
+        itemModels.generateFlatItem(ModItems.TEST_ITEM_1.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.TEST_ITEM_2.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.TEST_ITEM_3.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.TEST_ITEM_4.get(), ModelTemplates.FLAT_ITEM);
+
 
     }
 }

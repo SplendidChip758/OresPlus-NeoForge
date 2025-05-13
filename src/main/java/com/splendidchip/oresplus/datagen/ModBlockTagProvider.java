@@ -3,10 +3,11 @@ package com.splendidchip.oresplus.datagen;
 import com.splendidchip.oresplus.OresPlus;
 
 import com.splendidchip.oresplus.block.ModBlocks;
+import com.splendidchip.oresplus.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.neoforged.fml.common.Mod;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 
 import java.util.concurrent.CompletableFuture;
@@ -27,5 +28,19 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.TEST_BLOCK_1.get())
                 .add(ModBlocks.TEST_BLOCK_2.get());
 
+        tag(ModTags.Blocks.BAUXITE_ORE_REPLACABLES)
+                .add(Blocks.STONE)
+                .add(Blocks.GRANITE)
+                .add(Blocks.DIORITE)
+                .add(Blocks.ANDESITE)
+                .add(Blocks.DIRT);
+
+        tag(ModTags.Blocks.SALT_ORE_REPLACABLES)
+                .add(Blocks.STONE)
+                .add(Blocks.GRANITE)
+                .add(Blocks.DIORITE)
+                .add(Blocks.ANDESITE)
+                .add(Blocks.SAND)
+                .add(Blocks.SANDSTONE);
     }
 }

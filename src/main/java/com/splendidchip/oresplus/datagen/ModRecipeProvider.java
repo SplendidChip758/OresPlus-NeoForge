@@ -59,7 +59,7 @@ public class ModRecipeProvider extends RecipeProvider {
 
         new GrinderRecipeBuilder(
                 // Our constructor parameters. This example adds the ever-popular dirt -> diamond conversion.
-                new ItemStack((ItemLike) ModItems.BAUXITE_DUST),
+                new ItemStack((ItemLike) ModItems.BAUXITE_DUST, 2),
                 Ingredient.of(ModItems.RAW_BAUXITE)
         )
                 .unlockedBy("has_raw_bauxite", has(ModItems.RAW_BAUXITE))
@@ -67,7 +67,7 @@ public class ModRecipeProvider extends RecipeProvider {
 
         new GrinderRecipeBuilder(
                 // Our constructor parameters. This example adds the ever-popular dirt -> diamond conversion.
-                new ItemStack((ItemLike) ModItems.SALT),
+                new ItemStack((ItemLike) ModItems.SALT, 2),
                 Ingredient.of(ModItems.RAW_SALT)
         )
                 .unlockedBy("has_raw_salt", has(ModItems.RAW_SALT))
