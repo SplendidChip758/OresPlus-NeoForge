@@ -1,0 +1,13 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "minecraft:beach",
+    "minecraft:stony_shore",
+    "minecraft:ocean",
+    "minecraft:lukewarm_ocean",
+    "minecraft:warm_ocean",
+    "minecraft:desert"
+  ],
+  "features": "oresplus:salt_ore_shore_desert_placed",
+  "step": "underground_ores"
+}
