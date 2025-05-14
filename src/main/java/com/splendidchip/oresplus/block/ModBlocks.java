@@ -1,8 +1,7 @@
 package com.splendidchip.oresplus.block;
 
 import com.splendidchip.oresplus.OresPlus;
-import com.splendidchip.oresplus.block.custom.GrinderBlock;
-import net.minecraft.world.level.block.FurnaceBlock;
+import com.splendidchip.oresplus.block.custom.CrusherBlock;
 import net.neoforged.bus.api.IEventBus;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -43,8 +42,8 @@ public class ModBlocks {
                     .strength(5f).requiresCorrectToolForDrops().sound(SoundType.METAL));
 
     //Block Entities
-    public static final DeferredBlock<GrinderBlock> GRINDER_BLOCK = BLOCKS.registerBlock("grinder_block",
-            GrinderBlock::new,
+    public static final DeferredBlock<CrusherBlock> CRUSHER_BLOCK = BLOCKS.registerBlock("crusher_block",
+            CrusherBlock::new,
             BlockBehaviour.Properties.of()
                     .strength(3.5F).requiresCorrectToolForDrops().noOcclusion());
 
@@ -52,7 +51,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> TEST_BLOCK_1 = BLOCKS.registerBlock("test_block_1",
             Block::new,
             BlockBehaviour.Properties.of()
-                    .strength(5f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE));
+                    .strength(5f).requiresCorrectToolForDrops().sound(SoundType.STONE));
 
     public static final DeferredBlock<Block> TEST_BLOCK_2 = BLOCKS.registerBlock("test_block_2",
             Block::new,
@@ -62,7 +61,12 @@ public class ModBlocks {
     public static final DeferredBlock<Block> TEST_BLOCK_3 = BLOCKS.registerBlock("test_block_3",
             Block::new,
             BlockBehaviour.Properties.of()
-                    .strength(5f).requiresCorrectToolForDrops().sound(SoundType.BASALT));
+                    .strength(5f).requiresCorrectToolForDrops().sound(SoundType.STONE));
+
+    public static final DeferredBlock<Block> TEST_BLOCK_4 = BLOCKS.registerBlock("test_block_4",
+            Block::new,
+            BlockBehaviour.Properties.of()
+                    .strength(5f).requiresCorrectToolForDrops().sound(SoundType.STONE));
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);

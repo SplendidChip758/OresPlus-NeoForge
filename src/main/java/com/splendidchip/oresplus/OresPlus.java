@@ -9,7 +9,7 @@ import com.splendidchip.oresplus.item.ModItems;
 import com.splendidchip.oresplus.recipe.ModRecipeBookCategory;
 import com.splendidchip.oresplus.recipe.ModRecipes;
 import com.splendidchip.oresplus.screen.ModMenuTypes;
-import com.splendidchip.oresplus.screen.custom.GrinderScreen;
+import com.splendidchip.oresplus.screen.custom.CrusherScreen;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -92,15 +92,15 @@ public class OresPlus {
         public static void registerSearchCategories(RegisterRecipeBookSearchCategoriesEvent event) {
             event.register(
                     // The search category
-                    ModRecipeBookCategory.GRINDER_SEARCH_CATEGORY,
+                    ModRecipeBookCategory.CRUSHER_SEARCH_CATEGORY,
                     // All recipe categories within the search category as varargs
-                    ModRecipeBookCategory.GRINDER_CATEGORY.get()
+                    ModRecipeBookCategory.CRUSHER_CATEGORY.get()
             );
         }
 
         @SubscribeEvent
         public static void registerScreens(RegisterMenuScreensEvent event) {
-            event.register(ModMenuTypes.GRINDER_MENU.get(), GrinderScreen::new);
+            event.register(ModMenuTypes.CRUSHER_MENU.get(), CrusherScreen::new);
         }
     }
 }

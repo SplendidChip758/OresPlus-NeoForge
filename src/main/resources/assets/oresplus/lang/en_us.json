@@ -1,17 +1,19 @@
 {
   "item.oresplus.aluminum_ingot": "Aluminum Ingot",
   "item.oresplus.alumina": "Alumina",
-  "item.oresplus.bauxite_dust": "Bauxite Dust",
+  "item.oresplus.crushed_bauxite": "Crushed Bauxite",
   "item.oresplus.raw_bauxite": "Raw Bauxite",
   "item.oresplus.raw_salt": "Raw Salt",
   "item.oresplus.salt": "Salt",
   "item.oresplus.raw_hematite": "Raw Hematite",
   "item.oresplus.raw_magnetite": "Raw Magnetite",
+  "item.oresplus.crushed_hematite": "Crushed Hematite",
+  "item.oresplus.crushed_magnetite": "Crushed Magnetite",
 
   "block.oresplus.bauxite_ore": "Bauxite Ore",
   "block.oresplus.salt_ore": "Salt Ore",
   "block.oresplus.aluminum_block": "Block of Aluminum",
-  "block.oresplus.grinder_block": "Grinder",
+  "block.oresplus.crusher_block": "Crusher",
   "block.oresplus.hematite_ore": "Hematite Ore",
   "block.oresplus.magnetite_ore": "Magnetite Ore",
 

@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "oresplus:grinder_block"
+          "name": "oresplus:test_block_4"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "oresplus:blocks/grinder_block"
+  "random_sequence": "oresplus:blocks/test_block_4"
 }

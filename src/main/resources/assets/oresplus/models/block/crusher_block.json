@@ -2,12 +2,12 @@
 	"credit": "Made with Blockbench",
 	"ambientocclusion": false,
 	"textures": {
-		"front": "oresplus:block/grinder_front",
-		"particle": "oresplus:block/grinder_bottom",
-		"bottom": "oresplus:block/grinder_bottom",
-		"side": "oresplus:block/grinder_side",
-		"top": "oresplus:block/grinder_top",
-		"inside": "oresplus:block/grinder_inside"
+		"front": "oresplus:block/crusher_front",
+		"particle": "oresplus:block/crusher_bottom",
+		"bottom": "oresplus:block/crusher_bottom",
+		"side": "oresplus:block/crusher_side",
+		"top": "oresplus:block/crusher_top",
+		"inside": "oresplus:block/crusher_inside"
 	},
 	"elements": [
 		{

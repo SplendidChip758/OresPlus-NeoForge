@@ -1,9 +1,8 @@
 package com.splendidchip.oresplus.datagen;
 
-import com.splendidchip.oresplus.OresPlus;
 import com.splendidchip.oresplus.block.ModBlocks;
 import com.splendidchip.oresplus.item.ModItems;
-import com.splendidchip.oresplus.recipe.builder.GrinderRecipeBuilder;
+import com.splendidchip.oresplus.recipe.builder.CrusherRecipeBuilder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
@@ -31,7 +30,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('X', ModItems.ALUMINUM_INGOT.get())
                 .unlockedBy("has_aluminum_ingot", has(ModItems.ALUMINUM_INGOT)).save(this.output);
 
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModBlocks.GRINDER_BLOCK.get())
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModBlocks.CRUSHER_BLOCK.get())
                 .pattern("X X")
                 .pattern("XYX")
                 .pattern("XXX")
@@ -57,20 +56,36 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_alumina", this.has(ModItems.ALUMINA))
                 .save(this.output, "aluminum_ingot_blasting");
 
-        new GrinderRecipeBuilder(
+        new CrusherRecipeBuilder(
                 // Our constructor parameters. This example adds the ever-popular dirt -> diamond conversion.
-                new ItemStack((ItemLike) ModItems.BAUXITE_DUST, 2),
+                new ItemStack((ItemLike) ModItems.CRUSHED_BAUXITE, 2),
                 Ingredient.of(ModItems.RAW_BAUXITE)
         )
                 .unlockedBy("has_raw_bauxite", has(ModItems.RAW_BAUXITE))
                 .save(this.output);
 
-        new GrinderRecipeBuilder(
+        new CrusherRecipeBuilder(
                 // Our constructor parameters. This example adds the ever-popular dirt -> diamond conversion.
                 new ItemStack((ItemLike) ModItems.SALT, 2),
                 Ingredient.of(ModItems.RAW_SALT)
         )
                 .unlockedBy("has_raw_salt", has(ModItems.RAW_SALT))
+                .save(this.output);
+
+        new CrusherRecipeBuilder(
+                // Our constructor parameters. This example adds the ever-popular dirt -> diamond conversion.
+                new ItemStack((ItemLike) ModItems.CRUSHED_HEMATITE, 2),
+                Ingredient.of(ModItems.RAW_HEMATITE)
+        )
+                .unlockedBy("has_raw_hematite", has(ModItems.RAW_HEMATITE))
+                .save(this.output);
+
+        new CrusherRecipeBuilder(
+                // Our constructor parameters. This example adds the ever-popular dirt -> diamond conversion.
+                new ItemStack((ItemLike) ModItems.CRUSHED_MAGNETITE, 2),
+                Ingredient.of(ModItems.RAW_MAGNETITE)
+        )
+                .unlockedBy("has_raw_magnetite", has(ModItems.RAW_MAGNETITE))
                 .save(this.output);
 
     }

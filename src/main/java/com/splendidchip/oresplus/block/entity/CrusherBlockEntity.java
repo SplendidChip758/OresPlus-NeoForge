@@ -1,9 +1,9 @@
 package com.splendidchip.oresplus.block.entity;
 
-import com.splendidchip.oresplus.recipe.grinder.GrinderRecipe;
-import com.splendidchip.oresplus.recipe.grinder.GrinderRecipeInput;
+import com.splendidchip.oresplus.recipe.crusher.CrusherRecipe;
+import com.splendidchip.oresplus.recipe.crusher.CrusherRecipeInput;
 import com.splendidchip.oresplus.recipe.ModRecipes;
-import com.splendidchip.oresplus.screen.custom.GrinderMenu;
+import com.splendidchip.oresplus.screen.custom.CrusherMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -31,13 +31,12 @@ import net.neoforged.neoforge.capabilities.BlockCapability;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
-import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Optional;
 
-public class GrinderBlockEntity extends BlockEntity implements MenuProvider, WorldlyContainer {
+public class CrusherBlockEntity extends BlockEntity implements MenuProvider, WorldlyContainer {
     public final ItemStackHandler itemHandler = new ItemStackHandler(2) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -58,14 +57,14 @@ public class GrinderBlockEntity extends BlockEntity implements MenuProvider, Wor
     private int progress = 0;
     private int maxProgress = 72;
 
-    public GrinderBlockEntity(BlockPos pos, BlockState blockState) {
-        super(ModBlockEntities.GRINDER_BLOCK_ENTITY.get(), pos, blockState);
+    public CrusherBlockEntity(BlockPos pos, BlockState blockState) {
+        super(ModBlockEntities.CRUSHER_BLOCK_ENTITY.get(), pos, blockState);
         data = new ContainerData() {
             @Override
             public int get(int i) {
                 return switch (i) {
-                    case 0 -> GrinderBlockEntity.this.progress;
-                    case 1 -> GrinderBlockEntity.this.maxProgress;
+                    case 0 -> CrusherBlockEntity.this.progress;
+                    case 1 -> CrusherBlockEntity.this.maxProgress;
                     default -> 0;
                 };
             }
@@ -73,8 +72,8 @@ public class GrinderBlockEntity extends BlockEntity implements MenuProvider, Wor
             @Override
             public void set(int i, int value) {
                 switch (i) {
-                    case 0: GrinderBlockEntity.this.progress = value;
-                    case 1: GrinderBlockEntity.this.maxProgress = value;
+                    case 0: CrusherBlockEntity.this.progress = value;
+                    case 1: CrusherBlockEntity.this.maxProgress = value;
                 }
             }
 
@@ -93,7 +92,7 @@ public class GrinderBlockEntity extends BlockEntity implements MenuProvider, Wor
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-        return new GrinderMenu(i, inventory, this, this.data);
+        return new CrusherMenu(i, inventory, this, this.data);
     }
 
     public void drops() {
@@ -157,7 +156,7 @@ public class GrinderBlockEntity extends BlockEntity implements MenuProvider, Wor
     }
 
     private void craftItem() {
-        Optional<RecipeHolder<GrinderRecipe>> recipe = getCurrentRecipe();
+        Optional<RecipeHolder<CrusherRecipe>> recipe = getCurrentRecipe();
         ItemStack output = recipe.get().value().getResult();
 
         itemHandler.extractItem(INPUT_SLOT, 1, false);
@@ -179,7 +178,7 @@ public class GrinderBlockEntity extends BlockEntity implements MenuProvider, Wor
     }
 
     private boolean hasRecipe() {
-        Optional<RecipeHolder<GrinderRecipe>> recipe = getCurrentRecipe();
+        Optional<RecipeHolder<CrusherRecipe>> recipe = getCurrentRecipe();
         if(recipe.isEmpty()) {
             return false;
         }
@@ -188,9 +187,9 @@ public class GrinderBlockEntity extends BlockEntity implements MenuProvider, Wor
         return canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output);
     }
 
-    private Optional<RecipeHolder<GrinderRecipe>> getCurrentRecipe() {
+    private Optional<RecipeHolder<CrusherRecipe>> getCurrentRecipe() {
         return level.getServer().getRecipeManager()
-                .getRecipeFor(ModRecipes.GRINDER_TYPE.get(), new GrinderRecipeInput(itemHandler.getStackInSlot(INPUT_SLOT)), level);
+                .getRecipeFor(ModRecipes.CRUSHER_TYPE.get(), new CrusherRecipeInput(itemHandler.getStackInSlot(INPUT_SLOT)), level);
     }
 
     private boolean canInsertItemIntoOutputSlot(ItemStack output) {

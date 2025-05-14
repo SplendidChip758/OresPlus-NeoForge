@@ -14,11 +14,11 @@ public class ModBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES =
             DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, OresPlus.MOD_ID);
 
-    public static final Supplier<BlockEntityType<GrinderBlockEntity>> GRINDER_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
-            "grinder_block_entity",
+    public static final Supplier<BlockEntityType<CrusherBlockEntity>> CRUSHER_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
+            "crusher_block_entity",
             () -> new BlockEntityType<>(
-                    GrinderBlockEntity::new,
-                    ModBlocks.GRINDER_BLOCK.get()
+                    CrusherBlockEntity::new,
+                    ModBlocks.CRUSHER_BLOCK.get()
             )
     );
 

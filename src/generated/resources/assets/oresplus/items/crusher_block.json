@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "oresplus:block/grinder_block"
+    "model": "oresplus:block/crusher_block"
   }
 }

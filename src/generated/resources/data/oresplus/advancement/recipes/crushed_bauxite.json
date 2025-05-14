@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "oresplus:bauxite_dust"
+        "recipe": "oresplus:crushed_bauxite"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "oresplus:bauxite_dust"
+      "oresplus:crushed_bauxite"
     ]
   }
 }

@@ -1,9 +1,9 @@
 package com.splendidchip.oresplus.recipe;
 
 import com.splendidchip.oresplus.OresPlus;
-import com.splendidchip.oresplus.recipe.grinder.GrinderRecipe;
-import com.splendidchip.oresplus.recipe.grinder.GrinderRecipeDisplay;
-import com.splendidchip.oresplus.recipe.grinder.GrinderRecipeSerializer;
+import com.splendidchip.oresplus.recipe.crusher.CrusherRecipe;
+import com.splendidchip.oresplus.recipe.crusher.CrusherRecipeDisplay;
+import com.splendidchip.oresplus.recipe.crusher.CrusherRecipeSerializer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -23,21 +23,21 @@ public class ModRecipes {
     public static final DeferredRegister<RecipeDisplay.Type<?>> RECIPE_DISPLAY_TYPES =
             DeferredRegister.create(Registries.RECIPE_DISPLAY, OresPlus.MOD_ID);
 
-    //Grinder
-    public static final Supplier<RecipeSerializer<GrinderRecipe>> GRINDER_SERIALIZER =
-            RECIPE_SERIALIZERS.register("grinder_block", GrinderRecipeSerializer::new);
+    //Crusher
+    public static final Supplier<RecipeSerializer<CrusherRecipe>> CRUSHER_SERIALIZER =
+            RECIPE_SERIALIZERS.register("crusher_block", CrusherRecipeSerializer::new);
 
-    public static final Supplier<RecipeType<GrinderRecipe>> GRINDER_TYPE =
-            RECIPE_TYPES.register("grinding", registryName -> new RecipeType<GrinderRecipe>() {
+    public static final Supplier<RecipeType<CrusherRecipe>> CRUSHER_TYPE =
+            RECIPE_TYPES.register("crushing", registryName -> new RecipeType<CrusherRecipe>() {
                 @Override
                 public String toString() {
                     return registryName.toString();
                 }
             });
 
-    public static final Supplier<RecipeDisplay.Type<GrinderRecipeDisplay>> GRINDER_RECIPE_DISPLAY = RECIPE_DISPLAY_TYPES.register(
-            "grinder_block",
-            () -> new RecipeDisplay.Type<>(GrinderRecipeDisplay.MAP_CODEC, GrinderRecipeDisplay.STREAM_CODEC)
+    public static final Supplier<RecipeDisplay.Type<CrusherRecipeDisplay>> CRUSHER_RECIPE_DISPLAY = RECIPE_DISPLAY_TYPES.register(
+            "crusher_block",
+            () -> new RecipeDisplay.Type<>(CrusherRecipeDisplay.MAP_CODEC, CrusherRecipeDisplay.STREAM_CODEC)
     );
 
 

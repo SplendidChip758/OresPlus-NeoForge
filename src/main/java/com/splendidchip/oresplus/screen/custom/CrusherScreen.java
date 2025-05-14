@@ -10,13 +10,13 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-public class GrinderScreen extends AbstractContainerScreen<GrinderMenu> {
+public class CrusherScreen extends AbstractContainerScreen<CrusherMenu> {
     private static final ResourceLocation GUI_TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID,"textures/gui/grinder_block/grinder_block_gui.png");
+            ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID,"textures/gui/crusher_block/crusher_block_gui.png");
     private static final ResourceLocation GRINDING_TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID,"textures/gui/grinding_progress.png");
+            ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID,"textures/gui/crushing_progress.png");
 
-    public GrinderScreen(GrinderMenu menu, Inventory playerInventory, Component title) {
+    public CrusherScreen(CrusherMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
     }
 

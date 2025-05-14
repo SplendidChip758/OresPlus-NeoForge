@@ -13,8 +13,8 @@ public class ModRecipeBookCategory {
     public static final DeferredRegister<RecipeBookCategory> RECIPE_BOOK_CATEGORIES =
             DeferredRegister.create(Registries.RECIPE_BOOK_CATEGORY, OresPlus.MOD_ID);
 
-    public static final Supplier<RecipeBookCategory> GRINDER_CATEGORY = RECIPE_BOOK_CATEGORIES.register(
-            "grinder_block",
+    public static final Supplier<RecipeBookCategory> CRUSHER_CATEGORY = RECIPE_BOOK_CATEGORIES.register(
+            "crusher_block",
             RecipeBookCategory::new
     );
 
@@ -23,6 +23,6 @@ public class ModRecipeBookCategory {
         RECIPE_BOOK_CATEGORIES.register(eventBus);
     }
 
-    public static final ExtendedRecipeBookCategory GRINDER_SEARCH_CATEGORY = new ExtendedRecipeBookCategory() {};
+    public static final ExtendedRecipeBookCategory CRUSHER_SEARCH_CATEGORY = new ExtendedRecipeBookCategory() {};
 
 }

@@ -23,11 +23,13 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ALUMINUM_INGOT.get());
                         output.accept(ModItems.ALUMINA.get());
                         output.accept(ModItems.RAW_BAUXITE.get());
-                        output.accept(ModItems.BAUXITE_DUST.get());
+                        output.accept(ModItems.CRUSHED_BAUXITE.get());
                         output.accept(ModItems.RAW_SALT.get());
                         output.accept(ModItems.SALT.get());
                         output.accept(ModItems.RAW_HEMATITE.get());
                         output.accept(ModItems.RAW_MAGNETITE.get());
+                        output.accept(ModItems.CRUSHED_HEMATITE.get());
+                        output.accept(ModItems.CRUSHED_MAGNETITE.get());
                         //Test Items
                         output.accept(ModItems.TEST_ITEM_1.get());
                         output.accept(ModItems.TEST_ITEM_2.get());
@@ -45,7 +47,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.SALT_ORE.get());
                         output.accept(ModBlocks.HEMATITE_ORE.get());
                         output.accept(ModBlocks.MAGNETITE_ORE.get());
-                        output.accept(ModBlocks.GRINDER_BLOCK.get());
+                        output.accept(ModBlocks.CRUSHER_BLOCK.get());
                         //Test Blocks
                         output.accept(ModBlocks.TEST_BLOCK_1.get());
                         output.accept(ModBlocks.TEST_BLOCK_2.get());

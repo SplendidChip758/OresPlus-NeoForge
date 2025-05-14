@@ -1,5 +1,5 @@
 {
-  "type": "oresplus:grinder_block",
+  "type": "oresplus:crusher_block",
   "ingredient": "oresplus:raw_salt",
   "result": {
     "count": 2,

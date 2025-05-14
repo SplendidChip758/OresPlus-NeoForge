@@ -23,7 +23,7 @@ public class ModItems {
             Item::new,
             new Item.Properties());
 
-    public static final DeferredItem<Item> BAUXITE_DUST = ITEMS.registerItem("bauxite_dust",
+    public static final DeferredItem<Item> CRUSHED_BAUXITE = ITEMS.registerItem("crushed_bauxite",
             Item::new,
             new Item.Properties());
 
@@ -40,6 +40,14 @@ public class ModItems {
             new Item.Properties());
 
     public static final DeferredItem<Item> RAW_MAGNETITE = ITEMS.registerItem("raw_magnetite",
+            Item::new,
+            new Item.Properties());
+
+    public static final DeferredItem<Item> CRUSHED_HEMATITE = ITEMS.registerItem("crushed_hematite",
+            Item::new,
+            new Item.Properties());
+
+    public static final DeferredItem<Item> CRUSHED_MAGNETITE = ITEMS.registerItem("crushed_magnetite",
             Item::new,
             new Item.Properties());
 

@@ -34,16 +34,17 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.TEST_BLOCK_1.get());
         blockModels.createTrivialCube(ModBlocks.TEST_BLOCK_2.get());
         blockModels.createTrivialCube(ModBlocks.TEST_BLOCK_3.get());
+        blockModels.createTrivialCube(ModBlocks.TEST_BLOCK_4.get());
 
         blockModels.blockStateOutput.accept(
                 MultiVariantGenerator.multiVariant(
-                        ModBlocks.GRINDER_BLOCK.get()).with(PropertyDispatch.property(BlockStateProperties.HORIZONTAL_FACING)
-                        .select(Direction.NORTH, Variant.variant().with(VariantProperties.MODEL, ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/grinder_block")))
-                        .select(Direction.SOUTH, Variant.variant().with(VariantProperties.MODEL, ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/grinder_block"))
+                        ModBlocks.CRUSHER_BLOCK.get()).with(PropertyDispatch.property(BlockStateProperties.HORIZONTAL_FACING)
+                        .select(Direction.NORTH, Variant.variant().with(VariantProperties.MODEL, ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/crusher_block")))
+                        .select(Direction.SOUTH, Variant.variant().with(VariantProperties.MODEL, ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/crusher_block"))
                                 .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
-                        .select(Direction.EAST, Variant.variant().with(VariantProperties.MODEL, ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/grinder_block"))
+                        .select(Direction.EAST, Variant.variant().with(VariantProperties.MODEL, ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/crusher_block"))
                                 .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
-                        .select(Direction.WEST, Variant.variant().with(VariantProperties.MODEL, ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/grinder_block"))
+                        .select(Direction.WEST, Variant.variant().with(VariantProperties.MODEL, ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/crusher_block"))
                                 .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
                 )
 
@@ -53,11 +54,13 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.ALUMINA.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.ALUMINUM_INGOT.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.RAW_BAUXITE.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateFlatItem(ModItems.BAUXITE_DUST.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.CRUSHED_BAUXITE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.RAW_SALT.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.SALT.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.RAW_HEMATITE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.RAW_MAGNETITE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.CRUSHED_HEMATITE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.CRUSHED_MAGNETITE.get(), ModelTemplates.FLAT_ITEM);
 
         //Test Items
         itemModels.generateFlatItem(ModItems.TEST_ITEM_1.get(), ModelTemplates.FLAT_ITEM);

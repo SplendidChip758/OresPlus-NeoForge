@@ -27,7 +27,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(ModBlocks.ALUMINUM_BLOCK.get());
-        dropSelf(ModBlocks.GRINDER_BLOCK.get());
+        dropSelf(ModBlocks.CRUSHER_BLOCK.get());
 
         dropSelf(ModBlocks.HEMATITE_ORE.get());
         dropSelf(ModBlocks.MAGNETITE_ORE.get());
@@ -35,6 +35,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.TEST_BLOCK_1.get());
         dropSelf(ModBlocks.TEST_BLOCK_2.get());
         dropSelf(ModBlocks.TEST_BLOCK_3.get());
+        dropSelf(ModBlocks.TEST_BLOCK_4.get());
 
         add(ModBlocks.BAUXITE_ORE.get(),
                 block -> createMultipleOreDrops(ModBlocks.BAUXITE_ORE.get(), ModItems.RAW_BAUXITE.get(), 2, 4));

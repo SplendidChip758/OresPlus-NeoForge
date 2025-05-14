@@ -1,7 +1,7 @@
 package com.splendidchip.oresplus.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import com.splendidchip.oresplus.block.entity.GrinderBlockEntity;
+import com.splendidchip.oresplus.block.entity.CrusherBlockEntity;
 import com.splendidchip.oresplus.block.entity.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -30,8 +30,8 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public class GrinderBlock extends BaseEntityBlock {
-    public static final MapCodec<GrinderBlock> CODEC = simpleCodec(GrinderBlock::new);
+public class CrusherBlock extends BaseEntityBlock {
+    public static final MapCodec<CrusherBlock> CODEC = simpleCodec(CrusherBlock::new);
     public static final VoxelShape SHAPE = Shapes.or(
             // base
             Block.box(0, 0, 0, 16, 11, 16),
@@ -46,7 +46,7 @@ public class GrinderBlock extends BaseEntityBlock {
 
     public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
 
-    public GrinderBlock(Properties properties) {
+    public CrusherBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
@@ -85,7 +85,7 @@ public class GrinderBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return new GrinderBlockEntity(blockPos, blockState);
+        return new CrusherBlockEntity(blockPos, blockState);
     }
 
     @Override
@@ -97,8 +97,8 @@ public class GrinderBlock extends BaseEntityBlock {
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof GrinderBlockEntity grinderBlockEntity) {
-                grinderBlockEntity.drops();
+            if (blockEntity instanceof CrusherBlockEntity crusherBlockEntity) {
+                crusherBlockEntity.drops();
             }
         }
 
@@ -110,8 +110,8 @@ public class GrinderBlock extends BaseEntityBlock {
                                           Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (!level.isClientSide()) {
             BlockEntity entity = level.getBlockEntity(pos);
-            if(entity instanceof GrinderBlockEntity grinderBlockEntity) {
-                ((ServerPlayer) player).openMenu(new SimpleMenuProvider(grinderBlockEntity, Component.literal("Grinder")), pos);
+            if(entity instanceof CrusherBlockEntity crusherBlockEntity) {
+                ((ServerPlayer) player).openMenu(new SimpleMenuProvider(crusherBlockEntity, Component.literal("Crusher")), pos);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }
@@ -127,7 +127,7 @@ public class GrinderBlock extends BaseEntityBlock {
             return null;
         }
 
-        return createTickerHelper(blockEntityType, ModBlockEntities.GRINDER_BLOCK_ENTITY.get(),
+        return createTickerHelper(blockEntityType, ModBlockEntities.CRUSHER_BLOCK_ENTITY.get(),
                 (level1, blockPos, blockState, blockEntity) -> blockEntity.tick(level1, blockPos, blockState));
     }
 }

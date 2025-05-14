@@ -1,0 +1,8 @@
+{
+  "type": "oresplus:crusher_block",
+  "ingredient": "oresplus:raw_hematite",
+  "result": {
+    "count": 2,
+    "id": "oresplus:crushed_hematite"
+  }
+}

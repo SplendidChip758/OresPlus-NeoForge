@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_iron_ingot": {
+    "has_raw_hematite": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:iron_ingot"
+            "items": "oresplus:raw_hematite"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "oresplus:grinder_block"
+        "recipe": "oresplus:crushed_hematite"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_iron_ingot"
+      "has_raw_hematite"
     ]
   ],
   "rewards": {
     "recipes": [
-      "oresplus:grinder_block"
+      "oresplus:crushed_hematite"
     ]
   }
 }

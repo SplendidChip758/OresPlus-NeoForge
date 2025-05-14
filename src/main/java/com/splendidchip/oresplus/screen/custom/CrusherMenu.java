@@ -2,7 +2,7 @@ package com.splendidchip.oresplus.screen.custom;
 
 import com.splendidchip.oresplus.block.ModBlocks;
 
-import com.splendidchip.oresplus.block.entity.GrinderBlockEntity;
+import com.splendidchip.oresplus.block.entity.CrusherBlockEntity;
 import com.splendidchip.oresplus.screen.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
@@ -13,18 +13,18 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.SlotItemHandler;
 
-public class GrinderMenu extends AbstractContainerMenu {
-    public final GrinderBlockEntity blockEntity;
+public class CrusherMenu extends AbstractContainerMenu {
+    public final CrusherBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
 
-    public GrinderMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
+    public CrusherMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
         this(containerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
     }
 
-    public GrinderMenu(int containerId, Inventory inv, BlockEntity entity, ContainerData data) {
-        super(ModMenuTypes.GRINDER_MENU.get(), containerId);
-        this.blockEntity = ((GrinderBlockEntity) entity);
+    public CrusherMenu(int containerId, Inventory inv, BlockEntity entity, ContainerData data) {
+        super(ModMenuTypes.CRUSHER_MENU.get(), containerId);
+        this.blockEntity = ((CrusherBlockEntity) entity);
         this.level = inv.player.level();
         this.data = data;
 
@@ -102,7 +102,7 @@ public class GrinderMenu extends AbstractContainerMenu {
     @Override
     public boolean stillValid(Player player) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
-                player, ModBlocks.GRINDER_BLOCK.get());
+                player, ModBlocks.CRUSHER_BLOCK.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {

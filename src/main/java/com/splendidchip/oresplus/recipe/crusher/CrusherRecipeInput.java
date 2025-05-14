@@ -1,9 +1,9 @@
-package com.splendidchip.oresplus.recipe.grinder;
+package com.splendidchip.oresplus.recipe.crusher;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeInput;
 
-public record GrinderRecipeInput(ItemStack stack) implements RecipeInput {
+public record CrusherRecipeInput(ItemStack stack) implements RecipeInput {
 
     @Override
     public ItemStack getItem(int slot) {

@@ -37,9 +37,9 @@ public class ModBlockItems {
             new Item.Properties()
     );
 
-    //Block Entities ITems
-    public static final DeferredItem<BlockItem> GRINDER_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
-            ModBlocks.GRINDER_BLOCK,
+    //Block Entities Items
+    public static final DeferredItem<BlockItem> CRUSHER_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
+            ModBlocks.CRUSHER_BLOCK,
             new Item.Properties()
     );
 
@@ -56,6 +56,11 @@ public class ModBlockItems {
 
     public static final DeferredItem<BlockItem> TEST_BLOCK_3 = ITEMS.registerSimpleBlockItem(
             ModBlocks.TEST_BLOCK_3,
+            new Item.Properties()
+    );
+
+    public static final DeferredItem<BlockItem> TEST_BLOCK_4 = ITEMS.registerSimpleBlockItem(
+            ModBlocks.TEST_BLOCK_4,
             new Item.Properties()
     );
 

@@ -1,6 +1,6 @@
 package com.splendidchip.oresplus.recipe.builder;
 
-import com.splendidchip.oresplus.recipe.grinder.GrinderRecipe;
+import com.splendidchip.oresplus.recipe.crusher.CrusherRecipe;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementRewards;
@@ -11,10 +11,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 
-public class GrinderRecipeBuilder extends SimpleRecipeBuilder {
+public class CrusherRecipeBuilder extends SimpleRecipeBuilder {
     private final Ingredient inputItem;
 
-    public GrinderRecipeBuilder(ItemStack result, Ingredient inputItem) {
+    public CrusherRecipeBuilder(ItemStack result, Ingredient inputItem) {
         super(result);
         this.inputItem = inputItem;
     }
@@ -28,7 +28,7 @@ public class GrinderRecipeBuilder extends SimpleRecipeBuilder {
                 .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(advancement::addCriterion);
         // Our factory parameters are the result, the block state, and the ingredient.
-        GrinderRecipe recipe = new GrinderRecipe(this.inputItem, this.result);
+        CrusherRecipe recipe = new CrusherRecipe(this.inputItem, this.result);
         // Pass the id, the recipe, and the recipe advancement into the RecipeOutput.
         output.accept(key, recipe, advancement.build(key.location().withPrefix("recipes/")));
     }

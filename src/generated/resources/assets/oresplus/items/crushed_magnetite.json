@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "oresplus:item/bauxite_dust"
+    "model": "oresplus:item/crushed_magnetite"
   }
 }

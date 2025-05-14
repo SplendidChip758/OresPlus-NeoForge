@@ -1,4 +1,4 @@
-package com.splendidchip.oresplus.recipe.grinder;
+package com.splendidchip.oresplus.recipe.crusher;
 
 import com.splendidchip.oresplus.recipe.ModRecipeBookCategory;
 import com.splendidchip.oresplus.recipe.ModRecipes;
@@ -14,32 +14,32 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class GrinderRecipe implements Recipe<GrinderRecipeInput> {
+public class CrusherRecipe implements Recipe<CrusherRecipeInput> {
 
     private final Ingredient inputItem;
     private final ItemStack result;
 
     private PlacementInfo info;
 
-    public GrinderRecipe(Ingredient inputItem, ItemStack result) {
+    public CrusherRecipe(Ingredient inputItem, ItemStack result) {
         this.inputItem = inputItem;
         this.result = result;
 
     }
 
     @Override
-    public boolean matches(GrinderRecipeInput input, Level level) {
+    public boolean matches(CrusherRecipeInput input, Level level) {
         return this.inputItem.test(input.stack());
     }
 
     @Override
-    public ItemStack assemble(GrinderRecipeInput input, HolderLookup.Provider registries) {
+    public ItemStack assemble(CrusherRecipeInput input, HolderLookup.Provider registries) {
         return this.result.copy();
     }
 
     @Override
     public RecipeBookCategory recipeBookCategory() {
-        return ModRecipeBookCategory.GRINDER_CATEGORY.get();
+        return ModRecipeBookCategory.CRUSHER_CATEGORY.get();
     }
 
     @Override
@@ -61,7 +61,7 @@ public class GrinderRecipe implements Recipe<GrinderRecipeInput> {
     @Override
     public List<RecipeDisplay> display() {
         return List.of(
-                new GrinderRecipeDisplay(
+                new CrusherRecipeDisplay(
                         this.inputItem.display(),
                         new SlotDisplay.ItemStackSlotDisplay(this.result),
                         new SlotDisplay.ItemSlotDisplay(Items.GRASS_BLOCK)
@@ -70,13 +70,13 @@ public class GrinderRecipe implements Recipe<GrinderRecipeInput> {
     }
 
     @Override
-    public RecipeType<? extends Recipe<GrinderRecipeInput>> getType() {
-        return ModRecipes.GRINDER_TYPE.get();
+    public RecipeType<? extends Recipe<CrusherRecipeInput>> getType() {
+        return ModRecipes.CRUSHER_TYPE.get();
     }
 
     @Override
-    public RecipeSerializer<? extends Recipe<GrinderRecipeInput>> getSerializer() {
-        return ModRecipes.GRINDER_SERIALIZER.get();
+    public RecipeSerializer<? extends Recipe<CrusherRecipeInput>> getSerializer() {
+        return ModRecipes.CRUSHER_SERIALIZER.get();
     }
 
     public Ingredient getInputItem() {
