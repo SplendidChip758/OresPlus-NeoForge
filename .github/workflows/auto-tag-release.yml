@@ -1,0 +1,66 @@
+name: Auto Tag and Release
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+
+jobs:
+  tag-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Get version from gradle.properties
+        id: get_version
+        run: |
+          VERSION=$(grep '^version=' gradle.properties | cut -d'=' -f2 | xargs)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Determine tag name
+        id: tag
+        run: |
+          BASE_VERSION="${{ steps.get_version.outputs.version }}"
+          BRANCH="${GITHUB_REF##*/}"
+          if [ "$BRANCH" == "dev" ]; then
+            TAG="v${BASE_VERSION}-alpha.${{ github.run_number }}"
+          else
+            TAG="v${BASE_VERSION}"
+          fi
+          echo "tag_name=$TAG" >> $GITHUB_OUTPUT
+
+      - name: Create and push tag
+        run: |
+          TAG=${{ steps.tag.outputs.tag_name }}
+          echo "Creating tag $TAG"
+          if git rev-parse "$TAG" >/dev/null 2>&1; then
+            echo "Tag $TAG already exists. Skipping."
+            exit 0
+          fi
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git tag -a "$TAG" -m "Auto release $TAG"
+          git push origin "$TAG"
+
+      - name: Build the mod
+        run: ./gradlew build
+
+      - name: Upload GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.tag_name }}
+          files: build/libs/*.jar
+          prerelease: ${{ github.ref_name == 'dev' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
