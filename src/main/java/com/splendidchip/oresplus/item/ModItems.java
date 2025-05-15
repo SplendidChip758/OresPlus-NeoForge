@@ -51,20 +51,11 @@ public class ModItems {
             Item::new,
             new Item.Properties());
 
-    //Test Items
-    public static final DeferredItem<Item> TEST_ITEM_1 = ITEMS.registerItem("test_item_1",
+    public static final DeferredItem<Item> LIMESTONE_DUST = ITEMS.registerItem("limestone_dust",
             Item::new,
             new Item.Properties());
 
-    public static final DeferredItem<Item> TEST_ITEM_2 = ITEMS.registerItem("test_item_2",
-            Item::new,
-            new Item.Properties());
-
-    public static final DeferredItem<Item> TEST_ITEM_3 = ITEMS.registerItem("test_item_3",
-            Item::new,
-            new Item.Properties());
-
-    public static final DeferredItem<Item> TEST_ITEM_4 = ITEMS.registerItem("test_item_4",
+    public static final DeferredItem<Item> COKE = ITEMS.registerItem("coke",
             Item::new,
             new Item.Properties());
 

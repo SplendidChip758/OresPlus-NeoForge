@@ -6,6 +6,7 @@ import com.splendidchip.oresplus.block.ModBlocks;
 import com.splendidchip.oresplus.block.entity.ModBlockEntities;
 import com.splendidchip.oresplus.item.ModCreativeModeTabs;
 import com.splendidchip.oresplus.item.ModItems;
+import com.splendidchip.oresplus.item.ModTestItems;
 import com.splendidchip.oresplus.recipe.ModRecipeBookCategory;
 import com.splendidchip.oresplus.recipe.ModRecipes;
 import com.splendidchip.oresplus.screen.ModMenuTypes;
@@ -48,6 +49,7 @@ public class OresPlus {
         ModCreativeModeTabs.register(modEventBus);
 
         ModItems.register(modEventBus);
+        ModTestItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModBlockItems.register(modEventBus);
 

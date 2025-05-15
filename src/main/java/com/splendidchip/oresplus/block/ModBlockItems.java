@@ -37,6 +37,11 @@ public class ModBlockItems {
             new Item.Properties()
     );
 
+    public static final DeferredItem<BlockItem> LIMESTONE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
+            ModBlocks.LIMESTONE_BLOCK,
+            new Item.Properties()
+    );
+
     //Block Entities Items
     public static final DeferredItem<BlockItem> CRUSHER_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
             ModBlocks.CRUSHER_BLOCK,

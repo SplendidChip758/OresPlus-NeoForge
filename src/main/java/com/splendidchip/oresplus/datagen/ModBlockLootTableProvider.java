@@ -28,6 +28,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     protected void generate() {
         dropSelf(ModBlocks.ALUMINUM_BLOCK.get());
         dropSelf(ModBlocks.CRUSHER_BLOCK.get());
+        dropSelf(ModBlocks.LIMESTONE_BLOCK.get());
 
         dropSelf(ModBlocks.HEMATITE_ORE.get());
         dropSelf(ModBlocks.MAGNETITE_ORE.get());

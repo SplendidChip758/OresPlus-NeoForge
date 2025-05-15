@@ -35,6 +35,8 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_MAGNETITE_ORE = registerKey("add_magnetite_ore");
     public static final ResourceKey<BiomeModifier> ADD_MAGNETITE_DEEP_ORE = registerKey("add_magnetite_deep_ore");
 
+    public static final ResourceKey<BiomeModifier> ADD_LIMESTONE_ORE = registerKey("add_limestone_ore");
+
     public static final ResourceKey<BiomeModifier> REMOVE_IRON_ORE = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
             ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "remove_iron_ore"));
 
@@ -119,6 +121,11 @@ public class ModBiomeModifiers {
 
                         ),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.MAGNETITE_ORE_PLACED_DEEP_KEY)),
+                GenerationStep.Decoration.UNDERGROUND_ORES));
+
+        context.register(ADD_LIMESTONE_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.LIMESTONE_ORE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
 
     }

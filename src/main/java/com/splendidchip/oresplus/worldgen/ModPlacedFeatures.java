@@ -28,6 +28,8 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> MAGNETITE_ORE_PLACED_KEY = registerKey("magnetite_ore_placed");
     public static final ResourceKey<PlacedFeature> MAGNETITE_ORE_PLACED_DEEP_KEY = registerKey("magnetite_ore_deep_placed");
 
+    public static final ResourceKey<PlacedFeature> LIMESTONE_ORE_PLACED_KEY = registerKey("limestone_ore_placed");
+
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -38,9 +40,9 @@ public class ModPlacedFeatures {
                 ModOrePlacement.commonOrePlacement(8, HeightRangePlacement.triangle(VerticalAnchor.absolute(48), VerticalAnchor.absolute(128))));
 
         register(context, SALT_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_SALT_ORE_KEY),
-                ModOrePlacement.commonOrePlacement(4, HeightRangePlacement.triangle(VerticalAnchor.absolute(40), VerticalAnchor.absolute(80))));
+                ModOrePlacement.commonOrePlacement(2, HeightRangePlacement.triangle(VerticalAnchor.absolute(40), VerticalAnchor.absolute(80))));
         register(context, SALT_ORE_PLACED_SHORE_DESERT_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_SALT_ORE_KEY),
-                ModOrePlacement.commonOrePlacement(6, HeightRangePlacement.triangle(VerticalAnchor.absolute(40), VerticalAnchor.absolute(80))));
+                ModOrePlacement.commonOrePlacement(4, HeightRangePlacement.triangle(VerticalAnchor.absolute(40), VerticalAnchor.absolute(80))));
 
         register(context, HEMATITE_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_HEMATITE_ORE_KEY),
                 ModOrePlacement.commonOrePlacement(6, HeightRangePlacement.triangle(VerticalAnchor.absolute(-16), VerticalAnchor.absolute(64))));
@@ -51,6 +53,9 @@ public class ModPlacedFeatures {
                 ModOrePlacement.commonOrePlacement(2, HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(0))));
         register(context, MAGNETITE_ORE_PLACED_DEEP_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_MAGNETITE_ORE_KEY),
                 ModOrePlacement.commonOrePlacement(4, HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(0))));
+
+        register(context, LIMESTONE_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_LIMESTONE_ORE_KEY),
+                ModOrePlacement.rareOrePlacement(8, HeightRangePlacement.triangle(VerticalAnchor.absolute(20), VerticalAnchor.absolute(60))));
 
     }
 

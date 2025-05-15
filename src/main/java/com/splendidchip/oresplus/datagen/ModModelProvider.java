@@ -3,6 +3,7 @@ package com.splendidchip.oresplus.datagen;
 import com.splendidchip.oresplus.OresPlus;
 import com.splendidchip.oresplus.block.ModBlocks;
 import com.splendidchip.oresplus.item.ModItems;
+import com.splendidchip.oresplus.item.ModTestItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
@@ -24,6 +25,7 @@ public class ModModelProvider extends ModelProvider {
 
         //Blocks
         blockModels.createTrivialCube(ModBlocks.ALUMINUM_BLOCK.get());
+        blockModels.createTrivialCube(ModBlocks.LIMESTONE_BLOCK.get());
 
         blockModels.createTrivialCube(ModBlocks.BAUXITE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.SALT_ORE.get());
@@ -61,12 +63,14 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.RAW_MAGNETITE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.CRUSHED_HEMATITE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.CRUSHED_MAGNETITE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.LIMESTONE_DUST.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.COKE.get(), ModelTemplates.FLAT_ITEM);
 
         //Test Items
-        itemModels.generateFlatItem(ModItems.TEST_ITEM_1.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateFlatItem(ModItems.TEST_ITEM_2.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateFlatItem(ModItems.TEST_ITEM_3.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateFlatItem(ModItems.TEST_ITEM_4.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModTestItems.TEST_ITEM_1.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModTestItems.TEST_ITEM_2.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModTestItems.TEST_ITEM_3.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModTestItems.TEST_ITEM_4.get(), ModelTemplates.FLAT_ITEM);
 
 
     }

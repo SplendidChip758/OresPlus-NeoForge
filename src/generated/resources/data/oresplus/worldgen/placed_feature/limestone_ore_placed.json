@@ -1,9 +1,9 @@
 {
-  "feature": "oresplus:salt_ore",
+  "feature": "oresplus:limestone_ore",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 2
+      "type": "minecraft:rarity_filter",
+      "chance": 8
     },
     {
       "type": "minecraft:in_square"
@@ -13,10 +13,10 @@
       "height": {
         "type": "minecraft:trapezoid",
         "max_inclusive": {
-          "absolute": 80
+          "absolute": 60
         },
         "min_inclusive": {
-          "absolute": 40
+          "absolute": 20
         }
       }
     },

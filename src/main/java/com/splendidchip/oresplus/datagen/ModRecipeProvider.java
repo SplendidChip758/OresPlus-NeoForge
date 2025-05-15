@@ -56,6 +56,15 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_alumina", this.has(ModItems.ALUMINA))
                 .save(this.output, "aluminum_ingot_blasting");
 
+        SimpleCookingRecipeBuilder.blasting(
+                        Ingredient.of(Items.COAL),
+                        RecipeCategory.MISC,
+                        ModItems.COKE,
+                        0.25f,
+                        100)
+                .unlockedBy("has_coal", this.has(ModItems.COKE))
+                .save(this.output, "coke_blasting");
+
         new CrusherRecipeBuilder(
                 // Our constructor parameters. This example adds the ever-popular dirt -> diamond conversion.
                 new ItemStack((ItemLike) ModItems.CRUSHED_BAUXITE, 2),
@@ -86,6 +95,14 @@ public class ModRecipeProvider extends RecipeProvider {
                 Ingredient.of(ModItems.RAW_MAGNETITE)
         )
                 .unlockedBy("has_raw_magnetite", has(ModItems.RAW_MAGNETITE))
+                .save(this.output);
+
+        new CrusherRecipeBuilder(
+                // Our constructor parameters. This example adds the ever-popular dirt -> diamond conversion.
+                new ItemStack((ItemLike) ModItems.LIMESTONE_DUST, 4),
+                Ingredient.of(ModBlocks.LIMESTONE_BLOCK)
+        )
+                .unlockedBy("has_limestone_block", has(ModItems.LIMESTONE_DUST))
                 .save(this.output);
 
     }
