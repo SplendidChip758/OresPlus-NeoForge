@@ -28,7 +28,7 @@ jobs:
       - name: Get version from gradle.properties
         id: get_version
         run: |
-          VERSION=$(grep '^version=' gradle.properties | cut -d'=' -f2 | xargs)
+          VERSION=$(grep '^mod_version=' gradle.properties | cut -d'=' -f2 | xargs)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Determine tag name
@@ -55,6 +55,9 @@ jobs:
           git config user.email "github-actions@github.com"
           git tag -a "$TAG" -m "Auto release $TAG"
           git push origin "$TAG"
+
+      - name: Make Gradle wrapper executable
+        run: chmod +x ./gradlew
 
       - name: Build the mod
         run: ./gradlew build
