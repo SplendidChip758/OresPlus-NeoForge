@@ -59,6 +59,18 @@ public class ModItems {
             Item::new,
             new Item.Properties());
 
+    public static final DeferredItem<Item> REFRACTORY_CEMENT = ITEMS.registerItem("refractory_cement",
+            Item::new,
+            new Item.Properties());
+
+    public static final DeferredItem<Item> UNFIRED_REFRACTORY_BRICK = ITEMS.registerItem("unfired_refractory_brick",
+            Item::new,
+            new Item.Properties());
+
+    public static final DeferredItem<Item> REFRACTORY_BRICK = ITEMS.registerItem("refractory_brick",
+            Item::new,
+            new Item.Properties());
+
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }

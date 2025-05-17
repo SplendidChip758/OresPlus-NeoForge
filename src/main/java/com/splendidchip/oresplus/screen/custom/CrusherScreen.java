@@ -14,7 +14,7 @@ public class CrusherScreen extends AbstractContainerScreen<CrusherMenu> {
     private static final ResourceLocation GUI_TEXTURE =
             ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID,"textures/gui/crusher_block/crusher_block_gui.png");
     private static final ResourceLocation GRINDING_TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID,"textures/gui/crushing_progress.png");
+            ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID,"textures/gui/crusher_block/crushing_progress.png");
 
     public CrusherScreen(CrusherMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);

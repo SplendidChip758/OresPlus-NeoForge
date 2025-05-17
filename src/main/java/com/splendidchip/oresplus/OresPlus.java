@@ -94,7 +94,8 @@ public class OresPlus {
         public static void registerSearchCategories(RegisterRecipeBookSearchCategoriesEvent event) {
             event.register(
                     // The search category
-                    ModRecipeBookCategory.CRUSHER_SEARCH_CATEGORY,
+                    ModRecipeBookCategory.ORESPLUS_SEARCH_CATEGORY,
+
                     // All recipe categories within the search category as varargs
                     ModRecipeBookCategory.CRUSHER_CATEGORY.get()
             );

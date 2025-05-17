@@ -26,15 +26,13 @@ public class DataGenerators {
         // The registry access
         lookupProvider
     ));
+
         event.createProvider(ModRecipeProvider.Runner::new);
 
-        event.createProvider(ModBlockTagProvider::new);
-        //event.createProvider(ModItemTagProvider::new);
+        event.createBlockAndItemTags(ModBlockTagProvider::new, ModItemTagProvider::new);
 
         event.createProvider(ModDataMapProvider::new);
 
-
-        //event.createProvider(ModItemModelProvider::new);
         event.createProvider(ModModelProvider::new);
 
         event.createProvider(ModDatapackProvider::new);

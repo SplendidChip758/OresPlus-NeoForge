@@ -40,7 +40,6 @@ public class ModRecipes {
             () -> new RecipeDisplay.Type<>(CrusherRecipeDisplay.MAP_CODEC, CrusherRecipeDisplay.STREAM_CODEC)
     );
 
-
     public static void register(IEventBus eventBus) {
         RECIPE_SERIALIZERS.register(eventBus);
         RECIPE_TYPES.register(eventBus);

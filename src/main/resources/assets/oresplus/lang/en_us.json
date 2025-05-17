@@ -9,6 +9,11 @@
   "item.oresplus.raw_magnetite": "Raw Magnetite",
   "item.oresplus.crushed_hematite": "Crushed Hematite",
   "item.oresplus.crushed_magnetite": "Crushed Magnetite",
+  "item.oresplus.limestone_dust": "Limestone Dust",
+  "item.oresplus.coke": "Coke",
+  "item.oresplus.refractory_cement": "Refractory Cement",
+  "item.oresplus.unfired_refractory_brick": "Unfired Refractory Brick",
+  "item.oresplus.refractory_brick": "Refractory Brick",
 
   "block.oresplus.bauxite_ore": "Bauxite Ore",
   "block.oresplus.salt_ore": "Salt Ore",
@@ -16,6 +21,8 @@
   "block.oresplus.crusher_block": "Crusher",
   "block.oresplus.hematite_ore": "Hematite Ore",
   "block.oresplus.magnetite_ore": "Magnetite Ore",
+  "block.oresplus.limestone_block": "Limestone Block",
+  "block.oresplus.refractory_bricks": "Refractory Bricks",
 
   "creativetab.oresplus.oresplus_items": "OresPlus Items",
   "creativetab.oresplus.oresplus_blocks": "OresPlus Block"

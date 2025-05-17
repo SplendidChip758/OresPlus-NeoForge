@@ -46,6 +46,11 @@ public class ModBlocks {
             BlockBehaviour.Properties.of()
                     .strength(1.5f, 6f).requiresCorrectToolForDrops().sound(SoundType.STONE));
 
+    public static final DeferredBlock<Block> REFRACTORY_BRICKS = BLOCKS.registerBlock("refractory_bricks",
+            Block::new,
+            BlockBehaviour.Properties.of()
+                    .strength(2.0F, 6.0F).requiresCorrectToolForDrops());
+
     //Block Entities
     public static final DeferredBlock<CrusherBlock> CRUSHER_BLOCK = BLOCKS.registerBlock("crusher_block",
             CrusherBlock::new,

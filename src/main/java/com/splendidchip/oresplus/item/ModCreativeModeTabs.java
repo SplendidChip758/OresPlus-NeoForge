@@ -32,6 +32,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CRUSHED_MAGNETITE.get());
                         output.accept(ModItems.LIMESTONE_DUST.get());
                         output.accept(ModItems.COKE.get());
+                        output.accept(ModItems.REFRACTORY_CEMENT.get());
+                        output.accept(ModItems.REFRACTORY_BRICK.get());
+                        output.accept(ModItems.UNFIRED_REFRACTORY_BRICK.get());
+
                         //Test Items
                         output.accept(ModTestItems.TEST_ITEM_1.get());
                         output.accept(ModTestItems.TEST_ITEM_2.get());
@@ -51,6 +55,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.MAGNETITE_ORE.get());
                         output.accept(ModBlocks.CRUSHER_BLOCK.get());
                         output.accept(ModBlocks.LIMESTONE_BLOCK.get());
+                        output.accept(ModBlocks.REFRACTORY_BRICKS.get());
                         //Test Blocks
                         output.accept(ModBlocks.TEST_BLOCK_1.get());
                         output.accept(ModBlocks.TEST_BLOCK_2.get());

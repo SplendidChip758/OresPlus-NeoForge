@@ -23,6 +23,6 @@ public class ModRecipeBookCategory {
         RECIPE_BOOK_CATEGORIES.register(eventBus);
     }
 
-    public static final ExtendedRecipeBookCategory CRUSHER_SEARCH_CATEGORY = new ExtendedRecipeBookCategory() {};
+    public static final ExtendedRecipeBookCategory ORESPLUS_SEARCH_CATEGORY = new ExtendedRecipeBookCategory() {};
 
 }

@@ -38,6 +38,22 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('Y', Items.IRON_INGOT)
                 .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT)).save(this.output);
 
+        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.REFRACTORY_CEMENT.get())
+                .requires(ModItems.CRUSHED_BAUXITE)
+                .requires(ModItems.LIMESTONE_DUST)
+                .requires(Items.CLAY_BALL)
+                .unlockedBy("has_crushed_bauxite", this.has(ModItems.CRUSHED_BAUXITE))
+                .unlockedBy("has_limestone_dust", this.has(ModItems.LIMESTONE_DUST))
+                .unlockedBy("has_clay_ball", this.has(Items.CLAY_BALL))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModBlocks.REFRACTORY_BRICKS.get())
+                .pattern("XX ")
+                .pattern("XX ")
+                .define('X', ModItems.REFRACTORY_BRICK)
+                .unlockedBy("has_refractory_brick", has(ModItems.REFRACTORY_BRICK))
+                .save(this.output);
+
         SimpleCookingRecipeBuilder.smelting(
                 Ingredient.of(ModItems.ALUMINA),
                 RecipeCategory.MISC,

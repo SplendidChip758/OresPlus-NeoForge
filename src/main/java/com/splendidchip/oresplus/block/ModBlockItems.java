@@ -42,6 +42,11 @@ public class ModBlockItems {
             new Item.Properties()
     );
 
+    public static final DeferredItem<BlockItem> REFRACTORY_BRICKS_ITEM = ITEMS.registerSimpleBlockItem(
+            ModBlocks.REFRACTORY_BRICKS,
+            new Item.Properties()
+    );
+
     //Block Entities Items
     public static final DeferredItem<BlockItem> CRUSHER_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
             ModBlocks.CRUSHER_BLOCK,

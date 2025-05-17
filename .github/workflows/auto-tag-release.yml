@@ -68,6 +68,7 @@ jobs:
           tag_name: ${{ steps.tag.outputs.tag_name }}
           files: build/libs/*.jar
           generate_release_notes: true
+          body: ${{ github.event.head_commit.message }}
           prerelease: ${{ github.ref_name == 'dev' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
