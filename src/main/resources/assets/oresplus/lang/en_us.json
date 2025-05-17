@@ -25,5 +25,21 @@
   "block.oresplus.refractory_bricks": "Refractory Bricks",
 
   "creativetab.oresplus.oresplus_items": "OresPlus Items",
-  "creativetab.oresplus.oresplus_blocks": "OresPlus Block"
+  "creativetab.oresplus.oresplus_blocks": "OresPlus Block",
+
+  "advancement.oresplus.root.title": "OresPlus",
+  "advancement.oresplus.root.description": "Begin your journey with OresPlus!",
+
+  "advancement.oresplus.mine_bauxite.title": "First Bauxite!",
+  "advancement.oresplus.mine_bauxite.description": "Mine your first Bauxite Ore.",
+  "advancement.oresplus.mine_hematite.title": "First Hematite!",
+  "advancement.oresplus.mine_hematite.description": "Mine your first Hematite Ore.",
+  "advancement.oresplus.mine_magnetite.title": "First Magnetite!",
+  "advancement.oresplus.mine_magnetite.description": "Mine your first Magnetite Ore.",
+
+  "advancement.oresplus.crush_bauxite.title": "Crushed Bauxite!",
+  "advancement.oresplus.crush_bauxite.description": "Used Crusher to make Crushed Bauxite.",
+
+  "advancement.oresplus.crusher.title": "Crafted Crusher",
+  "advancement.oresplus.crusher.description": "Crafted a Crusher"
 }

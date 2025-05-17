@@ -1,0 +1,34 @@
+{
+  "parent": "oresplus:root",
+  "criteria": {
+    "mine_bauxite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "oresplus:raw_bauxite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.oresplus.mine_bauxite.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "oresplus:bauxite_ore"
+    },
+    "title": {
+      "translate": "advancement.oresplus.mine_bauxite.title"
+    }
+  },
+  "requirements": [
+    [
+      "mine_bauxite"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
