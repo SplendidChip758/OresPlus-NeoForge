@@ -40,13 +40,25 @@ public class SimpleKilnScreen extends AbstractContainerScreen<SimpleKilnMenu> {
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         int progress = menu.getScaledProgress();
         if (progress > 0) {
-            guiGraphics.blit(RenderType::guiTextured, PROGRESS_TEXTURE, x + 79, y + 34, 0, 0, progress + 1, 16, 24, 16);
+            guiGraphics.blit(RenderType::guiTextured, PROGRESS_TEXTURE,
+                    x + 79, y + 34,   // position in GUI
+                    0, 0,             // UV origin in texture
+                    progress, 16,     // width, height to draw
+                    24, 16            // full texture size
+            );
         }
     }
 
     private void renderLitIndicator(GuiGraphics guiGraphics, int x, int y) {
-        if (menu.isLit()) {
-            guiGraphics.blit(RenderType::guiTextured, FIRE_TEXTURE, x + 57, y + 36, 0, 0, 14, 14, 14, 14);
+        int lit = menu.getLitProgress();
+        if (lit > 0) {
+            guiGraphics.blit(RenderType::guiTextured,
+                    FIRE_TEXTURE,
+                    x + 57, y + 36 + (13 - lit),   // moves up as it burns
+                    0, 13 - lit,                   // UV origin moves
+                    14, lit,                       // width/height
+                    14, 14                         // full texture
+            );
         }
     }
 

@@ -92,7 +92,7 @@ public class SimpleKilnBlockEntity extends BlockEntity implements MenuProvider, 
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-        return new SimpleKilnMenu(i, inventory, this, new SimpleContainerData(3));
+        return new SimpleKilnMenu(i, inventory, this, this.data);
     }
 
     public void drops() {
@@ -131,7 +131,7 @@ public class SimpleKilnBlockEntity extends BlockEntity implements MenuProvider, 
 
         Optional<RecipeHolder<SimpleKilnRecipe>> recipe = blockEntity.getCurrentRecipe();
 
-        if (blockEntity.burnTime == 0 && recipe.isPresent()) {
+        if (blockEntity.burnTime > 0 && recipe.isPresent() && blockEntity.hasRecipe()) {
             ItemStack fuelStack = blockEntity.itemHandler.getStackInSlot(FUEL_SLOT);
             if (fuelStack.getItem() == Items.COAL || fuelStack.getItem() == Items.CHARCOAL) {
                 blockEntity.burnTime = 200;
@@ -140,7 +140,7 @@ public class SimpleKilnBlockEntity extends BlockEntity implements MenuProvider, 
             }
         }
 
-        if (blockEntity.burnTime > 0 && recipe.isPresent()) {
+        if (blockEntity.burnTime > 0 && recipe.isPresent() && blockEntity.hasRecipe()) {
             RecipeHolder<SimpleKilnRecipe> holder = recipe.get();
             blockEntity.cookTimeTotal = holder.value().getCookTime();
 
@@ -173,7 +173,9 @@ public class SimpleKilnBlockEntity extends BlockEntity implements MenuProvider, 
         }
 
         ItemStack output = recipe.get().value().getResult();
-        return canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output);
+        return canInsertAmountIntoOutputSlot(output.getCount())
+                && canInsertItemIntoOutputSlot(output)
+                && !itemHandler.getStackInSlot(INPUT_SLOT).isEmpty();
     }
 
     private Optional<RecipeHolder<SimpleKilnRecipe>> getCurrentRecipe() {

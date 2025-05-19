@@ -37,15 +37,19 @@ public class SimpleKilnMenu extends AbstractContainerMenu {
         addDataSlots(data);
     }
 
-    public boolean isLit() {
-        return data.get(0) > 0;
+    public int getLitProgress() {
+        int burnTime = data.get(0);
+        int maxBurnTime = 200; // hardcoded for now unless tracked
+        int flameHeight = 13;
+
+        return burnTime > 0 ? burnTime * flameHeight / maxBurnTime : 0;
     }
 
     public int getScaledProgress() {
-        int progress = this.data.get(0);
-        int maxProgress = this.data.get(1);
-        int arrowSize = 24;
-        return maxProgress != 0 && progress != 0 ? progress * arrowSize / maxProgress : 0;
+        int cookTime = this.data.get(1);
+        int totalTime = this.data.get(2);
+        int arrowWidth = 24; // matches GUI progress texture width
+        return totalTime != 0 && cookTime != 0 ? cookTime * arrowWidth / totalTime : 0;
     }
 
     private static final int HOTBAR_SLOT_COUNT = 9;
