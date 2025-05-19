@@ -52,7 +52,16 @@ public class ModModelProvider extends ModelProvider {
                         .select(Direction.WEST, Variant.variant().with(VariantProperties.MODEL, ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/crusher_block"))
                                 .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
                 )
+        );
 
+        blockModels.createHorizontallyRotatedBlock(
+                ModBlocks.SIMPLE_KILN_BLOCK.get(),
+                TexturedModel.ORIENTABLE.updateTexture(mapping ->
+                        mapping.put(TextureSlot.SIDE, this.modLocation("block/simple_kiln_side"))
+                                .put(TextureSlot.FRONT, this.modLocation("block/simple_kiln_front"))
+                                .put(TextureSlot.TOP, this.modLocation("block/simple_kiln_top"))
+                                .put(TextureSlot.BOTTOM, this.modLocation("block/simple_kiln_bottom"))
+                )
         );
 
         //Items

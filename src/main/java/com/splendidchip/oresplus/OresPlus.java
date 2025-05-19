@@ -11,6 +11,7 @@ import com.splendidchip.oresplus.recipe.ModRecipeBookCategory;
 import com.splendidchip.oresplus.recipe.ModRecipes;
 import com.splendidchip.oresplus.screen.ModMenuTypes;
 import com.splendidchip.oresplus.screen.custom.CrusherScreen;
+import com.splendidchip.oresplus.screen.custom.SimpleKilnScreen;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -97,13 +98,15 @@ public class OresPlus {
                     ModRecipeBookCategory.ORESPLUS_SEARCH_CATEGORY,
 
                     // All recipe categories within the search category as varargs
-                    ModRecipeBookCategory.CRUSHER_CATEGORY.get()
+                    ModRecipeBookCategory.CRUSHER_CATEGORY.get(),
+                    ModRecipeBookCategory.SIMPLE_KILN_CATEGORY.get()
             );
         }
 
         @SubscribeEvent
         public static void registerScreens(RegisterMenuScreensEvent event) {
             event.register(ModMenuTypes.CRUSHER_MENU.get(), CrusherScreen::new);
+            event.register(ModMenuTypes.SIMPLE_KILN_MENU.get(), SimpleKilnScreen::new);
         }
     }
 }
