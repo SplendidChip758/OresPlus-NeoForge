@@ -29,6 +29,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
@@ -51,6 +52,7 @@ public class SimpleKilnBlockEntity extends BlockEntity implements MenuProvider, 
 
     protected final ContainerData data;
     private int burnTime = 0;
+    private int burnTimeTotal = 200;
     private int cookTime = 0;
     private int cookTimeTotal = 200;
 
@@ -61,9 +63,10 @@ public class SimpleKilnBlockEntity extends BlockEntity implements MenuProvider, 
             @Override
             public int get(int index) {
                 return switch (index) {
-                    case 0 -> SimpleKilnBlockEntity.this.burnTime;
-                    case 1 -> SimpleKilnBlockEntity.this.cookTime;
-                    case 2 -> SimpleKilnBlockEntity.this.cookTimeTotal;
+                    case 0 -> burnTime;
+                    case 1 -> cookTime;
+                    case 2 -> cookTimeTotal;
+                    case 3 -> burnTimeTotal;
                     default -> 0;
                 };
             }
@@ -71,15 +74,16 @@ public class SimpleKilnBlockEntity extends BlockEntity implements MenuProvider, 
             @Override
             public void set(int index, int value) {
                 switch (index) {
-                    case 0 -> SimpleKilnBlockEntity.this.burnTime = value;
-                    case 1 -> SimpleKilnBlockEntity.this.cookTime = value;
-                    case 2 -> SimpleKilnBlockEntity.this.cookTimeTotal = value;
+                    case 0 -> burnTime = value;
+                    case 1 -> cookTime = value;
+                    case 2 -> cookTimeTotal = value;
+                    case 3 -> burnTimeTotal = value;
                 }
             }
 
             @Override
             public int getCount() {
-                return 3;
+                return 4;
             }
         };
     }
@@ -108,6 +112,7 @@ public class SimpleKilnBlockEntity extends BlockEntity implements MenuProvider, 
         super.saveAdditional(tag, registries);
         tag.put("inventory", itemHandler.serializeNBT(registries));
         tag.putInt("burnTime", burnTime);
+        tag.putInt("burnTimeTotal", burnTimeTotal);
         tag.putInt("cookTime", cookTime);
         tag.putInt("cookTimeTotal", cookTimeTotal);
     }
@@ -117,44 +122,68 @@ public class SimpleKilnBlockEntity extends BlockEntity implements MenuProvider, 
         super.loadAdditional(tag, registries);
         itemHandler.deserializeNBT(registries, tag.getCompound("inventory"));
         burnTime = tag.getInt("burnTime");
+        burnTimeTotal = tag.getInt("burnTimeTotal");
         cookTime = tag.getInt("cookTime");
         cookTimeTotal = tag.getInt("cookTimeTotal");
     }
 
-    public static void tick(Level level, BlockPos pos, BlockState state, SimpleKilnBlockEntity blockEntity) {
-        boolean isBurning = blockEntity.burnTime > 0;
-        boolean hasChanged = false;
+    public static void tick(Level level, BlockPos pos, BlockState state, SimpleKilnBlockEntity kiln) {
+        boolean wasBurning = kiln.burnTime > 0;
+        boolean stateChanged = false;
 
-        if (blockEntity.burnTime > 0) {
-            blockEntity.burnTime--;
+        if (kiln.burnTime > 0) {
+            kiln.burnTime--;
         }
 
-        Optional<RecipeHolder<SimpleKilnRecipe>> recipe = blockEntity.getCurrentRecipe();
+        ItemStack fuel = kiln.itemHandler.getStackInSlot(FUEL_SLOT);
+        Optional<RecipeHolder<SimpleKilnRecipe>> recipeOpt = kiln.getCurrentRecipe();
 
-        if (blockEntity.burnTime > 0 && recipe.isPresent() && blockEntity.hasRecipe()) {
-            ItemStack fuelStack = blockEntity.itemHandler.getStackInSlot(FUEL_SLOT);
-            if (fuelStack.getItem() == Items.COAL || fuelStack.getItem() == Items.CHARCOAL) {
-                blockEntity.burnTime = 200;
-                fuelStack.shrink(1);
-                hasChanged = true;
+        if (kiln.burnTime == 0 && !fuel.isEmpty() && recipeOpt.isPresent() && kiln.hasRecipe()) {
+            int burn = kiln.getBurnTime(fuel);
+            if (burn > 0) { // ✅ Only burn if fuel is valid
+                kiln.burnTime = kiln.burnTimeTotal = burn;
+                fuel.shrink(1);
+                stateChanged = true;
             }
         }
 
-        if (blockEntity.burnTime > 0 && recipe.isPresent() && blockEntity.hasRecipe()) {
-            RecipeHolder<SimpleKilnRecipe> holder = recipe.get();
-            blockEntity.cookTimeTotal = holder.value().getCookTime();
+        if (kiln.burnTime > 0 && recipeOpt.isPresent() && kiln.hasRecipe()) {
+            kiln.cookTime++;
+            kiln.cookTimeTotal = recipeOpt.get().value().getCookTime();
 
-            blockEntity.cookTime++;
-            if (blockEntity.cookTime >= blockEntity.cookTimeTotal) {
-                blockEntity.cookTime = 0;
-                blockEntity.craftItem();
-                hasChanged = true;
+            if (kiln.cookTime >= kiln.cookTimeTotal) {
+                kiln.cookTime = 0;
+                kiln.craftItem();
+                stateChanged = true;
             }
+        } else {
+            kiln.cookTime = 0;
         }
 
-        if (hasChanged) {
+        if (wasBurning != kiln.burnTime > 0) {
+            stateChanged = true;
+            level.setBlock(pos, state.setValue(BlockStateProperties.LIT, kiln.burnTime > 0), 3);
+        }
+
+        if (stateChanged) {
             setChanged(level, pos, state);
         }
+    }
+
+    private int getBurnTime(ItemStack fuel) {
+        return fuel.getBurnTime(ModRecipes.SIMPLE_KILN_TYPE.get(), level.fuelValues());
+    }
+
+    public int getLitProgress() {
+        return burnTimeTotal == 0 ? 0 : burnTime * 13 / burnTimeTotal;
+    }
+
+    public int getCookProgress() {
+        return cookTimeTotal == 0 ? 0 : cookTime * 24 / cookTimeTotal;
+    }
+
+    public boolean isLit() {
+        return burnTime > 0;
     }
 
     private void craftItem() {
@@ -219,7 +248,11 @@ public class SimpleKilnBlockEntity extends BlockEntity implements MenuProvider, 
 
     @Override
     public boolean canPlaceItemThroughFace(int index, ItemStack itemStack, @Nullable Direction direction) {
-        return index == INPUT_SLOT;
+        if (index == INPUT_SLOT) return true;
+        if (index == FUEL_SLOT) {
+            return itemStack.getBurnTime(ModRecipes.SIMPLE_KILN_TYPE.get(), level.fuelValues()) > 0;
+        }
+        return false;
     }
 
     @Override

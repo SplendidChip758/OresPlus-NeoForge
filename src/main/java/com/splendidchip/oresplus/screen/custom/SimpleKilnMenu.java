@@ -18,7 +18,7 @@ public class SimpleKilnMenu extends AbstractContainerMenu {
     private final ContainerData data;
 
     public SimpleKilnMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(containerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(3));
+        this(containerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(4));
     }
 
     public SimpleKilnMenu(int containerId, Inventory inv, BlockEntity entity, ContainerData data) {
@@ -39,17 +39,15 @@ public class SimpleKilnMenu extends AbstractContainerMenu {
 
     public int getLitProgress() {
         int burnTime = data.get(0);
-        int maxBurnTime = 200; // hardcoded for now unless tracked
-        int flameHeight = 13;
-
-        return burnTime > 0 ? burnTime * flameHeight / maxBurnTime : 0;
+        int burnTimeTotal = data.get(3);
+        return burnTimeTotal == 0 ? 0 : burnTime * 13 / burnTimeTotal;
     }
 
+
     public int getScaledProgress() {
-        int cookTime = this.data.get(1);
-        int totalTime = this.data.get(2);
-        int arrowWidth = 24; // matches GUI progress texture width
-        return totalTime != 0 && cookTime != 0 ? cookTime * arrowWidth / totalTime : 0;
+        int cookTime = data.get(1);
+        int cookTimeTotal = data.get(2);
+        return cookTimeTotal == 0 ? 0 : cookTime * 24 / cookTimeTotal;
     }
 
     private static final int HOTBAR_SLOT_COUNT = 9;
