@@ -5,8 +5,10 @@ import com.splendidchip.oresplus.block.entity.ModBlockEntities;
 import com.splendidchip.oresplus.block.entity.SimpleKilnBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.SimpleMenuProvider;
@@ -111,4 +113,27 @@ public class SimpleKilnBlock extends BaseEntityBlock  {
         return createTickerHelper(blockEntityType, ModBlockEntities.SIMPLE_KILN_BLOCK_ENTITY.get(),
                 (level1, blockPos, blockState, blockEntity) -> blockEntity.tick(level1, blockPos, blockState, blockEntity));
     }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if (!state.getValue(BlockStateProperties.LIT)) return;
+
+        double x = pos.getX() + 0.5;
+        double y = pos.getY();
+        double z = pos.getZ() + 0.5;
+
+        Direction facing = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
+        Direction.Axis axis = facing.getAxis();
+
+        double offset = random.nextDouble() * 0.6 - 0.3; // random horizontal offset
+
+        double dx = axis == Direction.Axis.X ? facing.getStepX() * 0.52 : offset;
+        double dz = axis == Direction.Axis.Z ? facing.getStepZ() * 0.52 : offset;
+
+        double dy = random.nextDouble() * 6.0 / 16.0; // slightly up from base
+
+        level.addParticle(ParticleTypes.SMOKE, x + dx, y + dy + 0.5, z + dz, 0, 0, 0);
+        level.addParticle(ParticleTypes.FLAME, x + dx, y + dy + 0.5, z + dz, 0, 0, 0);
+    }
+
 }

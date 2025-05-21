@@ -50,6 +50,14 @@ public class SimpleKilnMenu extends AbstractContainerMenu {
         return cookTimeTotal == 0 ? 0 : cookTime * 24 / cookTimeTotal;
     }
 
+    public int getBurnTime() {
+        return data.get(0);
+    }
+
+    public int getBurnTimeTotal() {
+        return data.get(3);
+    }
+
     private static final int HOTBAR_SLOT_COUNT = 9;
     private static final int PLAYER_INVENTORY_ROW_COUNT = 3;
     private static final int PLAYER_INVENTORY_COLUMN_COUNT = 9;

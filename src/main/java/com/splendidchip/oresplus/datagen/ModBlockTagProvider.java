@@ -26,7 +26,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.HEMATITE_ORE.get())
                 .add(ModBlocks.MAGNETITE_ORE.get())
                 .add(ModBlocks.TEST_BLOCK_1.get())
-                .add(ModBlocks.TEST_BLOCK_2.get());
+                .add(ModBlocks.TEST_BLOCK_2.get())
+                .add(ModBlocks.LIMESTONE_BLOCK.get());
 
         tag(ModTags.Blocks.BAUXITE_ORE_REPLACABLES)
                 .add(Blocks.STONE)

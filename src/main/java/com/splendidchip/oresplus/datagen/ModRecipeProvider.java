@@ -48,6 +48,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_clay_ball", this.has(Items.CLAY_BALL))
                 .save(this.output);
 
+        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.UNFIRED_REFRACTORY_BRICK.get())
+                .requires(ModItems.REFRACTORY_CEMENT, 2)
+                .unlockedBy("has_refractory_cement", this.has(ModItems.REFRACTORY_CEMENT))
+                .save(this.output);
+
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModBlocks.REFRACTORY_BRICKS.get())
                 .pattern("XX ")
                 .pattern("XX ")

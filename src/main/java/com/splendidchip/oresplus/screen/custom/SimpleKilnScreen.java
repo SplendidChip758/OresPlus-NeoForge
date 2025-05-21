@@ -62,9 +62,34 @@ public class SimpleKilnScreen extends AbstractContainerScreen<SimpleKilnMenu> {
         }
     }
 
+    private void renderFuelTooltip(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+        int x = (width - imageWidth) / 2;
+        int y = (height - imageHeight) / 2;
+
+        int relMouseX = mouseX - x;
+        int relMouseY = mouseY - y;
+
+        // Area of the flame icon
+        if (relMouseX >= 57 && relMouseX < 57 + 14 && relMouseY >= 36 && relMouseY < 36 + 14) {
+            int burnTime = menu.getBurnTime();
+            int burnTimeTotal = menu.getBurnTimeTotal();
+
+            if (burnTimeTotal > 0) {
+                guiGraphics.renderTooltip(this.font,
+                        Component.translatable("tooltip.oresplus.burn_time", burnTime, burnTimeTotal),
+                        mouseX, mouseY);
+            }else {
+                guiGraphics.renderTooltip(this.font,
+                        Component.translatable("tooltip.oresplus.burn_time", 0, 0),
+                        mouseX, mouseY);
+            }
+        }
+    }
+
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         super.render(guiGraphics, mouseX, mouseY, partialTick);
+        renderFuelTooltip(guiGraphics, mouseX, mouseY);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
     }
 }
