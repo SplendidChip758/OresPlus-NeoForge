@@ -22,6 +22,14 @@ public class ModBlockEntities {
             )
     );
 
+    public static final Supplier<BlockEntityType<SimpleKilnBlockEntity>> SIMPLE_KILN_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
+            "simple_kiln_block_entity",
+            () -> new BlockEntityType<>(
+                    SimpleKilnBlockEntity::new,
+                    ModBlocks.SIMPLE_KILN_BLOCK.get()
+            )
+    );
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITY_TYPES.register(eventBus);
     }

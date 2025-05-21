@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "oresplus:refractory_cement",
+    "oresplus:refractory_cement"
+  ],
+  "result": {
+    "count": 1,
+    "id": "oresplus:unfired_refractory_brick"
+  }
+}

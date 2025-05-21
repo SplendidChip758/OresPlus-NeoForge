@@ -18,6 +18,11 @@ public class ModRecipeBookCategory {
             RecipeBookCategory::new
     );
 
+    public static final Supplier<RecipeBookCategory> SIMPLE_KILN_CATEGORY = RECIPE_BOOK_CATEGORIES.register(
+            "simple_kiln_block",
+            RecipeBookCategory::new
+    );
+
     public static void register(IEventBus eventBus) {
 
         RECIPE_BOOK_CATEGORIES.register(eventBus);

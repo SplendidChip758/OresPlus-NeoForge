@@ -56,6 +56,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.CRUSHER_BLOCK.get());
                         output.accept(ModBlocks.LIMESTONE_BLOCK.get());
                         output.accept(ModBlocks.REFRACTORY_BRICKS.get());
+                        output.accept(ModBlocks.SIMPLE_KILN_BLOCK.get());
                         //Test Blocks
                         output.accept(ModBlocks.TEST_BLOCK_1.get());
                         output.accept(ModBlocks.TEST_BLOCK_2.get());

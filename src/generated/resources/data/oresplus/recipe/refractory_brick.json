@@ -1,0 +1,9 @@
+{
+  "type": "oresplus:simple_kiln_block",
+  "cook_time": 300,
+  "ingredient": "oresplus:unfired_refractory_brick",
+  "result": {
+    "count": 1,
+    "id": "oresplus:refractory_brick"
+  }
+}

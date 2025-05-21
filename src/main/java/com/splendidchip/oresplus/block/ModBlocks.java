@@ -2,6 +2,7 @@ package com.splendidchip.oresplus.block;
 
 import com.splendidchip.oresplus.OresPlus;
 import com.splendidchip.oresplus.block.custom.CrusherBlock;
+import com.splendidchip.oresplus.block.custom.SimpleKilnBlock;
 import net.neoforged.bus.api.IEventBus;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -54,6 +55,11 @@ public class ModBlocks {
     //Block Entities
     public static final DeferredBlock<CrusherBlock> CRUSHER_BLOCK = BLOCKS.registerBlock("crusher_block",
             CrusherBlock::new,
+            BlockBehaviour.Properties.of()
+                    .strength(3.5F).requiresCorrectToolForDrops().noOcclusion());
+
+    public static final DeferredBlock<SimpleKilnBlock> SIMPLE_KILN_BLOCK = BLOCKS.registerBlock("simple_kiln_block",
+            SimpleKilnBlock::new,
             BlockBehaviour.Properties.of()
                     .strength(3.5F).requiresCorrectToolForDrops().noOcclusion());
 

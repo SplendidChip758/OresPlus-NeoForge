@@ -53,6 +53,11 @@ public class ModBlockItems {
             new Item.Properties()
     );
 
+    public static final DeferredItem<BlockItem> SIMPLE_KILN_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
+            ModBlocks.SIMPLE_KILN_BLOCK,
+            new Item.Properties()
+    );
+
     //Test Blocks Items
     public static final DeferredItem<BlockItem> TEST_BLOCK_1 = ITEMS.registerSimpleBlockItem(
             ModBlocks.TEST_BLOCK_1,

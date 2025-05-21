@@ -3,6 +3,7 @@ package com.splendidchip.oresplus.datagen;
 import com.splendidchip.oresplus.block.ModBlocks;
 import com.splendidchip.oresplus.item.ModItems;
 import com.splendidchip.oresplus.recipe.builder.CrusherRecipeBuilder;
+import com.splendidchip.oresplus.recipe.builder.SimpleKilnRecipeBuilder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
@@ -47,6 +48,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_clay_ball", this.has(Items.CLAY_BALL))
                 .save(this.output);
 
+        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.UNFIRED_REFRACTORY_BRICK.get())
+                .requires(ModItems.REFRACTORY_CEMENT, 2)
+                .unlockedBy("has_refractory_cement", this.has(ModItems.REFRACTORY_CEMENT))
+                .save(this.output);
+
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModBlocks.REFRACTORY_BRICKS.get())
                 .pattern("XX ")
                 .pattern("XX ")
@@ -82,7 +88,6 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(this.output, "coke_blasting");
 
         new CrusherRecipeBuilder(
-                // Our constructor parameters. This example adds the ever-popular dirt -> diamond conversion.
                 new ItemStack((ItemLike) ModItems.CRUSHED_BAUXITE, 2),
                 Ingredient.of(ModItems.RAW_BAUXITE)
         )
@@ -90,7 +95,6 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(this.output);
 
         new CrusherRecipeBuilder(
-                // Our constructor parameters. This example adds the ever-popular dirt -> diamond conversion.
                 new ItemStack((ItemLike) ModItems.SALT, 2),
                 Ingredient.of(ModItems.RAW_SALT)
         )
@@ -98,7 +102,6 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(this.output);
 
         new CrusherRecipeBuilder(
-                // Our constructor parameters. This example adds the ever-popular dirt -> diamond conversion.
                 new ItemStack((ItemLike) ModItems.CRUSHED_HEMATITE, 2),
                 Ingredient.of(ModItems.RAW_HEMATITE)
         )
@@ -106,7 +109,6 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(this.output);
 
         new CrusherRecipeBuilder(
-                // Our constructor parameters. This example adds the ever-popular dirt -> diamond conversion.
                 new ItemStack((ItemLike) ModItems.CRUSHED_MAGNETITE, 2),
                 Ingredient.of(ModItems.RAW_MAGNETITE)
         )
@@ -114,12 +116,20 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(this.output);
 
         new CrusherRecipeBuilder(
-                // Our constructor parameters. This example adds the ever-popular dirt -> diamond conversion.
                 new ItemStack((ItemLike) ModItems.LIMESTONE_DUST, 4),
                 Ingredient.of(ModBlocks.LIMESTONE_BLOCK)
         )
                 .unlockedBy("has_limestone_block", has(ModItems.LIMESTONE_DUST))
                 .save(this.output);
+
+        new SimpleKilnRecipeBuilder(
+                new ItemStack((ItemLike) ModItems.REFRACTORY_BRICK),
+                Ingredient.of(ModItems.UNFIRED_REFRACTORY_BRICK)
+        )
+                .cookTime(300)
+                .unlockedBy("has_unfired_refractory_brick", has(ModItems.UNFIRED_REFRACTORY_BRICK))
+                .save(this.output);
+
 
     }
 

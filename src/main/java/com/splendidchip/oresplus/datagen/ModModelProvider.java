@@ -52,8 +52,38 @@ public class ModModelProvider extends ModelProvider {
                         .select(Direction.WEST, Variant.variant().with(VariantProperties.MODEL, ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/crusher_block"))
                                 .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
                 )
-
         );
+
+        // Unlit model
+        ResourceLocation simpleKilnUnlitModel = TexturedModel.ORIENTABLE.updateTexture(mapping -> mapping
+                        .put(TextureSlot.SIDE, modLocation("block/simple_kiln_side"))
+                        .put(TextureSlot.FRONT, modLocation("block/simple_kiln_front"))
+                        .put(TextureSlot.TOP, modLocation("block/simple_kiln_top"))
+                        .put(TextureSlot.BOTTOM, modLocation("block/simple_kiln_bottom")))
+                .create(ModBlocks.SIMPLE_KILN_BLOCK.get(), blockModels.modelOutput);
+
+        // Lit model
+        ResourceLocation simpleKilnLitModel = TexturedModel.ORIENTABLE.updateTexture(mapping -> mapping
+                        .put(TextureSlot.SIDE, modLocation("block/simple_kiln_side"))
+                        .put(TextureSlot.FRONT, modLocation("block/simple_kiln_front_lit"))
+                        .put(TextureSlot.TOP, modLocation("block/simple_kiln_top"))
+                        .put(TextureSlot.BOTTOM, modLocation("block/simple_kiln_bottom")))
+                .createWithSuffix(ModBlocks.SIMPLE_KILN_BLOCK.get(), "_lit", blockModels.modelOutput);
+
+        blockModels.blockStateOutput.accept(
+                MultiVariantGenerator.multiVariant(ModBlocks.SIMPLE_KILN_BLOCK.get())
+                        .with(PropertyDispatch.properties(BlockStateProperties.HORIZONTAL_FACING, BlockStateProperties.LIT)
+                                .select(Direction.NORTH, false, kilnVariant(simpleKilnUnlitModel, 0))
+                                .select(Direction.NORTH, true, kilnVariant(simpleKilnLitModel, 0))
+                                .select(Direction.EAST, false, kilnVariant(simpleKilnUnlitModel, 90))
+                                .select(Direction.EAST, true, kilnVariant(simpleKilnLitModel, 90))
+                                .select(Direction.SOUTH, false, kilnVariant(simpleKilnUnlitModel, 180))
+                                .select(Direction.SOUTH, true, kilnVariant(simpleKilnLitModel, 180))
+                                .select(Direction.WEST, false, kilnVariant(simpleKilnUnlitModel, 270))
+                                .select(Direction.WEST, true, kilnVariant(simpleKilnLitModel, 270))
+                        )
+        );
+
 
         //Items
         itemModels.generateFlatItem(ModItems.ALUMINA.get(), ModelTemplates.FLAT_ITEM);
@@ -78,6 +108,11 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModTestItems.TEST_ITEM_3.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModTestItems.TEST_ITEM_4.get(), ModelTemplates.FLAT_ITEM);
 
+    }
 
+    private static Variant kilnVariant(ResourceLocation model, int yRot) {
+        return Variant.variant()
+                .with(VariantProperties.MODEL, model)
+                .with(VariantProperties.Y_ROT, VariantProperties.Rotation.values()[yRot / 90]);
     }
 }
