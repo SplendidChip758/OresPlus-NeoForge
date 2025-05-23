@@ -1,38 +1,48 @@
 package com.splendidchip.oresplus.block.entity;
 
+import com.splendidchip.oresplus.OresPlus;
 import com.splendidchip.oresplus.recipe.ModRecipes;
-import com.splendidchip.oresplus.recipe.crusher.CrusherRecipe;
-import com.splendidchip.oresplus.recipe.crusher.CrusherRecipeInput;
 import com.splendidchip.oresplus.recipe.simpleKiln.SimpleKilnRecipe;
 import com.splendidchip.oresplus.recipe.simpleKiln.SimpleKilnRecipeInput;
 import com.splendidchip.oresplus.screen.custom.SimpleKilnMenu;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Reference2IntMap;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.NonNullList;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Mth;
 import net.minecraft.world.*;
+import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class SimpleKilnBlockEntity extends BlockEntity implements MenuProvider, WorldlyContainer {
@@ -55,6 +65,8 @@ public class SimpleKilnBlockEntity extends BlockEntity implements MenuProvider, 
     private int burnTimeTotal = 200;
     private int cookTime = 0;
     private int cookTimeTotal = 200;
+
+    private final Reference2IntOpenHashMap<ResourceKey<Recipe<?>>> recipesUsed;
 
     public SimpleKilnBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.SIMPLE_KILN_BLOCK_ENTITY.get(), pos, state);
@@ -86,6 +98,8 @@ public class SimpleKilnBlockEntity extends BlockEntity implements MenuProvider, 
                 return 4;
             }
         };
+
+        this.recipesUsed = new Reference2IntOpenHashMap();
     }
 
     @Override
@@ -115,6 +129,9 @@ public class SimpleKilnBlockEntity extends BlockEntity implements MenuProvider, 
         tag.putInt("burnTimeTotal", burnTimeTotal);
         tag.putInt("cookTime", cookTime);
         tag.putInt("cookTimeTotal", cookTimeTotal);
+        CompoundTag recipeTag = new CompoundTag();
+        recipesUsed.forEach((key, count) -> recipeTag.putInt(key.location().toString(), count));
+        tag.put("RecipesUsed", recipeTag);
     }
 
     @Override
@@ -125,6 +142,14 @@ public class SimpleKilnBlockEntity extends BlockEntity implements MenuProvider, 
         burnTimeTotal = tag.getInt("burnTimeTotal");
         cookTime = tag.getInt("cookTime");
         cookTimeTotal = tag.getInt("cookTimeTotal");
+        CompoundTag recipeTag = tag.getCompound("RecipesUsed");
+        for (String key : recipeTag.getAllKeys()) {
+            ResourceLocation id = ResourceLocation.tryParse(key);
+            if (id != null) {
+                ResourceKey<Recipe<?>> recipeKey = ResourceKey.create(Registries.RECIPE, id);
+                recipesUsed.put(recipeKey, tag.getInt(key));
+            }
+        }
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, SimpleKilnBlockEntity kiln) {
@@ -174,6 +199,8 @@ public class SimpleKilnBlockEntity extends BlockEntity implements MenuProvider, 
         return fuel.getBurnTime(ModRecipes.SIMPLE_KILN_TYPE.get(), level.fuelValues());
     }
 
+
+
     public int getLitProgress() {
         return burnTimeTotal == 0 ? 0 : burnTime * 13 / burnTimeTotal;
     }
@@ -191,8 +218,61 @@ public class SimpleKilnBlockEntity extends BlockEntity implements MenuProvider, 
         ItemStack output = recipe.get().value().getResult();
 
         itemHandler.extractItem(INPUT_SLOT, 1, false);
-        itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem(),
-                itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + output.getCount()));
+        itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem(), itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + output.getCount()));
+
+        setRecipeUsed(recipe.get());
+        System.out.println(recipe.get());
+    }
+
+    public void setRecipeUsed(@Nullable RecipeHolder<?> recipeHolder) {
+        if (recipeHolder != null) {
+            ResourceKey<Recipe<?>> key = recipeHolder.id();
+            this.recipesUsed.addTo(key, 1);
+        }
+    }
+
+    public void awardUsedRecipesAndPopExperience(ServerPlayer player) {
+        List<RecipeHolder<?>> list = this.getRecipesToAwardAndPopExperience(player.serverLevel(), player.position());
+        player.awardRecipes(list);
+
+        for (RecipeHolder<?> recipeHolder : list) {
+            if (recipeHolder != null) {
+                // Optional: You could pass an actual input list for display stats
+                player.triggerRecipeCrafted(recipeHolder, List.of(this.itemHandler.getStackInSlot(OUTPUT_SLOT)));
+            }
+        }
+        this.recipesUsed.clear();
+    }
+
+    public List<RecipeHolder<?>> getRecipesToAwardAndPopExperience(ServerLevel level, Vec3 popVec) {
+        List<RecipeHolder<?>> result = new ArrayList<>();
+
+        for (Reference2IntMap.Entry<ResourceKey<Recipe<?>>> entry : recipesUsed.reference2IntEntrySet()) {
+            ResourceKey<Recipe<?>> key = entry.getKey();
+            int count = entry.getIntValue();
+
+            level.getServer().getRecipeManager().byKey(key).ifPresent(holder -> {
+                result.add(holder);
+
+                float xpPer = 0.0f;
+                if (holder.value() instanceof SimpleKilnRecipe kilnRecipe) {
+                    xpPer = kilnRecipe.getExperience();
+                }
+
+                createExperience(level, popVec, count, xpPer);
+            });
+        }
+
+        return result;
+    }
+
+    private static void createExperience(ServerLevel level, Vec3 pos, int count, float xpPer) {
+        int i = Mth.floor((float) count * xpPer);
+        float f = Mth.frac((float) count * xpPer);
+        if (f != 0.0F && Math.random() < (double) f) {
+            ++i;
+        }
+        ExperienceOrb.award(level, pos, i);
     }
 
     private boolean hasRecipe() {

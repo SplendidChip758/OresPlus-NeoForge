@@ -1,19 +1,25 @@
 package com.splendidchip.oresplus.datagen;
 
+import com.splendidchip.oresplus.OresPlus;
 import com.splendidchip.oresplus.block.ModBlocks;
 import com.splendidchip.oresplus.item.ModItems;
+import com.splendidchip.oresplus.recipe.builder.BrickMoldRecipeBuilder;
 import com.splendidchip.oresplus.recipe.builder.CrusherRecipeBuilder;
 import com.splendidchip.oresplus.recipe.builder.SimpleKilnRecipeBuilder;
+import net.minecraft.ResourceLocationException;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends RecipeProvider {
@@ -48,11 +54,6 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_clay_ball", this.has(Items.CLAY_BALL))
                 .save(this.output);
 
-        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.UNFIRED_REFRACTORY_BRICK.get())
-                .requires(ModItems.REFRACTORY_CEMENT, 2)
-                .unlockedBy("has_refractory_cement", this.has(ModItems.REFRACTORY_CEMENT))
-                .save(this.output);
-
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModBlocks.REFRACTORY_BRICKS.get())
                 .pattern("XX ")
                 .pattern("XX ")
@@ -60,6 +61,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_refractory_brick", has(ModItems.REFRACTORY_BRICK))
                 .save(this.output);
 
+        //Cooking/Smelting
         SimpleCookingRecipeBuilder.smelting(
                 Ingredient.of(ModItems.ALUMINA),
                 RecipeCategory.MISC,
@@ -87,6 +89,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_coal", this.has(ModItems.COKE))
                 .save(this.output, "coke_blasting");
 
+        //Custom Recipe
         new CrusherRecipeBuilder(
                 new ItemStack((ItemLike) ModItems.CRUSHED_BAUXITE, 2),
                 Ingredient.of(ModItems.RAW_BAUXITE)
@@ -126,11 +129,40 @@ public class ModRecipeProvider extends RecipeProvider {
                 new ItemStack((ItemLike) ModItems.REFRACTORY_BRICK),
                 Ingredient.of(ModItems.UNFIRED_REFRACTORY_BRICK)
         )
-                .cookTime(300)
+                .cookTime(200)
+                .experience(0.3f)
                 .unlockedBy("has_unfired_refractory_brick", has(ModItems.UNFIRED_REFRACTORY_BRICK))
                 .save(this.output);
 
+        new SimpleKilnRecipeBuilder(
+                new ItemStack(ModItems.COKE.get(), 2),
+                Ingredient.of(Items.COAL)
+        )
+                .cookTime(200)
+                .experience(0.2f)
+                .unlockedBy("has_coal", has(Items.COAL))
+                .save(this.output, ResourceKey.create(Registries.RECIPE, ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "coke_from_coal")));
 
+        new SimpleKilnRecipeBuilder(
+                new ItemStack(ModItems.COKE.get(), 1),
+                Ingredient.of(Items.CHARCOAL)
+        )
+                .cookTime(200)
+                .experience(0.2f)
+                .unlockedBy("has_charcoal", has(Items.CHARCOAL))
+                .save(this.output, ResourceKey.create(Registries.RECIPE, ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "coke_from_charcoal")));
+
+        new BrickMoldRecipeBuilder(
+                new ItemStack(ModItems.UNFIRED_REFRACTORY_BRICK.get()),
+                List.of(
+                        Ingredient.of(ModItems.REFRACTORY_CEMENT),
+                        Ingredient.of(ModItems.REFRACTORY_CEMENT),
+                        Ingredient.of(ModItems.BRICK_MOLD)
+                )
+        )
+                .unlockedBy("has_refractory_cement", has(ModItems.REFRACTORY_CEMENT))
+                .unlockedBy("has_brick_mold", has(ModItems.BRICK_MOLD))
+                .save(this.output);
     }
 
     // The runner to add to the data generator

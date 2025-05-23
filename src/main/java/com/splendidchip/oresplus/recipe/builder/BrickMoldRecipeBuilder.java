@@ -1,6 +1,6 @@
 package com.splendidchip.oresplus.recipe.builder;
 
-import com.splendidchip.oresplus.recipe.simpleKiln.SimpleKilnRecipe;
+import com.splendidchip.oresplus.recipe.brickMold.BrickMoldRecipe;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementRewards;
@@ -11,24 +11,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 
-public class SimpleKilnRecipeBuilder extends SimpleRecipeBuilder {
-    private final Ingredient input;
-    private int cookTime = 200;
-    private float experience = 0.0f;
+import java.util.List;
 
-    public SimpleKilnRecipeBuilder(ItemStack result, Ingredient input) {
+public class BrickMoldRecipeBuilder extends SimpleRecipeBuilder {
+    private final List<Ingredient> ingredients;
+
+    public BrickMoldRecipeBuilder(ItemStack result, List<Ingredient> ingredients) {
         super(result);
-        this.input = input;
-    }
-
-    public SimpleKilnRecipeBuilder cookTime(int cookTime) {
-        this.cookTime = cookTime;
-        return this;
-    }
-
-    public SimpleKilnRecipeBuilder experience(float experience) {
-        this.experience = experience;
-        return this;
+        this.ingredients = ingredients;
     }
 
     @Override
@@ -39,7 +29,7 @@ public class SimpleKilnRecipeBuilder extends SimpleRecipeBuilder {
                 .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(advancement::addCriterion);
 
-        SimpleKilnRecipe recipe = new SimpleKilnRecipe(this.input, this.result, this.cookTime, this.experience);
+        BrickMoldRecipe recipe = new BrickMoldRecipe(this.ingredients, this.result);
         output.accept(key, recipe, advancement.build(key.location().withPrefix("recipes/")));
     }
 }

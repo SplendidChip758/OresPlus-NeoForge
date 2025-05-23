@@ -35,6 +35,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.REFRACTORY_CEMENT.get());
                         output.accept(ModItems.REFRACTORY_BRICK.get());
                         output.accept(ModItems.UNFIRED_REFRACTORY_BRICK.get());
+                        output.accept(ModItems.BRICK_MOLD.get());
 
                         //Test Items
                         output.accept(ModTestItems.TEST_ITEM_1.get());

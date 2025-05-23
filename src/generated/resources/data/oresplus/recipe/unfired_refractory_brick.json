@@ -1,9 +1,9 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
+  "type": "oresplus:brick_mold",
   "ingredients": [
     "oresplus:refractory_cement",
-    "oresplus:refractory_cement"
+    "oresplus:refractory_cement",
+    "oresplus:brick_mold"
   ],
   "result": {
     "count": 1,

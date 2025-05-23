@@ -1,6 +1,8 @@
 package com.splendidchip.oresplus.recipe;
 
 import com.splendidchip.oresplus.OresPlus;
+import com.splendidchip.oresplus.recipe.brickMold.BrickMoldRecipe;
+import com.splendidchip.oresplus.recipe.brickMold.BrickMoldRecipeSerializer;
 import com.splendidchip.oresplus.recipe.crusher.CrusherRecipe;
 import com.splendidchip.oresplus.recipe.crusher.CrusherRecipeDisplay;
 import com.splendidchip.oresplus.recipe.crusher.CrusherRecipeSerializer;
@@ -59,6 +61,10 @@ public class ModRecipes {
             "simple_kiln_block",
             () -> new RecipeDisplay.Type<>(SimpleKilnRecipeDisplay.MAP_CODEC, SimpleKilnRecipeDisplay.STREAM_CODEC)
     );
+
+    //Brick Mold
+    public static final Supplier<RecipeSerializer<BrickMoldRecipe>> BRICK_MOLD_SERIALIZER =
+            RECIPE_SERIALIZERS.register("brick_mold", BrickMoldRecipeSerializer::new);
 
     public static void register(IEventBus eventBus) {
         RECIPE_SERIALIZERS.register(eventBus);

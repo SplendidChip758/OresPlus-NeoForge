@@ -15,7 +15,8 @@ public class SimpleKilnRecipeSerializer implements RecipeSerializer<SimpleKilnRe
     public static final MapCodec<SimpleKilnRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
             Ingredient.CODEC.fieldOf("ingredient").forGetter(SimpleKilnRecipe::getInputItem),
             ItemStack.CODEC.fieldOf("result").forGetter(SimpleKilnRecipe::getResult),
-            Codec.INT.optionalFieldOf("cook_time", 200).forGetter(SimpleKilnRecipe::getCookTime)
+            Codec.INT.optionalFieldOf("cook_time", 200).forGetter(SimpleKilnRecipe::getCookTime),
+            Codec.FLOAT.optionalFieldOf("experience", 0.0f).forGetter(SimpleKilnRecipe::getExperience)
     ).apply(inst, SimpleKilnRecipe::new));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, SimpleKilnRecipe> STREAM_CODEC =
@@ -23,6 +24,7 @@ public class SimpleKilnRecipeSerializer implements RecipeSerializer<SimpleKilnRe
                     Ingredient.CONTENTS_STREAM_CODEC, SimpleKilnRecipe::getInputItem,
                     ItemStack.STREAM_CODEC, SimpleKilnRecipe::getResult,
                     ByteBufCodecs.VAR_INT, SimpleKilnRecipe::getCookTime,
+                    ByteBufCodecs.FLOAT, SimpleKilnRecipe::getExperience,
                     SimpleKilnRecipe::new
             );
 

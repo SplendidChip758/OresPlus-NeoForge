@@ -4,6 +4,7 @@ import com.splendidchip.oresplus.block.ModBlocks;
 import com.splendidchip.oresplus.block.entity.SimpleKilnBlockEntity;
 import com.splendidchip.oresplus.screen.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
@@ -32,7 +33,16 @@ public class SimpleKilnMenu extends AbstractContainerMenu {
 
         this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 0, 56, 17)); // Input
         this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 1, 56, 53)); // Fuel
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 2, 116, 35)); // Output
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 2, 116, 35){
+            @Override
+            public void onTake(Player player, ItemStack stack){
+                super.onTake(player, stack);
+                if (player instanceof ServerPlayer serverPlayer){
+                    blockEntity.awardUsedRecipesAndPopExperience(serverPlayer);
+                }
+
+            }
+        }); // Output
 
         addDataSlots(data);
     }

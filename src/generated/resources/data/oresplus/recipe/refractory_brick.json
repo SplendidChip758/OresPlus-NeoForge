@@ -1,6 +1,6 @@
 {
   "type": "oresplus:simple_kiln_block",
-  "cook_time": 300,
+  "experience": 0.3,
   "ingredient": "oresplus:unfired_refractory_brick",
   "result": {
     "count": 1,

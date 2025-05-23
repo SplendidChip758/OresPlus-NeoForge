@@ -101,6 +101,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.REFRACTORY_CEMENT.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.REFRACTORY_BRICK.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.UNFIRED_REFRACTORY_BRICK.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.BRICK_MOLD.get(), ModelTemplates.FLAT_ITEM);
 
         //Test Items
         itemModels.generateFlatItem(ModTestItems.TEST_ITEM_1.get(), ModelTemplates.FLAT_ITEM);

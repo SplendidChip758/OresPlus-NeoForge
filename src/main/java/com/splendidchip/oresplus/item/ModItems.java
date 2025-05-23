@@ -1,8 +1,6 @@
 package com.splendidchip.oresplus.item;
 
 import com.splendidchip.oresplus.OresPlus;
-import com.splendidchip.oresplus.block.ModBlocks;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -70,6 +68,11 @@ public class ModItems {
     public static final DeferredItem<Item> REFRACTORY_BRICK = ITEMS.registerItem("refractory_brick",
             Item::new,
             new Item.Properties());
+
+    public static final DeferredItem<Item> BRICK_MOLD = ITEMS.registerItem("brick_mold",
+            Item::new,
+            new Item.Properties().durability(32).stacksTo(1));
+
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

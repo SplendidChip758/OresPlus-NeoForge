@@ -70,7 +70,6 @@ public class SimpleKilnBlock extends BaseEntityBlock  {
         builder.add(FACING, LIT);
     }
 
-
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
@@ -78,14 +77,14 @@ public class SimpleKilnBlock extends BaseEntityBlock  {
     }
 
     @Override
-    public void onRemove(BlockState oldState, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (!oldState.is(newState.getBlock())) {
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof SimpleKilnBlockEntity) {
-                ((SimpleKilnBlockEntity) blockEntity).clearContent();
+            if (blockEntity instanceof SimpleKilnBlockEntity simpleKilnBlockEntity) {
+                simpleKilnBlockEntity.drops();
             }
         }
-        super.onRemove(oldState, level, pos, newState, isMoving);
+        super.onRemove(state, level, pos, newState, isMoving);
     }
 
     @Override

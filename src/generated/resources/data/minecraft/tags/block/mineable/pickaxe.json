@@ -7,6 +7,8 @@
     "oresplus:magnetite_ore",
     "oresplus:test_block_1",
     "oresplus:test_block_2",
-    "oresplus:limestone_block"
+    "oresplus:limestone_block",
+    "oresplus:crusher_block",
+    "oresplus:simple_kiln_block"
   ]
 }

@@ -1,0 +1,9 @@
+{
+  "type": "oresplus:simple_kiln_block",
+  "experience": 0.2,
+  "ingredient": "minecraft:coal",
+  "result": {
+    "count": 2,
+    "id": "oresplus:coke"
+  }
+}

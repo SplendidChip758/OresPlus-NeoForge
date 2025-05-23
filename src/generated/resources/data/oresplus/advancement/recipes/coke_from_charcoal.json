@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_refractory_cement": {
+    "has_charcoal": {
       "conditions": {
         "items": [
           {
-            "items": "oresplus:refractory_cement"
+            "items": "minecraft:charcoal"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "oresplus:unfired_refractory_brick"
+        "recipe": "oresplus:coke_from_charcoal"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_refractory_cement"
+      "has_charcoal"
     ]
   ],
   "rewards": {
     "recipes": [
-      "oresplus:unfired_refractory_brick"
+      "oresplus:coke_from_charcoal"
     ]
   }
 }

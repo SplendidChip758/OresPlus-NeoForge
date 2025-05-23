@@ -18,13 +18,16 @@ public class SimpleKilnRecipe implements Recipe<SimpleKilnRecipeInput> {
     private final Ingredient inputItem;
     private final ItemStack result;
     private final int cookTime;
+    private final float experience;
 
     private PlacementInfo info;
 
-    public SimpleKilnRecipe(Ingredient inputItem, ItemStack result, int cookTime) {
+    public SimpleKilnRecipe(Ingredient inputItem, ItemStack result, int cookTime, float experience) {
         this.inputItem = inputItem;
         this.result = result;
         this.cookTime = cookTime;
+        this.experience = experience;
+
     }
 
     @Override
@@ -73,6 +76,10 @@ public class SimpleKilnRecipe implements Recipe<SimpleKilnRecipeInput> {
 
     public int getCookTime() {
         return cookTime;
+    }
+
+    public float getExperience() {
+        return experience;
     }
 
     @Override
