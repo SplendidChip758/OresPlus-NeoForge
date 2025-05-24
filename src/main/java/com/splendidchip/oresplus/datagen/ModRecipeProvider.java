@@ -125,6 +125,20 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_limestone_block", has(ModItems.LIMESTONE_DUST))
                 .save(this.output);
 
+        new CrusherRecipeBuilder(
+                new ItemStack((ItemLike) ModItems.CARBON_DUST, 2),
+                Ingredient.of(Items.COAL)
+        )
+                .unlockedBy("has_coal", has(Items.COAL))
+                .save(this.output, ResourceKey.create(Registries.RECIPE, ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "carbon_dust_from_coal")));
+
+        new CrusherRecipeBuilder(
+                new ItemStack((ItemLike) ModItems.CARBON_DUST, 2),
+                Ingredient.of(Items.CHARCOAL)
+        )
+                .unlockedBy("has_charcoal", has(Items.CHARCOAL))
+                .save(this.output, ResourceKey.create(Registries.RECIPE, ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "carbon_dust_from_charcoal")));
+
         new SimpleKilnRecipeBuilder(
                 new ItemStack((ItemLike) ModItems.REFRACTORY_BRICK),
                 Ingredient.of(ModItems.UNFIRED_REFRACTORY_BRICK)
@@ -151,6 +165,15 @@ public class ModRecipeProvider extends RecipeProvider {
                 .experience(0.2f)
                 .unlockedBy("has_charcoal", has(Items.CHARCOAL))
                 .save(this.output, ResourceKey.create(Registries.RECIPE, ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "coke_from_charcoal")));
+
+        new SimpleKilnRecipeBuilder(
+                new ItemStack((ItemLike) ModItems.QUICK_LIME),
+                Ingredient.of(ModItems.LIMESTONE_DUST)
+        )
+                .cookTime(300)
+                .experience(0.2f)
+                .unlockedBy("has_limestone_dust", has(ModItems.LIMESTONE_DUST))
+                .save(this.output);
 
         new BrickMoldRecipeBuilder(
                 new ItemStack(ModItems.UNFIRED_REFRACTORY_BRICK.get()),

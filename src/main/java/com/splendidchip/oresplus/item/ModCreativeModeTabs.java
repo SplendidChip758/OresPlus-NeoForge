@@ -31,7 +31,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CRUSHED_HEMATITE.get());
                         output.accept(ModItems.CRUSHED_MAGNETITE.get());
                         output.accept(ModItems.LIMESTONE_DUST.get());
+                        output.accept(ModItems.QUICK_LIME.get());
                         output.accept(ModItems.COKE.get());
+                        output.accept(ModItems.CARBON_DUST.get());
                         output.accept(ModItems.REFRACTORY_CEMENT.get());
                         output.accept(ModItems.REFRACTORY_BRICK.get());
                         output.accept(ModItems.UNFIRED_REFRACTORY_BRICK.get());

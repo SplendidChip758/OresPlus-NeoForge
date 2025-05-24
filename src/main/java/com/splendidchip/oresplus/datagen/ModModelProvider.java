@@ -97,7 +97,9 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.CRUSHED_HEMATITE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.CRUSHED_MAGNETITE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.LIMESTONE_DUST.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.QUICK_LIME.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.COKE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.CARBON_DUST.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.REFRACTORY_CEMENT.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.REFRACTORY_BRICK.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.UNFIRED_REFRACTORY_BRICK.get(), ModelTemplates.FLAT_ITEM);

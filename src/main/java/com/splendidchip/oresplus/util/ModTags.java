@@ -21,6 +21,8 @@ public class ModTags {
 
     public static class Items {
 
+        public static final TagKey<Item> DUSTS = createTag("dusts");
+
         private static TagKey<Item> createTag(String name) {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, name));
         }

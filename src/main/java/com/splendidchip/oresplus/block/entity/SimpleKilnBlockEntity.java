@@ -1,11 +1,9 @@
 package com.splendidchip.oresplus.block.entity;
 
-import com.splendidchip.oresplus.OresPlus;
 import com.splendidchip.oresplus.recipe.ModRecipes;
 import com.splendidchip.oresplus.recipe.simpleKiln.SimpleKilnRecipe;
 import com.splendidchip.oresplus.recipe.simpleKiln.SimpleKilnRecipeInput;
 import com.splendidchip.oresplus.screen.custom.SimpleKilnMenu;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import it.unimi.dsi.fastutil.objects.Reference2IntMap;
 import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
 import net.minecraft.core.BlockPos;
@@ -199,8 +197,6 @@ public class SimpleKilnBlockEntity extends BlockEntity implements MenuProvider, 
         return fuel.getBurnTime(ModRecipes.SIMPLE_KILN_TYPE.get(), level.fuelValues());
     }
 
-
-
     public int getLitProgress() {
         return burnTimeTotal == 0 ? 0 : burnTime * 13 / burnTimeTotal;
     }
@@ -316,13 +312,22 @@ public class SimpleKilnBlockEntity extends BlockEntity implements MenuProvider, 
     }
 
     @Override
+    public boolean canPlaceItem(int index, ItemStack itemStack) {
+        if (index == OUTPUT_SLOT) return false;
+        if (index == FUEL_SLOT) {
+            return itemStack.getBurnTime(ModRecipes.SIMPLE_KILN_TYPE.get(), level.fuelValues()) > 0;
+        }
+        return true;
+    }
+
+    @Override
     public int[] getSlotsForFace(Direction side) {
         if (side == Direction.DOWN) {
             return new int[]{OUTPUT_SLOT};
         } else if (side == Direction.UP) {
             return new int[]{INPUT_SLOT};
         } else {
-            return new int[]{INPUT_SLOT};
+            return new int[]{FUEL_SLOT};
         }
     }
 

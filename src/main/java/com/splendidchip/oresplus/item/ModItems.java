@@ -73,6 +73,14 @@ public class ModItems {
             Item::new,
             new Item.Properties().durability(32).stacksTo(1));
 
+    public static final DeferredItem<Item> CARBON_DUST = ITEMS.registerItem("carbon_dust",
+            Item::new,
+            new Item.Properties());
+
+    public static final DeferredItem<Item> QUICK_LIME = ITEMS.registerItem("quick_lime",
+            Item::new,
+            new Item.Properties());
+
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

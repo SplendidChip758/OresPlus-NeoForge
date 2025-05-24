@@ -2,6 +2,7 @@ package com.splendidchip.oresplus.screen.custom;
 
 import com.splendidchip.oresplus.block.ModBlocks;
 import com.splendidchip.oresplus.block.entity.SimpleKilnBlockEntity;
+import com.splendidchip.oresplus.recipe.ModRecipes;
 import com.splendidchip.oresplus.screen.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
@@ -32,7 +33,12 @@ public class SimpleKilnMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 0, 56, 17)); // Input
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 1, 56, 53)); // Fuel
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 1, 56, 53){
+            @Override
+            public boolean mayPlace(ItemStack stack) {
+                return stack.getBurnTime(ModRecipes.SIMPLE_KILN_TYPE.get(), level.fuelValues()) > 0;
+            }
+        }); // Fuel
         this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 2, 116, 35){
             @Override
             public void onTake(Player player, ItemStack stack){
@@ -41,6 +47,10 @@ public class SimpleKilnMenu extends AbstractContainerMenu {
                     blockEntity.awardUsedRecipesAndPopExperience(serverPlayer);
                 }
 
+            }
+            @Override
+            public boolean mayPlace(ItemStack stack) {
+                return false; // 🔒 Prevent inserting anything into the output slot
             }
         }); // Output
 
@@ -52,7 +62,6 @@ public class SimpleKilnMenu extends AbstractContainerMenu {
         int burnTimeTotal = data.get(3);
         return burnTimeTotal == 0 ? 0 : burnTime * 13 / burnTimeTotal;
     }
-
 
     public int getScaledProgress() {
         int cookTime = data.get(1);
