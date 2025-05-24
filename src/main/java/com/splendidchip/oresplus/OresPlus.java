@@ -12,6 +12,7 @@ import com.splendidchip.oresplus.recipe.ModRecipes;
 import com.splendidchip.oresplus.screen.ModMenuTypes;
 import com.splendidchip.oresplus.screen.custom.CrusherScreen;
 import com.splendidchip.oresplus.screen.custom.SimpleKilnScreen;
+import com.splendidchip.oresplus.villager.ModVillagers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -55,6 +56,8 @@ public class OresPlus {
         ModBlockItems.register(modEventBus);
 
         ModBlockEntities.register(modEventBus);
+
+        ModVillagers.register(modEventBus);
 
         ModMenuTypes.register(modEventBus);
 

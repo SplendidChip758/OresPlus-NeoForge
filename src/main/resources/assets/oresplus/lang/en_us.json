@@ -46,5 +46,7 @@
   "advancement.oresplus.crusher.title": "Crafted Crusher",
   "advancement.oresplus.crusher.description": "Crafted a Crusher",
 
-  "tooltip.oresplus.burn_time": "Fuel: %s / %s ticks"
+  "tooltip.oresplus.burn_time": "Fuel: %s / %s ticks",
+
+  "entity.minecraft.villager.oresplus.smelter": "Smelter"
 }
