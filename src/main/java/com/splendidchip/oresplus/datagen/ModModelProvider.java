@@ -54,6 +54,7 @@ public class ModModelProvider extends ModelProvider {
                 )
         );
 
+        // Simple Kiln
         // Unlit model
         ResourceLocation simpleKilnUnlitModel = TexturedModel.ORIENTABLE.updateTexture(mapping -> mapping
                         .put(TextureSlot.SIDE, modLocation("block/simple_kiln_side"))
@@ -73,14 +74,45 @@ public class ModModelProvider extends ModelProvider {
         blockModels.blockStateOutput.accept(
                 MultiVariantGenerator.multiVariant(ModBlocks.SIMPLE_KILN_BLOCK.get())
                         .with(PropertyDispatch.properties(BlockStateProperties.HORIZONTAL_FACING, BlockStateProperties.LIT)
-                                .select(Direction.NORTH, false, kilnVariant(simpleKilnUnlitModel, 0))
-                                .select(Direction.NORTH, true, kilnVariant(simpleKilnLitModel, 0))
-                                .select(Direction.EAST, false, kilnVariant(simpleKilnUnlitModel, 90))
-                                .select(Direction.EAST, true, kilnVariant(simpleKilnLitModel, 90))
-                                .select(Direction.SOUTH, false, kilnVariant(simpleKilnUnlitModel, 180))
-                                .select(Direction.SOUTH, true, kilnVariant(simpleKilnLitModel, 180))
-                                .select(Direction.WEST, false, kilnVariant(simpleKilnUnlitModel, 270))
-                                .select(Direction.WEST, true, kilnVariant(simpleKilnLitModel, 270))
+                                .select(Direction.NORTH, false, variant(simpleKilnUnlitModel, 0))
+                                .select(Direction.NORTH, true, variant(simpleKilnLitModel, 0))
+                                .select(Direction.EAST, false, variant(simpleKilnUnlitModel, 90))
+                                .select(Direction.EAST, true, variant(simpleKilnLitModel, 90))
+                                .select(Direction.SOUTH, false, variant(simpleKilnUnlitModel, 180))
+                                .select(Direction.SOUTH, true, variant(simpleKilnLitModel, 180))
+                                .select(Direction.WEST, false, variant(simpleKilnUnlitModel, 270))
+                                .select(Direction.WEST, true, variant(simpleKilnLitModel, 270))
+                        )
+        );
+
+        // Smelter Controller
+        // Unlit model
+        ResourceLocation smelterControllerUnlitModel = TexturedModel.ORIENTABLE.updateTexture(mapping -> mapping
+                        .put(TextureSlot.SIDE, modLocation("block/refractory_bricks"))
+                        .put(TextureSlot.FRONT, modLocation("block/smelter_front"))
+                        .put(TextureSlot.TOP, modLocation("block/refractory_bricks"))
+                        .put(TextureSlot.BOTTOM, modLocation("block/refractory_bricks")))
+                .create(ModBlocks.SMELTER_CONTROLLER_BLOCK.get(), blockModels.modelOutput);
+
+        // lit model
+        ResourceLocation smelterControllerlitModel = TexturedModel.ORIENTABLE.updateTexture(mapping -> mapping
+                        .put(TextureSlot.SIDE, modLocation("block/refractory_bricks"))
+                        .put(TextureSlot.FRONT, modLocation("block/smelter_front_lit"))
+                        .put(TextureSlot.TOP, modLocation("block/refractory_bricks"))
+                        .put(TextureSlot.BOTTOM, modLocation("block/refractory_bricks")))
+                .createWithSuffix(ModBlocks.SMELTER_CONTROLLER_BLOCK.get(), "_lit", blockModels.modelOutput);
+
+        blockModels.blockStateOutput.accept(
+                MultiVariantGenerator.multiVariant(ModBlocks.SMELTER_CONTROLLER_BLOCK.get())
+                        .with(PropertyDispatch.properties(BlockStateProperties.HORIZONTAL_FACING, BlockStateProperties.LIT)
+                                .select(Direction.NORTH, false, variant(smelterControllerUnlitModel, 0))
+                                .select(Direction.NORTH, true, variant(smelterControllerlitModel, 0))
+                                .select(Direction.EAST, false, variant(smelterControllerUnlitModel, 90))
+                                .select(Direction.EAST, true, variant(smelterControllerlitModel, 90))
+                                .select(Direction.SOUTH, false, variant(smelterControllerUnlitModel, 180))
+                                .select(Direction.SOUTH, true, variant(smelterControllerlitModel, 180))
+                                .select(Direction.WEST, false, variant(smelterControllerUnlitModel, 270))
+                                .select(Direction.WEST, true, variant(smelterControllerlitModel, 270))
                         )
         );
 
@@ -113,7 +145,7 @@ public class ModModelProvider extends ModelProvider {
 
     }
 
-    private static Variant kilnVariant(ResourceLocation model, int yRot) {
+    private static Variant variant(ResourceLocation model, int yRot) {
         return Variant.variant()
                 .with(VariantProperties.MODEL, model)
                 .with(VariantProperties.Y_ROT, VariantProperties.Rotation.values()[yRot / 90]);

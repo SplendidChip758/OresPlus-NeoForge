@@ -12,6 +12,7 @@ import com.splendidchip.oresplus.recipe.ModRecipes;
 import com.splendidchip.oresplus.screen.ModMenuTypes;
 import com.splendidchip.oresplus.screen.custom.CrusherScreen;
 import com.splendidchip.oresplus.screen.custom.SimpleKilnScreen;
+import com.splendidchip.oresplus.screen.custom.SmelterScreen;
 import com.splendidchip.oresplus.villager.ModVillagers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -110,6 +111,7 @@ public class OresPlus {
         public static void registerScreens(RegisterMenuScreensEvent event) {
             event.register(ModMenuTypes.CRUSHER_MENU.get(), CrusherScreen::new);
             event.register(ModMenuTypes.SIMPLE_KILN_MENU.get(), SimpleKilnScreen::new);
+            event.register(ModMenuTypes.SMELTER_MENU.get(), SmelterScreen::new);
         }
     }
 }

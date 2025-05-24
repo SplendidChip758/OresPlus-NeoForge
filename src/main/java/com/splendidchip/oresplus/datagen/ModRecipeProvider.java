@@ -39,11 +39,22 @@ public class ModRecipeProvider extends RecipeProvider {
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModBlocks.CRUSHER_BLOCK.get())
                 .pattern("X X")
-                .pattern("XYX")
+                .pattern("Y Y")
                 .pattern("XXX")
                 .define('X', Blocks.COBBLESTONE)
-                .define('Y', Items.IRON_INGOT)
-                .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT)).save(this.output);
+                .define('Y', Blocks.GRINDSTONE)
+                .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModBlocks.SIMPLE_KILN_BLOCK.get())
+                .pattern("XXX")
+                .pattern("XYX")
+                .pattern("ZZZ")
+                .define('X', ModBlocks.LIMESTONE_BLOCK)
+                .define('Y', Blocks.FURNACE)
+                .define('Z', Blocks.COBBLESTONE)
+                .unlockedBy("has_limestone_block", has(ModBlocks.LIMESTONE_BLOCK))
+                .save(this.output);
 
         ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.REFRACTORY_CEMENT.get())
                 .requires(ModItems.CRUSHED_BAUXITE)
