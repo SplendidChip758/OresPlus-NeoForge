@@ -165,3 +165,17 @@ idea {
         downloadJavadoc = true
     }
 }
+
+def runNumber = System.getenv("GITHUB_RUN_NUMBER") ?: "local"
+def branch = System.getenv("GITHUB_REF_NAME") ?: "master"
+
+def versionSuffix = branch == "dev" ? "-alpha.${runNumber}" : ""
+
+jar {
+    archiveBaseName.set(project.name)
+    archiveVersion.set("${project.version}${versionSuffix}")
+    archiveClassifier.set("neoforge-${project.findProperty("neo_version") ?: "unknown"}")
+
+    println "Jar will be: ${archiveBaseName.get()}-${archiveVersion.get()}-${archiveClassifier.get()}.jar"
+}
+

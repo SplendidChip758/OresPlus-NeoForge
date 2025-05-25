@@ -1,0 +1,10 @@
+{
+  "type": "oresplus:simple_kiln_block",
+  "cook_time": 300,
+  "experience": 0.2,
+  "ingredient": "oresplus:limestone_dust",
+  "result": {
+    "count": 1,
+    "id": "oresplus:quick_lime"
+  }
+}

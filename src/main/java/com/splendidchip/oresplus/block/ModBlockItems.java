@@ -37,9 +37,29 @@ public class ModBlockItems {
             new Item.Properties()
     );
 
+    public static final DeferredItem<BlockItem> LIMESTONE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
+            ModBlocks.LIMESTONE_BLOCK,
+            new Item.Properties()
+    );
+
+    public static final DeferredItem<BlockItem> REFRACTORY_BRICKS_ITEM = ITEMS.registerSimpleBlockItem(
+            ModBlocks.REFRACTORY_BRICKS,
+            new Item.Properties()
+    );
+
     //Block Entities Items
     public static final DeferredItem<BlockItem> CRUSHER_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
             ModBlocks.CRUSHER_BLOCK,
+            new Item.Properties()
+    );
+
+    public static final DeferredItem<BlockItem> SIMPLE_KILN_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
+            ModBlocks.SIMPLE_KILN_BLOCK,
+            new Item.Properties()
+    );
+
+    public static final DeferredItem<BlockItem> SMELTER_CONTROLLER_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
+            ModBlocks.SMELTER_CONTROLLER_BLOCK,
             new Item.Properties()
     );
 

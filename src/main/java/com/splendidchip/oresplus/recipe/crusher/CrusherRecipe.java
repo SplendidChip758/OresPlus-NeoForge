@@ -69,6 +69,14 @@ public class CrusherRecipe implements Recipe<CrusherRecipeInput> {
         );
     }
 
+    public Ingredient getInputItem() {
+        return inputItem;
+    }
+
+    public ItemStack getResult() {
+        return result;
+    }
+
     @Override
     public RecipeType<? extends Recipe<CrusherRecipeInput>> getType() {
         return ModRecipes.CRUSHER_TYPE.get();
@@ -78,13 +86,4 @@ public class CrusherRecipe implements Recipe<CrusherRecipeInput> {
     public RecipeSerializer<? extends Recipe<CrusherRecipeInput>> getSerializer() {
         return ModRecipes.CRUSHER_SERIALIZER.get();
     }
-
-    public Ingredient getInputItem() {
-        return inputItem;
-    }
-
-    public ItemStack getResult() {
-        return result;
-    }
-
 }

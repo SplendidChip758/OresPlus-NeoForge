@@ -30,11 +30,23 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.RAW_MAGNETITE.get());
                         output.accept(ModItems.CRUSHED_HEMATITE.get());
                         output.accept(ModItems.CRUSHED_MAGNETITE.get());
+                        output.accept(ModItems.LIMESTONE_DUST.get());
+                        output.accept(ModItems.QUICK_LIME.get());
+                        output.accept(ModItems.COKE.get());
+                        output.accept(ModItems.CARBON_DUST.get());
+                        output.accept(ModItems.REFRACTORY_CEMENT.get());
+                        output.accept(ModItems.REFRACTORY_BRICK.get());
+                        output.accept(ModItems.UNFIRED_REFRACTORY_BRICK.get());
+                        output.accept(ModItems.BRICK_MOLD.get());
+                        output.accept(ModItems.PIG_IRON_INGOT.get());
+                        output.accept(ModItems.STEEL_INGOT.get());
+
+
                         //Test Items
-                        output.accept(ModItems.TEST_ITEM_1.get());
-                        output.accept(ModItems.TEST_ITEM_2.get());
-                        output.accept(ModItems.TEST_ITEM_3.get());
-                        output.accept(ModItems.TEST_ITEM_4.get());
+                        output.accept(ModTestItems.TEST_ITEM_1.get());
+                        output.accept(ModTestItems.TEST_ITEM_2.get());
+                        output.accept(ModTestItems.TEST_ITEM_3.get());
+                        output.accept(ModTestItems.TEST_ITEM_4.get());
                     }).build());
 
     public static final Supplier<CreativeModeTab> ORESPLUS_BLOCKS_TAB = CREATIVE_MODE_TABS.register("oresplus_blocks_tab",
@@ -48,10 +60,15 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.HEMATITE_ORE.get());
                         output.accept(ModBlocks.MAGNETITE_ORE.get());
                         output.accept(ModBlocks.CRUSHER_BLOCK.get());
+                        output.accept(ModBlocks.LIMESTONE_BLOCK.get());
+                        output.accept(ModBlocks.REFRACTORY_BRICKS.get());
+                        output.accept(ModBlocks.SIMPLE_KILN_BLOCK.get());
+                        output.accept(ModBlocks.SMELTER_CONTROLLER_BLOCK.get());
                         //Test Blocks
                         output.accept(ModBlocks.TEST_BLOCK_1.get());
                         output.accept(ModBlocks.TEST_BLOCK_2.get());
                         output.accept(ModBlocks.TEST_BLOCK_3.get());
+                        output.accept(ModBlocks.TEST_BLOCK_4.get());
                     }).build());
 
     public static void register(IEventBus eventBus){

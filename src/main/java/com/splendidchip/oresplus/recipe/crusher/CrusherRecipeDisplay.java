@@ -15,8 +15,7 @@ public record CrusherRecipeDisplay(SlotDisplay inputItem, SlotDisplay result, Sl
                             SlotDisplay.CODEC.fieldOf("inputState").forGetter(CrusherRecipeDisplay::inputItem),
                             SlotDisplay.CODEC.fieldOf("result").forGetter(CrusherRecipeDisplay::result),
                             SlotDisplay.CODEC.fieldOf("crafting_station").forGetter(CrusherRecipeDisplay::craftingStation)
-                    )
-                    .apply(instance, CrusherRecipeDisplay::new)
+                    ).apply(instance, CrusherRecipeDisplay::new)
     );
     public static final StreamCodec<RegistryFriendlyByteBuf, CrusherRecipeDisplay> STREAM_CODEC = StreamCodec.composite(
             SlotDisplay.STREAM_CODEC,

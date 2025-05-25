@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "oresplus:crushed_bauxite",
+    "oresplus:limestone_dust",
+    "minecraft:clay_ball"
+  ],
+  "result": {
+    "count": 1,
+    "id": "oresplus:refractory_cement"
+  }
+}

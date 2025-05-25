@@ -31,8 +31,13 @@ public class CrusherMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 0, 80, 8));
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 1, 80, 58));
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 0, 80, 8)); //Input
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 1, 80, 58) {
+            @Override
+            public boolean mayPlace(ItemStack stack) {
+                return false; // 🔒 Prevent inserting anything into the output slot
+            }
+        }); //Output
 
         addDataSlots(data);
     }

@@ -2,6 +2,8 @@ package com.splendidchip.oresplus.screen;
 
 import com.splendidchip.oresplus.OresPlus;
 import com.splendidchip.oresplus.screen.custom.CrusherMenu;
+import com.splendidchip.oresplus.screen.custom.SimpleKilnMenu;
+import com.splendidchip.oresplus.screen.custom.SmelterMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -17,6 +19,12 @@ public class ModMenuTypes {
 
     public static final DeferredHolder<MenuType<?>, MenuType<CrusherMenu>> CRUSHER_MENU =
             registerMenuType("crusher_menu", CrusherMenu::new);
+
+    public static final DeferredHolder<MenuType<?>, MenuType<SimpleKilnMenu>> SIMPLE_KILN_MENU =
+            registerMenuType("simple_kiln_menu", SimpleKilnMenu::new);
+
+    public static final DeferredHolder<MenuType<?>, MenuType<SmelterMenu>> SMELTER_MENU =
+            registerMenuType("smelter_menu", SmelterMenu::new);
 
     private static <T extends AbstractContainerMenu>DeferredHolder<MenuType<?>, MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {
         return MENUS.register(name, () -> IMenuTypeExtension.create(factory));

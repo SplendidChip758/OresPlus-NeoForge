@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "tick": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "description": {
+      "translate": "advancement.oresplus.root.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "oresplus:aluminum_ingot"
+    },
+    "title": {
+      "translate": "advancement.oresplus.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "tick"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
