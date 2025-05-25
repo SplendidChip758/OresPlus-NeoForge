@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "oresplus:block/refractory_bricks",
+    "front": "oresplus:block/smelter_front_lit",
+    "side": "oresplus:block/refractory_bricks",
+    "top": "oresplus:block/refractory_bricks"
+  }
+}

@@ -8,6 +8,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.Tags;
 
 import java.util.concurrent.CompletableFuture;
@@ -23,6 +24,10 @@ public class ModItemTagProvider extends ItemTagsProvider {
         tag(ModTags.Items.DUSTS)
                 .add(ModItems.LIMESTONE_DUST.get())
                 .add(ModItems.CARBON_DUST.get())
+                .add(ModItems.QUICK_LIME.get());
+
+        tag(ModTags.Items.FLUXES)
+                .add(ModItems.LIMESTONE_DUST.get())
                 .add(ModItems.QUICK_LIME.get());
     }
 }

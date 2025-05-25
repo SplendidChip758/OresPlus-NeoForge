@@ -16,6 +16,9 @@
   "item.oresplus.refractory_cement": "Refractory Cement",
   "item.oresplus.unfired_refractory_brick": "Unfired Refractory Brick",
   "item.oresplus.refractory_brick": "Refractory Brick",
+  "item.oresplus.brick_mold": "Brick Mold",
+  "item.oresplus.pig_iron_ingot": "Pig Iron Ingot",
+  "item.oresplus.steel)ingo": "Steel Ingot",
 
   "block.oresplus.bauxite_ore": "Bauxite Ore",
   "block.oresplus.salt_ore": "Salt Ore",
@@ -26,6 +29,9 @@
   "block.oresplus.limestone_block": "Limestone Block",
   "block.oresplus.refractory_bricks": "Refractory Bricks",
   "block.oresplus.simple_kiln_block": "Simple Kiln",
+  "block.oresplus.smelter_controller_block": "Smelter",
+
+  "block.oresplus.smelter_invalid_structure": "Structure is incomplete or invalid!",
 
   "creativetab.oresplus.oresplus_items": "OresPlus Items",
   "creativetab.oresplus.oresplus_blocks": "OresPlus Block",

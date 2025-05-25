@@ -23,6 +23,11 @@ public class ModRecipeBookCategory {
             RecipeBookCategory::new
     );
 
+    public static final Supplier<RecipeBookCategory> SMELTER_CATEGORY = RECIPE_BOOK_CATEGORIES.register(
+            "smelter_controller_block",
+            RecipeBookCategory::new
+    );
+
     public static void register(IEventBus eventBus) {
 
         RECIPE_BOOK_CATEGORIES.register(eventBus);

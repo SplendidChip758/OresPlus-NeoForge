@@ -36,7 +36,7 @@ public class ModConfiguredFeatures {
 
 
         List<OreConfiguration.TargetBlockState> overworldBauxiteOres = List.of(OreConfiguration.target(bauxiteReplacables, ModBlocks.BAUXITE_ORE.get().defaultBlockState()));
-        register(context, OVERWORLD_BAUXITE_ORE_KEY, Feature.ORE, new OreConfiguration(overworldBauxiteOres, 8, 0f));
+        register(context, OVERWORLD_BAUXITE_ORE_KEY, Feature.ORE, new OreConfiguration(overworldBauxiteOres, 12, 0f));
 
         List<OreConfiguration.TargetBlockState> overworldSaltOres = List.of(OreConfiguration.target(saltReplacebles, ModBlocks.SALT_ORE.get().defaultBlockState()));
         register(context, OVERWORLD_SALT_ORE_KEY, Feature.ORE, new OreConfiguration(overworldSaltOres, 6, 0f));

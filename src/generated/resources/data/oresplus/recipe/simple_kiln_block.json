@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "oresplus:limestone_block",
+    "Y": "minecraft:furnace",
+    "Z": "minecraft:cobblestone"
+  },
+  "pattern": [
+    "XXX",
+    "XYX",
+    "ZZZ"
+  ],
+  "result": {
+    "count": 1,
+    "id": "oresplus:simple_kiln_block"
+  }
+}

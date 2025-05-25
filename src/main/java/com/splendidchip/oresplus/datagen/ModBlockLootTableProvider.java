@@ -16,6 +16,7 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.neoforged.fml.common.Mod;
 
 import java.util.Set;
 
@@ -31,6 +32,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.LIMESTONE_BLOCK.get());
         dropSelf(ModBlocks.REFRACTORY_BRICKS.get());
         dropSelf(ModBlocks.SIMPLE_KILN_BLOCK.get());
+        dropSelf(ModBlocks.SMELTER_CONTROLLER_BLOCK.get());
 
         dropSelf(ModBlocks.HEMATITE_ORE.get());
         dropSelf(ModBlocks.MAGNETITE_ORE.get());
