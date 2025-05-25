@@ -71,6 +71,26 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.TEST_BLOCK_4.get());
                     }).build());
 
+    public static final Supplier<CreativeModeTab> ORESPLUS_TOOLS_TAB = CREATIVE_MODE_TABS.register("oresplus_tools_tab",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.PIG_IRON_PICKAXE.get()))
+                    .withTabsBefore(ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "oresplus_blocks_tab"))
+                    .title(Component.translatable("creativetab.oresplus.oresplus_tools"))
+                    .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(ModItems.PIG_IRON_PICKAXE.get());
+                        output.accept(ModItems.PIG_IRON_SHOVEL.get());
+                        output.accept(ModItems.PIG_IRON_AXE.get());
+                        output.accept(ModItems.PIG_IRON_HOE.get());
+                    }).build());
+
+    public static final Supplier<CreativeModeTab> ORESPLUS_COMBAT_TAB = CREATIVE_MODE_TABS.register("oresplus_combat_tab",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.PIG_IRON_SWORD.get()))
+                    .withTabsBefore(ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "oresplus_tools_tab"))
+                    .title(Component.translatable("creativetab.oresplus.oresplus_combat"))
+                    .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(ModItems.PIG_IRON_SWORD.get());
+                    }).build());
+
+
     public static void register(IEventBus eventBus){
         CREATIVE_MODE_TABS.register(eventBus);
     }

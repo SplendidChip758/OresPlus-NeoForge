@@ -18,7 +18,14 @@
   "item.oresplus.refractory_brick": "Refractory Brick",
   "item.oresplus.brick_mold": "Brick Mold",
   "item.oresplus.pig_iron_ingot": "Pig Iron Ingot",
-  "item.oresplus.steel)ingo": "Steel Ingot",
+  "item.oresplus.steel_ingot": "Steel Ingot",
+
+  "item.oresplus.pig_iron_sword": "Pig Iron Sword",
+  "item.oresplus.pig_iron_shovel": "Pig Iron Shovel",
+  "item.oresplus.pig_iron_pickaxe": "Pig Iron Pickaxe",
+  "item.oresplus.pig_iron_axe": "Pig Iron Axe",
+  "item.oresplus.pig_iron_hoe": "Pig Iron Hoe",
+
 
   "block.oresplus.bauxite_ore": "Bauxite Ore",
   "block.oresplus.salt_ore": "Salt Ore",
@@ -35,6 +42,8 @@
 
   "creativetab.oresplus.oresplus_items": "OresPlus Items",
   "creativetab.oresplus.oresplus_blocks": "OresPlus Block",
+  "creativetab.oresplus.oresplus_tools": "OresPlus Tools",
+  "creativetab.oresplus.oresplus_combat": "OresPlus Combat",
 
   "advancement.oresplus.root.title": "OresPlus",
   "advancement.oresplus.root.description": "Begin your journey with OresPlus!",

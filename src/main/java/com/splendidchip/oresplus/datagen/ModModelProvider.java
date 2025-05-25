@@ -139,6 +139,13 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.PIG_IRON_INGOT.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.STEEL_INGOT.get(), ModelTemplates.FLAT_ITEM);
 
+        //Tools
+        itemModels.generateFlatItem(ModItems.PIG_IRON_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.PIG_IRON_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.PIG_IRON_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.PIG_IRON_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.PIG_IRON_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+
         //Test Items
         itemModels.generateFlatItem(ModTestItems.TEST_ITEM_1.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModTestItems.TEST_ITEM_2.get(), ModelTemplates.FLAT_ITEM);

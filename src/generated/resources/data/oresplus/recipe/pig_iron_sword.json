@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "oresplus:pig_iron_ingot",
+    "Y": "minecraft:stick"
+  },
+  "pattern": [
+    "  X",
+    " X ",
+    "Y  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "oresplus:pig_iron_sword"
+  }
+}

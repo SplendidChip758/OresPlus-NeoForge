@@ -1,7 +1,7 @@
 package com.splendidchip.oresplus.item;
 
 import com.splendidchip.oresplus.OresPlus;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -88,6 +88,33 @@ public class ModItems {
     public static final DeferredItem<Item> STEEL_INGOT = ITEMS.registerItem("steel_ingot",
             Item::new,
             new Item.Properties());
+
+    // Tools and weapons
+    public static final DeferredItem<SwordItem> PIG_IRON_SWORD = ITEMS.registerItem(
+            "pig_iron_sword",
+            props -> new SwordItem(ModToolTeirs.PIG_IRON_MATERIAL, 3.0f, -2.4f, props)
+    );
+    public static final DeferredItem<ShovelItem> PIG_IRON_SHOVEL = ITEMS.registerItem(
+            "pig_iron_shovel",
+            props -> new ShovelItem(ModToolTeirs.PIG_IRON_MATERIAL, 1.5f, -3.0f, props)
+    );
+
+    public static final DeferredItem<PickaxeItem> PIG_IRON_PICKAXE = ITEMS.registerItem(
+            "pig_iron_pickaxe",
+            props -> new PickaxeItem(ModToolTeirs.PIG_IRON_MATERIAL, 1.0f, -2.8f, props)
+    );
+
+    public static final DeferredItem<AxeItem> PIG_IRON_AXE = ITEMS.registerItem(
+            "pig_iron_axe",
+            props -> new AxeItem(ModToolTeirs.PIG_IRON_MATERIAL, 6.0f, -3.1f, props)
+    );
+
+    public static final DeferredItem<HoeItem> PIG_IRON_HOE = ITEMS.registerItem(
+            "pig_iron_hoe",
+            props -> new HoeItem(ModToolTeirs.PIG_IRON_MATERIAL, -2.0f, -1.0f, props)
+    );
+
+
 
 
     public static void register(IEventBus eventBus){

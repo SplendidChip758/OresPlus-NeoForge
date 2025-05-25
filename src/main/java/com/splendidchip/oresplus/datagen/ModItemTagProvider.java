@@ -29,5 +29,19 @@ public class ModItemTagProvider extends ItemTagsProvider {
         tag(ModTags.Items.FLUXES)
                 .add(ModItems.LIMESTONE_DUST.get())
                 .add(ModItems.QUICK_LIME.get());
+
+        tag(ModTags.Items.PIG_IRON_REPAIRABLE)
+                .add(ModItems.PIG_IRON_INGOT.get());
+
+        tag(ItemTags.SWORDS)
+                .add(ModItems.PIG_IRON_SWORD.get());
+        tag(ItemTags.PICKAXES)
+                .add(ModItems.PIG_IRON_PICKAXE.get());
+        tag(ItemTags.SHOVELS)
+                .add(ModItems.PIG_IRON_SHOVEL.get());
+        tag(ItemTags.AXES)
+                .add(ModItems.PIG_IRON_AXE.get());
+        tag(ItemTags.HOES)
+                .add(ModItems.PIG_IRON_HOE.get());
     }
 }

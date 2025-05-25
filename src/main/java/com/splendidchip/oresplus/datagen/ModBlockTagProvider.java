@@ -45,5 +45,15 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(Blocks.ANDESITE)
                 .add(Blocks.SAND)
                 .add(Blocks.SANDSTONE);
+
+        tag(ModTags.Blocks.NEEDS_PIG_IRON_TOOL)
+                .addTag(BlockTags.NEEDS_IRON_TOOL);
+
+        tag(ModTags.Blocks.INCORRECT_FOR_PIG_IRON_TOOL)
+                .addTag(BlockTags.INCORRECT_FOR_IRON_TOOL)
+                .remove(ModTags.Blocks.NEEDS_PIG_IRON_TOOL);
+
+        tag(BlockTags.NEEDS_IRON_TOOL)
+                .add(ModBlocks.MAGNETITE_ORE.get());
     }
 }

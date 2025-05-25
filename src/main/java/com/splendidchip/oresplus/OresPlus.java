@@ -103,7 +103,8 @@ public class OresPlus {
 
                     // All recipe categories within the search category as varargs
                     ModRecipeBookCategory.CRUSHER_CATEGORY.get(),
-                    ModRecipeBookCategory.SIMPLE_KILN_CATEGORY.get()
+                    ModRecipeBookCategory.SIMPLE_KILN_CATEGORY.get(),
+                    ModRecipeBookCategory.SMELTER_CATEGORY.get()
             );
         }
 
