@@ -32,12 +32,9 @@ public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
         int y = (height - imageHeight) / 2;
 
         guiGraphics.blit(RenderType::guiTextured, GUI_TEXTURE, x, y, 0, 0, imageWidth, imageHeight, 256, 256);
-        int labelWidth = font.width("Flux");
-        int fluxSlotX = leftPos + 25;
-        int centeredX = fluxSlotX + 9 - labelWidth / 2;
 
+        int centeredX = leftPos + 25 + 9 - font.width("Flux") / 2;
         guiGraphics.drawString(this.font, "Flux", centeredX, topPos + 43, 0x404040, false);
-
 
         renderProgressArrow(guiGraphics, x, y);
         renderLitIndicator(guiGraphics, x, y);
@@ -76,7 +73,7 @@ public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
         int relMouseY = mouseY - y;
 
         // Flame icon tooltip area
-        if (relMouseX >= 57 && relMouseX < 57 + 14 && relMouseY >= 36 && relMouseY < 36 + 14) {
+        if (relMouseX >= 57 && relMouseX < 71 && relMouseY >= 36 && relMouseY < 50) {
             int burnTime = menu.getBurnTime();
             int burnTimeTotal = menu.getBurnTimeTotal();
 
@@ -93,4 +90,3 @@ public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
         this.renderTooltip(guiGraphics, mouseX, mouseY);
     }
 }
-

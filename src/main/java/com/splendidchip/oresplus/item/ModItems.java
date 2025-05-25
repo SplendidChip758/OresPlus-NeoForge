@@ -81,6 +81,14 @@ public class ModItems {
             Item::new,
             new Item.Properties());
 
+    public static final DeferredItem<Item> PIG_IRON_INGOT = ITEMS.registerItem("pig_iron_ingot",
+            Item::new,
+            new Item.Properties());
+
+    public static final DeferredItem<Item> STEEL_INGOT = ITEMS.registerItem("steel_ingot",
+            Item::new,
+            new Item.Properties());
+
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

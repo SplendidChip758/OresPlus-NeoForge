@@ -4,6 +4,7 @@ import com.splendidchip.oresplus.block.ModBlocks;
 import com.splendidchip.oresplus.block.entity.SmelterControllerBlockEntity;
 import com.splendidchip.oresplus.recipe.ModRecipes;
 import com.splendidchip.oresplus.screen.ModMenuTypes;
+import com.splendidchip.oresplus.util.ModTags;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
@@ -35,7 +36,12 @@ public class SmelterMenu extends AbstractContainerMenu {
         // Slots: input1, input2, flux, fuel, output
         this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 0, 44, 17)); // input 1
         this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 1, 68, 17)); // input 2
-        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 2, 26, 53)); // flux
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 2, 26, 53) {
+            @Override
+            public boolean mayPlace(ItemStack stack) {
+                return stack.is(ModTags.Items.FLUXES);
+            }
+        }); // flux
         this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 3, 56, 53){  // fuel
             @Override
             public boolean mayPlace(ItemStack stack) {
@@ -52,7 +58,7 @@ public class SmelterMenu extends AbstractContainerMenu {
             public void onTake(Player player, ItemStack stack) {
                 super.onTake(player, stack);
                 if (player instanceof ServerPlayer serverPlayer) {
-                    // optionally handle XP here
+                    blockEntity.awardUsedRecipesAndPopExperience(serverPlayer);
                 }
             }
         });
@@ -137,4 +143,3 @@ public class SmelterMenu extends AbstractContainerMenu {
         }
     }
 }
-

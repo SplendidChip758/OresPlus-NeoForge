@@ -217,7 +217,6 @@ public class SimpleKilnBlockEntity extends BlockEntity implements MenuProvider, 
         itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem(), itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + output.getCount()));
 
         setRecipeUsed(recipe.get());
-        System.out.println(recipe.get());
     }
 
     public void setRecipeUsed(@Nullable RecipeHolder<?> recipeHolder) {

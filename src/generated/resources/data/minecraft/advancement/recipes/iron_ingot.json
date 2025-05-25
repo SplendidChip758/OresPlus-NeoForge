@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_grindstone": {
+    "has_pig_iron_ingot": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:grindstone"
+            "items": "oresplus:pig_iron_ingot"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "oresplus:crusher_block"
+        "recipe": "minecraft:iron_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_grindstone"
+      "has_pig_iron_ingot"
     ]
   ],
   "rewards": {
     "recipes": [
-      "oresplus:crusher_block"
+      "minecraft:iron_ingot"
     ]
   }
 }

@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_grindstone": {
+    "has_stick": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:grindstone"
+            "items": "minecraft:stick"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "oresplus:crusher_block"
+        "recipe": "oresplus:brick_mold"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_grindstone"
+      "has_stick"
     ]
   ],
   "rewards": {
     "recipes": [
-      "oresplus:crusher_block"
+      "oresplus:brick_mold"
     ]
   }
 }

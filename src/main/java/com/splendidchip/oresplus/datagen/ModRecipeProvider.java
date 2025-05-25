@@ -6,6 +6,7 @@ import com.splendidchip.oresplus.item.ModItems;
 import com.splendidchip.oresplus.recipe.builder.BrickMoldRecipeBuilder;
 import com.splendidchip.oresplus.recipe.builder.CrusherRecipeBuilder;
 import com.splendidchip.oresplus.recipe.builder.SimpleKilnRecipeBuilder;
+import com.splendidchip.oresplus.recipe.builder.SmelterRecipeBuilder;
 import net.minecraft.ResourceLocationException;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -37,13 +38,20 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('X', ModItems.ALUMINUM_INGOT.get())
                 .unlockedBy("has_aluminum_ingot", has(ModItems.ALUMINUM_INGOT)).save(this.output);
 
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.BRICK_MOLD.get())
+                .pattern("XXX")
+                .pattern("X X")
+                .pattern("XXX")
+                .define('X', Items.STICK)
+                .unlockedBy("has_stick", has(Items.STICK)).save(this.output);
+
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModBlocks.CRUSHER_BLOCK.get())
                 .pattern("X X")
                 .pattern("Y Y")
                 .pattern("XXX")
                 .define('X', Blocks.COBBLESTONE)
                 .define('Y', Blocks.GRINDSTONE)
-                .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
+                .unlockedBy("has_grindstone", has(Items.GRINDSTONE))
                 .save(this.output);
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModBlocks.SIMPLE_KILN_BLOCK.get())
@@ -54,6 +62,15 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('Y', Blocks.FURNACE)
                 .define('Z', Blocks.COBBLESTONE)
                 .unlockedBy("has_limestone_block", has(ModBlocks.LIMESTONE_BLOCK))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModBlocks.SMELTER_CONTROLLER_BLOCK.get())
+                .pattern("XXX")
+                .pattern("XYX")
+                .pattern("XXX")
+                .define('X', ModBlocks.REFRACTORY_BRICKS)
+                .define('Y', Blocks.FURNACE)
+                .unlockedBy("has_refractory_bricks", has(ModBlocks.REFRACTORY_BRICKS))
                 .save(this.output);
 
         ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.REFRACTORY_CEMENT.get())
@@ -196,6 +213,46 @@ public class ModRecipeProvider extends RecipeProvider {
         )
                 .unlockedBy("has_refractory_cement", has(ModItems.REFRACTORY_CEMENT))
                 .unlockedBy("has_brick_mold", has(ModItems.BRICK_MOLD))
+                .save(this.output);
+
+        new SmelterRecipeBuilder(
+                new ItemStack(ModItems.PIG_IRON_INGOT.get()),
+                Ingredient.of(ModItems.CRUSHED_HEMATITE),
+                Ingredient.of(ModItems.LIMESTONE_DUST)
+        )
+                .cookTime(200)
+                .experience(0.7f)
+                .unlockedBy("has_crushed_hematite", has(ModItems.CRUSHED_HEMATITE))
+                .save(this.output, ResourceKey.create(Registries.RECIPE, ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "pig_iron_ingot_from_crushed_hematite")));
+
+        new SmelterRecipeBuilder(
+                new ItemStack(ModItems.PIG_IRON_INGOT.get()),
+                Ingredient.of(ModItems.CRUSHED_MAGNETITE),
+                Ingredient.of(ModItems.LIMESTONE_DUST)
+        )
+                .cookTime(200)
+                .experience(0.7f)
+                .unlockedBy("has_crushed_magnetite", has(ModItems.CRUSHED_MAGNETITE))
+                .save(this.output, ResourceKey.create(Registries.RECIPE, ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "pig_iron_ingot_from_crushed_magnetite")));
+
+        new SmelterRecipeBuilder(
+                new ItemStack(Items.IRON_INGOT),
+                Ingredient.of(ModItems.PIG_IRON_INGOT)
+        )
+                .cookTime(200)
+                .experience(0.7f)
+                .unlockedBy("has_pig_iron_ingot", has(ModItems.PIG_IRON_INGOT))
+                .save(this.output);
+
+        new SmelterRecipeBuilder(
+                new ItemStack(ModItems.STEEL_INGOT.get()),
+                Ingredient.of(Items.IRON_INGOT),
+                Ingredient.of(ModItems.CARBON_DUST),
+                Ingredient.of(ModItems.QUICK_LIME)
+        )
+                .cookTime(200)
+                .experience(0.7f)
+                .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
                 .save(this.output);
     }
 
