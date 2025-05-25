@@ -1,8 +1,0 @@
-{
-  "type": "oresplus:crusher_block",
-  "ingredient": "oresplus:limestone_block",
-  "result": {
-    "count": 4,
-    "id": "oresplus:limestone_dust"
-  }
-}

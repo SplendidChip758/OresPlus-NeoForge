@@ -1,10 +1,6 @@
 package com.splendidchip.oresplus.datagen;
 
 import com.splendidchip.oresplus.OresPlus;
-import com.splendidchip.oresplus.datagen.advancement.ModBauxiteAdvancementProvider;
-import com.splendidchip.oresplus.datagen.advancement.ModMachineAdvancementProvider;
-import com.splendidchip.oresplus.datagen.advancement.ModRootAdvancementProvider;
-import net.minecraft.data.advancements.AdvancementProvider;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -27,28 +23,18 @@ public class DataGenerators {
                         ModBlockLootTableProvider::new,
                         LootContextParamSets.BLOCK
                 )),
-                // The registry access
-                lookupProvider
-        ));
-
-        event.createProvider((output, lookupProvider) -> new AdvancementProvider(
-                output, lookupProvider,
-                // Add generators here
-                List.of(
-                        new ModRootAdvancementProvider(),
-                        new ModBauxiteAdvancementProvider(),
-                        new ModMachineAdvancementProvider()
-
-
-                )
-        ));
-
+        // The registry access
+        lookupProvider
+    ));
         event.createProvider(ModRecipeProvider.Runner::new);
 
-        event.createBlockAndItemTags(ModBlockTagProvider::new, ModItemTagProvider::new);
+        event.createProvider(ModBlockTagProvider::new);
+        //event.createProvider(ModItemTagProvider::new);
 
         event.createProvider(ModDataMapProvider::new);
 
+
+        //event.createProvider(ModItemModelProvider::new);
         event.createProvider(ModModelProvider::new);
 
         event.createProvider(ModDatapackProvider::new);

@@ -3,11 +3,11 @@
   "category": "misc",
   "key": {
     "X": "minecraft:cobblestone",
-    "Y": "minecraft:grindstone"
+    "Y": "minecraft:iron_ingot"
   },
   "pattern": [
     "X X",
-    "Y Y",
+    "XYX",
     "XXX"
   ],
   "result": {

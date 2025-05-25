@@ -240,12 +240,6 @@ public class CrusherBlockEntity extends BlockEntity implements MenuProvider, Wor
     }
 
     @Override
-    public boolean canPlaceItem(int index, ItemStack itemStack) {
-        if (index == OUTPUT_SLOT) return false;
-        return true;
-    }
-
-    @Override
     public int[] getSlotsForFace(Direction side) {
         if (side == Direction.DOWN) {
             return new int[]{OUTPUT_SLOT};

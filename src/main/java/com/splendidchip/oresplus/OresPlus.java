@@ -6,14 +6,10 @@ import com.splendidchip.oresplus.block.ModBlocks;
 import com.splendidchip.oresplus.block.entity.ModBlockEntities;
 import com.splendidchip.oresplus.item.ModCreativeModeTabs;
 import com.splendidchip.oresplus.item.ModItems;
-import com.splendidchip.oresplus.item.ModTestItems;
 import com.splendidchip.oresplus.recipe.ModRecipeBookCategory;
 import com.splendidchip.oresplus.recipe.ModRecipes;
 import com.splendidchip.oresplus.screen.ModMenuTypes;
 import com.splendidchip.oresplus.screen.custom.CrusherScreen;
-import com.splendidchip.oresplus.screen.custom.SimpleKilnScreen;
-import com.splendidchip.oresplus.screen.custom.SmelterScreen;
-import com.splendidchip.oresplus.villager.ModVillagers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -52,13 +48,10 @@ public class OresPlus {
         ModCreativeModeTabs.register(modEventBus);
 
         ModItems.register(modEventBus);
-        ModTestItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModBlockItems.register(modEventBus);
 
         ModBlockEntities.register(modEventBus);
-
-        ModVillagers.register(modEventBus);
 
         ModMenuTypes.register(modEventBus);
 
@@ -99,19 +92,15 @@ public class OresPlus {
         public static void registerSearchCategories(RegisterRecipeBookSearchCategoriesEvent event) {
             event.register(
                     // The search category
-                    ModRecipeBookCategory.ORESPLUS_SEARCH_CATEGORY,
-
+                    ModRecipeBookCategory.CRUSHER_SEARCH_CATEGORY,
                     // All recipe categories within the search category as varargs
-                    ModRecipeBookCategory.CRUSHER_CATEGORY.get(),
-                    ModRecipeBookCategory.SIMPLE_KILN_CATEGORY.get()
+                    ModRecipeBookCategory.CRUSHER_CATEGORY.get()
             );
         }
 
         @SubscribeEvent
         public static void registerScreens(RegisterMenuScreensEvent event) {
             event.register(ModMenuTypes.CRUSHER_MENU.get(), CrusherScreen::new);
-            event.register(ModMenuTypes.SIMPLE_KILN_MENU.get(), SimpleKilnScreen::new);
-            event.register(ModMenuTypes.SMELTER_MENU.get(), SmelterScreen::new);
         }
     }
 }
