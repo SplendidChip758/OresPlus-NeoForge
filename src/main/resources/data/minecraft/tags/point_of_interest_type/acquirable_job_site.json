@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    {
-      "id": "oresplus:smelter_poi",
-      "required": false
-    }
-  ]
-}

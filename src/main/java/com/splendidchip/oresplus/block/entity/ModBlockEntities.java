@@ -22,22 +22,6 @@ public class ModBlockEntities {
             )
     );
 
-    public static final Supplier<BlockEntityType<SimpleKilnBlockEntity>> SIMPLE_KILN_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
-            "simple_kiln_block_entity",
-            () -> new BlockEntityType<>(
-                    SimpleKilnBlockEntity::new,
-                    ModBlocks.SIMPLE_KILN_BLOCK.get()
-            )
-    );
-
-    public static final Supplier<BlockEntityType<SmelterControllerBlockEntity>> SMELTER_CONTROLLER_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
-            "smelter_controller_block_entity",
-            () -> new BlockEntityType<>(
-                    SmelterControllerBlockEntity::new,
-                    ModBlocks.SMELTER_CONTROLLER_BLOCK.get()
-            )
-    );
-
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITY_TYPES.register(eventBus);
     }

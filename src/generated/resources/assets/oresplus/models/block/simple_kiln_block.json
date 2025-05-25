@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:block/orientable_with_bottom",
-  "textures": {
-    "bottom": "oresplus:block/simple_kiln_bottom",
-    "front": "oresplus:block/simple_kiln_front",
-    "side": "oresplus:block/simple_kiln_side",
-    "top": "oresplus:block/simple_kiln_top"
-  }
-}

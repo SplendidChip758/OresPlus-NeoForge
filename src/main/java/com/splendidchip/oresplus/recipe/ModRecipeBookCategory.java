@@ -18,21 +18,11 @@ public class ModRecipeBookCategory {
             RecipeBookCategory::new
     );
 
-    public static final Supplier<RecipeBookCategory> SIMPLE_KILN_CATEGORY = RECIPE_BOOK_CATEGORIES.register(
-            "simple_kiln_block",
-            RecipeBookCategory::new
-    );
-
-    public static final Supplier<RecipeBookCategory> SMELTER_CATEGORY = RECIPE_BOOK_CATEGORIES.register(
-            "smelter_controller_block",
-            RecipeBookCategory::new
-    );
-
     public static void register(IEventBus eventBus) {
 
         RECIPE_BOOK_CATEGORIES.register(eventBus);
     }
 
-    public static final ExtendedRecipeBookCategory ORESPLUS_SEARCH_CATEGORY = new ExtendedRecipeBookCategory() {};
+    public static final ExtendedRecipeBookCategory CRUSHER_SEARCH_CATEGORY = new ExtendedRecipeBookCategory() {};
 
 }

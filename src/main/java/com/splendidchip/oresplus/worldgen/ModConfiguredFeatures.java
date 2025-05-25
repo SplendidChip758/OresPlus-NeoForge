@@ -24,7 +24,6 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_SALT_ORE_KEY = registerKey("salt_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_HEMATITE_ORE_KEY = registerKey("hematite_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_MAGNETITE_ORE_KEY = registerKey("magnetite_ore");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_LIMESTONE_ORE_KEY = registerKey("limestone_ore");
 
 
 
@@ -36,7 +35,7 @@ public class ModConfiguredFeatures {
 
 
         List<OreConfiguration.TargetBlockState> overworldBauxiteOres = List.of(OreConfiguration.target(bauxiteReplacables, ModBlocks.BAUXITE_ORE.get().defaultBlockState()));
-        register(context, OVERWORLD_BAUXITE_ORE_KEY, Feature.ORE, new OreConfiguration(overworldBauxiteOres, 12, 0f));
+        register(context, OVERWORLD_BAUXITE_ORE_KEY, Feature.ORE, new OreConfiguration(overworldBauxiteOres, 8, 0f));
 
         List<OreConfiguration.TargetBlockState> overworldSaltOres = List.of(OreConfiguration.target(saltReplacebles, ModBlocks.SALT_ORE.get().defaultBlockState()));
         register(context, OVERWORLD_SALT_ORE_KEY, Feature.ORE, new OreConfiguration(overworldSaltOres, 6, 0f));
@@ -46,9 +45,6 @@ public class ModConfiguredFeatures {
 
         List<OreConfiguration.TargetBlockState> overworldMagnetiteOres = List.of(OreConfiguration.target(deepslateReplacebles, ModBlocks.MAGNETITE_ORE.get().defaultBlockState()));
         register(context, OVERWORLD_MAGNETITE_ORE_KEY, Feature.ORE, new OreConfiguration(overworldMagnetiteOres, 6, 0.50f));
-
-        List<OreConfiguration.TargetBlockState> overworldLimestoneOres = List.of(OreConfiguration.target(stoneReplaceables, ModBlocks.LIMESTONE_BLOCK.get().defaultBlockState()));
-        register(context, OVERWORLD_LIMESTONE_ORE_KEY, Feature.ORE, new OreConfiguration(overworldLimestoneOres, 64, 0.25f));
 
     }
 

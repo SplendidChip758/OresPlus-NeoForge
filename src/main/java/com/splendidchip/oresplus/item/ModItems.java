@@ -1,6 +1,8 @@
 package com.splendidchip.oresplus.item;
 
 import com.splendidchip.oresplus.OresPlus;
+import com.splendidchip.oresplus.block.ModBlocks;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -49,46 +51,22 @@ public class ModItems {
             Item::new,
             new Item.Properties());
 
-    public static final DeferredItem<Item> LIMESTONE_DUST = ITEMS.registerItem("limestone_dust",
+    //Test Items
+    public static final DeferredItem<Item> TEST_ITEM_1 = ITEMS.registerItem("test_item_1",
             Item::new,
             new Item.Properties());
 
-    public static final DeferredItem<Item> COKE = ITEMS.registerItem("coke",
+    public static final DeferredItem<Item> TEST_ITEM_2 = ITEMS.registerItem("test_item_2",
             Item::new,
             new Item.Properties());
 
-    public static final DeferredItem<Item> REFRACTORY_CEMENT = ITEMS.registerItem("refractory_cement",
+    public static final DeferredItem<Item> TEST_ITEM_3 = ITEMS.registerItem("test_item_3",
             Item::new,
             new Item.Properties());
 
-    public static final DeferredItem<Item> UNFIRED_REFRACTORY_BRICK = ITEMS.registerItem("unfired_refractory_brick",
+    public static final DeferredItem<Item> TEST_ITEM_4 = ITEMS.registerItem("test_item_4",
             Item::new,
             new Item.Properties());
-
-    public static final DeferredItem<Item> REFRACTORY_BRICK = ITEMS.registerItem("refractory_brick",
-            Item::new,
-            new Item.Properties());
-
-    public static final DeferredItem<Item> BRICK_MOLD = ITEMS.registerItem("brick_mold",
-            Item::new,
-            new Item.Properties().durability(32).stacksTo(1));
-
-    public static final DeferredItem<Item> CARBON_DUST = ITEMS.registerItem("carbon_dust",
-            Item::new,
-            new Item.Properties());
-
-    public static final DeferredItem<Item> QUICK_LIME = ITEMS.registerItem("quick_lime",
-            Item::new,
-            new Item.Properties());
-
-    public static final DeferredItem<Item> PIG_IRON_INGOT = ITEMS.registerItem("pig_iron_ingot",
-            Item::new,
-            new Item.Properties());
-
-    public static final DeferredItem<Item> STEEL_INGOT = ITEMS.registerItem("steel_ingot",
-            Item::new,
-            new Item.Properties());
-
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
