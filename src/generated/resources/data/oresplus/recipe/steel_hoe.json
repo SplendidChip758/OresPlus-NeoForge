@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "oresplus:steel_ingot",
+    "Y": "minecraft:stick"
+  },
+  "pattern": [
+    "XX ",
+    " Y ",
+    " Y "
+  ],
+  "result": {
+    "count": 1,
+    "id": "oresplus:steel_hoe"
+  }
+}

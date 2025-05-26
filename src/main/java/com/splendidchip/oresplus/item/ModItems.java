@@ -92,26 +92,50 @@ public class ModItems {
     // Tools and weapons
     public static final DeferredItem<SwordItem> PIG_IRON_SWORD = ITEMS.registerItem(
             "pig_iron_sword",
-            props -> new SwordItem(ModToolTeirs.PIG_IRON_MATERIAL, 3.0f, -2.4f, props)
+            props -> new SwordItem(ModToolTeirs.PIG_IRON_TOOL_MATERIAL, 3.0f, -2.4f, props)
     );
     public static final DeferredItem<ShovelItem> PIG_IRON_SHOVEL = ITEMS.registerItem(
             "pig_iron_shovel",
-            props -> new ShovelItem(ModToolTeirs.PIG_IRON_MATERIAL, 1.5f, -3.0f, props)
+            props -> new ShovelItem(ModToolTeirs.PIG_IRON_TOOL_MATERIAL, 1.5f, -3.0f, props)
     );
 
     public static final DeferredItem<PickaxeItem> PIG_IRON_PICKAXE = ITEMS.registerItem(
             "pig_iron_pickaxe",
-            props -> new PickaxeItem(ModToolTeirs.PIG_IRON_MATERIAL, 1.0f, -2.8f, props)
+            props -> new PickaxeItem(ModToolTeirs.PIG_IRON_TOOL_MATERIAL, 1.0f, -2.8f, props)
     );
 
     public static final DeferredItem<AxeItem> PIG_IRON_AXE = ITEMS.registerItem(
             "pig_iron_axe",
-            props -> new AxeItem(ModToolTeirs.PIG_IRON_MATERIAL, 6.0f, -3.1f, props)
+            props -> new AxeItem(ModToolTeirs.PIG_IRON_TOOL_MATERIAL, 6.0f, -3.1f, props)
     );
 
     public static final DeferredItem<HoeItem> PIG_IRON_HOE = ITEMS.registerItem(
             "pig_iron_hoe",
-            props -> new HoeItem(ModToolTeirs.PIG_IRON_MATERIAL, -2.0f, -1.0f, props)
+            props -> new HoeItem(ModToolTeirs.PIG_IRON_TOOL_MATERIAL, -2.0f, -1.0f, props)
+    );
+
+    public static final DeferredItem<SwordItem> STEEL_SWORD = ITEMS.registerItem(
+            "steel_sword",
+            props -> new SwordItem(ModToolTeirs.STEEL_TOOL_MATERIAL, 3.0f, -2.4f, props)
+    );
+    public static final DeferredItem<ShovelItem> STEEL_SHOVEL = ITEMS.registerItem(
+            "steel_shovel",
+            props -> new ShovelItem(ModToolTeirs.STEEL_TOOL_MATERIAL, 1.5f, -3.0f, props)
+    );
+
+    public static final DeferredItem<PickaxeItem> STEEL_PICKAXE = ITEMS.registerItem(
+            "steel_pickaxe",
+            props -> new PickaxeItem(ModToolTeirs.STEEL_TOOL_MATERIAL, 1.0f, -2.8f, props)
+    );
+
+    public static final DeferredItem<AxeItem> STEEL_AXE = ITEMS.registerItem(
+            "steel_axe",
+            props -> new AxeItem(ModToolTeirs.STEEL_TOOL_MATERIAL, 5.5f, -3.0f, props)
+    );
+
+    public static final DeferredItem<HoeItem> STEEL_HOE = ITEMS.registerItem(
+            "steel_hoe",
+            props -> new HoeItem(ModToolTeirs.STEEL_TOOL_MATERIAL, -2.0f, -1.0f, props)
     );
 
 

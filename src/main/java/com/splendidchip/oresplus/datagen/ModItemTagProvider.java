@@ -33,15 +33,23 @@ public class ModItemTagProvider extends ItemTagsProvider {
         tag(ModTags.Items.PIG_IRON_REPAIRABLE)
                 .add(ModItems.PIG_IRON_INGOT.get());
 
+        tag(ModTags.Items.STEEL_REPAIRABLE)
+                .add(ModItems.STEEL_INGOT.get());
+
         tag(ItemTags.SWORDS)
-                .add(ModItems.PIG_IRON_SWORD.get());
+                .add(ModItems.PIG_IRON_SWORD.get())
+                .add(ModItems.STEEL_SWORD.get());
         tag(ItemTags.PICKAXES)
-                .add(ModItems.PIG_IRON_PICKAXE.get());
+                .add(ModItems.PIG_IRON_PICKAXE.get())
+                .add(ModItems.STEEL_PICKAXE.get());
         tag(ItemTags.SHOVELS)
-                .add(ModItems.PIG_IRON_SHOVEL.get());
+                .add(ModItems.PIG_IRON_SHOVEL.get())
+                .add(ModItems.STEEL_SHOVEL.get());
         tag(ItemTags.AXES)
-                .add(ModItems.PIG_IRON_AXE.get());
+                .add(ModItems.PIG_IRON_AXE.get())
+                .add(ModItems.STEEL_AXE.get());
         tag(ItemTags.HOES)
-                .add(ModItems.PIG_IRON_HOE.get());
+                .add(ModItems.PIG_IRON_HOE.get())
+                .add(ModItems.STEEL_HOE.get());
     }
 }

@@ -136,6 +136,51 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_pig_iron_ingot", has(ModItems.PIG_IRON_INGOT))
                 .save(this.output);
 
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.STEEL_SWORD.get())
+                .pattern("  X")
+                .pattern(" X ")
+                .pattern("Y  ")
+                .define('X', ModItems.STEEL_INGOT)
+                .define('Y', Items.STICK)
+                .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.STEEL_PICKAXE.get())
+                .pattern("XXX")
+                .pattern(" Y ")
+                .pattern(" Y ")
+                .define('X', ModItems.STEEL_INGOT)
+                .define('Y', Items.STICK)
+                .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.STEEL_SHOVEL.get())
+                .pattern(" X ")
+                .pattern(" Y ")
+                .pattern(" Y ")
+                .define('X', ModItems.STEEL_INGOT)
+                .define('Y', Items.STICK)
+                .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.STEEL_AXE.get())
+                .pattern("XX ")
+                .pattern("XY ")
+                .pattern(" Y ")
+                .define('X', ModItems.PIG_IRON_INGOT)
+                .define('Y', Items.STICK)
+                .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.STEEL_HOE.get())
+                .pattern("XX ")
+                .pattern(" Y ")
+                .pattern(" Y ")
+                .define('X', ModItems.STEEL_INGOT)
+                .define('Y', Items.STICK)
+                .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT))
+                .save(this.output);
+
         //Cooking/Smelting
         SimpleCookingRecipeBuilder.smelting(
                 Ingredient.of(ModItems.ALUMINA),
