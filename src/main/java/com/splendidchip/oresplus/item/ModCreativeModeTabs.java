@@ -40,13 +40,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BRICK_MOLD.get());
                         output.accept(ModItems.PIG_IRON_INGOT.get());
                         output.accept(ModItems.STEEL_INGOT.get());
-
-
-                        //Test Items
-                        output.accept(ModTestItems.TEST_ITEM_1.get());
-                        output.accept(ModTestItems.TEST_ITEM_2.get());
-                        output.accept(ModTestItems.TEST_ITEM_3.get());
-                        output.accept(ModTestItems.TEST_ITEM_4.get());
                     }).build());
 
     public static final Supplier<CreativeModeTab> ORESPLUS_BLOCKS_TAB = CREATIVE_MODE_TABS.register("oresplus_blocks_tab",
@@ -64,11 +57,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.REFRACTORY_BRICKS.get());
                         output.accept(ModBlocks.SIMPLE_KILN_BLOCK.get());
                         output.accept(ModBlocks.SMELTER_CONTROLLER_BLOCK.get());
-                        //Test Blocks
-                        output.accept(ModBlocks.TEST_BLOCK_1.get());
-                        output.accept(ModBlocks.TEST_BLOCK_2.get());
-                        output.accept(ModBlocks.TEST_BLOCK_3.get());
-                        output.accept(ModBlocks.TEST_BLOCK_4.get());
                     }).build());
 
     public static final Supplier<CreativeModeTab> ORESPLUS_TOOLS_TAB = CREATIVE_MODE_TABS.register("oresplus_tools_tab",

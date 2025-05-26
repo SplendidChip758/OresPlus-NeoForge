@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "X": "oresplus:refractory_bricks",
+    "X": "oresplus:refractory_brick",
     "Y": "minecraft:furnace"
   },
   "pattern": [

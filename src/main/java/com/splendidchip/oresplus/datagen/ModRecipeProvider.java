@@ -70,9 +70,9 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("XXX")
                 .pattern("XYX")
                 .pattern("XXX")
-                .define('X', ModBlocks.REFRACTORY_BRICKS)
+                .define('X', ModItems.REFRACTORY_BRICK)
                 .define('Y', Blocks.FURNACE)
-                .unlockedBy("has_refractory_bricks", has(ModBlocks.REFRACTORY_BRICKS))
+                .unlockedBy("has_refractory_bricks", has(ModItems.REFRACTORY_BRICK))
                 .save(this.output);
 
         ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.REFRACTORY_CEMENT.get())
