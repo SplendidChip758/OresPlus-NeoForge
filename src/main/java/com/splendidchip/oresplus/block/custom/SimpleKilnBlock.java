@@ -33,7 +33,6 @@ public class SimpleKilnBlock extends BaseEntityBlock  {
     public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
 
-
     public SimpleKilnBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, net.minecraft.core.Direction.NORTH).setValue(LIT, false));
@@ -50,13 +49,13 @@ public class SimpleKilnBlock extends BaseEntityBlock  {
     }
 
     @Override
-    protected BlockState rotate(BlockState pState, Rotation pRotation) {
-        return pState.setValue(FACING, pRotation.rotate(pState.getValue(FACING)));
+    protected BlockState rotate(BlockState state, Rotation rotation) {
+        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
 
     @Override
-    protected BlockState mirror(BlockState pState, Mirror pMirror) {
-        return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));
+    protected BlockState mirror(BlockState state, Mirror mirror) {
+        return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 
     @Nullable
@@ -134,5 +133,4 @@ public class SimpleKilnBlock extends BaseEntityBlock  {
         level.addParticle(ParticleTypes.SMOKE, x + dx, y + dy + 0.5, z + dz, 0, 0, 0);
         level.addParticle(ParticleTypes.FLAME, x + dx, y + dy + 0.5, z + dz, 0, 0, 0);
     }
-
 }

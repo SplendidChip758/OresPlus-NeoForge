@@ -58,6 +58,11 @@ public class ModBlockItems {
             new Item.Properties()
     );
 
+    public static final DeferredItem<BlockItem> SIMPLE_SMELTER_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
+            ModBlocks.SIMPLE_SMELTER_BLOCK,
+            new Item.Properties()
+    );
+
     public static final DeferredItem<BlockItem> SMELTER_CONTROLLER_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
             ModBlocks.SMELTER_CONTROLLER_BLOCK,
             new Item.Properties()

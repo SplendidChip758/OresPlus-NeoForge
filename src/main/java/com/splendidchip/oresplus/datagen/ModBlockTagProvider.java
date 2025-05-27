@@ -29,7 +29,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.TEST_BLOCK_2.get())
                 .add(ModBlocks.LIMESTONE_BLOCK.get())
                 .add(ModBlocks.CRUSHER_BLOCK.get())
-                .add(ModBlocks.SIMPLE_KILN_BLOCK.get());
+                .add(ModBlocks.SIMPLE_KILN_BLOCK.get())
+                .add(ModBlocks.SIMPLE_SMELTER_BLOCK.get())
+                .add(ModBlocks.SMELTER_CONTROLLER_BLOCK.get());
 
         tag(ModTags.Blocks.BAUXITE_ORE_REPLACABLES)
                 .add(Blocks.STONE)

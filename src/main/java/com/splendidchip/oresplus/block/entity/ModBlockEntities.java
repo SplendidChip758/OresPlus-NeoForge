@@ -30,6 +30,14 @@ public class ModBlockEntities {
             )
     );
 
+    public static final Supplier<BlockEntityType<SimpleSmelterBlockEntity>> SIMPLE_SMELTER_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
+            "simple_smelter_block_entity",
+            () -> new BlockEntityType<>(
+                    SimpleSmelterBlockEntity::new,
+                    ModBlocks.SIMPLE_SMELTER_BLOCK.get()
+            )
+    );
+
     public static final Supplier<BlockEntityType<SmelterControllerBlockEntity>> SMELTER_CONTROLLER_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
             "smelter_controller_block_entity",
             () -> new BlockEntityType<>(

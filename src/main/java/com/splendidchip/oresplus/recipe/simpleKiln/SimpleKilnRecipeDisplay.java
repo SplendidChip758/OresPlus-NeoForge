@@ -12,7 +12,7 @@ public record SimpleKilnRecipeDisplay(SlotDisplay inputItem, SlotDisplay result,
 
     public static final MapCodec<SimpleKilnRecipeDisplay> MAP_CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(
-                    SlotDisplay.CODEC.fieldOf("inputState").forGetter(SimpleKilnRecipeDisplay::inputItem),
+                    SlotDisplay.CODEC.fieldOf("input").forGetter(SimpleKilnRecipeDisplay::inputItem),
                     SlotDisplay.CODEC.fieldOf("result").forGetter(SimpleKilnRecipeDisplay::result),
                     SlotDisplay.CODEC.fieldOf("crafting_station").forGetter(SimpleKilnRecipeDisplay::craftingStation)
             ).apply(instance, SimpleKilnRecipeDisplay::new)

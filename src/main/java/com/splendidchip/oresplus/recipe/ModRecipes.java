@@ -69,7 +69,7 @@ public class ModRecipes {
     public static final Supplier<RecipeSerializer<BrickMoldRecipe>> BRICK_MOLD_SERIALIZER =
             RECIPE_SERIALIZERS.register("brick_mold", BrickMoldRecipeSerializer::new);
 
-    //Simple Kiln
+    //Smelter
     public static final Supplier<RecipeSerializer<SmelterRecipe>> SMELTER_SERIALIZER =
             RECIPE_SERIALIZERS.register("smelter_controller_block", SmelterRecipeSerializer::new);
 

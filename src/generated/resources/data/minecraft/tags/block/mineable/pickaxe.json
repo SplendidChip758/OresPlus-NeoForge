@@ -9,6 +9,8 @@
     "oresplus:test_block_2",
     "oresplus:limestone_block",
     "oresplus:crusher_block",
-    "oresplus:simple_kiln_block"
+    "oresplus:simple_kiln_block",
+    "oresplus:simple_smelter_block",
+    "oresplus:smelter_controller_block"
   ]
 }

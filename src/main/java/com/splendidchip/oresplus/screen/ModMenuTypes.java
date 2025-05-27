@@ -3,6 +3,7 @@ package com.splendidchip.oresplus.screen;
 import com.splendidchip.oresplus.OresPlus;
 import com.splendidchip.oresplus.screen.custom.CrusherMenu;
 import com.splendidchip.oresplus.screen.custom.SimpleKilnMenu;
+import com.splendidchip.oresplus.screen.custom.SimpleSmelterMenu;
 import com.splendidchip.oresplus.screen.custom.SmelterMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -22,6 +23,9 @@ public class ModMenuTypes {
 
     public static final DeferredHolder<MenuType<?>, MenuType<SimpleKilnMenu>> SIMPLE_KILN_MENU =
             registerMenuType("simple_kiln_menu", SimpleKilnMenu::new);
+
+    public static final DeferredHolder<MenuType<?>, MenuType<SimpleSmelterMenu>> SIMPLE_SMELTER_MENU =
+            registerMenuType("simple_smelter_menu", SimpleSmelterMenu::new);
 
     public static final DeferredHolder<MenuType<?>, MenuType<SmelterMenu>> SMELTER_MENU =
             registerMenuType("smelter_menu", SmelterMenu::new);

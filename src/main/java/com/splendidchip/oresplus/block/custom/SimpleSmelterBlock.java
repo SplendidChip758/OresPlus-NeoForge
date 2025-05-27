@@ -2,12 +2,16 @@ package com.splendidchip.oresplus.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import com.splendidchip.oresplus.block.entity.ModBlockEntities;
+import com.splendidchip.oresplus.block.entity.SimpleKilnBlockEntity;
+import com.splendidchip.oresplus.block.entity.SimpleSmelterBlockEntity;
 import com.splendidchip.oresplus.block.entity.SmelterControllerBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -28,15 +32,14 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
-public class SmelterControllerBlock extends BaseEntityBlock {
-
-    public static final MapCodec<SmelterControllerBlock> CODEC = simpleCodec(SmelterControllerBlock::new);
+public class SimpleSmelterBlock extends BaseEntityBlock {
+    public static final MapCodec<SimpleKilnBlock> CODEC = simpleCodec(SimpleKilnBlock::new);
     public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
 
-    public SmelterControllerBlock(Properties properties) {
+    public SimpleSmelterBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(LIT, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, net.minecraft.core.Direction.NORTH).setValue(LIT, false));
     }
 
     @Override
@@ -50,13 +53,13 @@ public class SmelterControllerBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected BlockState rotate(BlockState pState, Rotation pRotation) {
-        return pState.setValue(FACING, pRotation.rotate(pState.getValue(FACING)));
+    protected BlockState rotate(BlockState state, Rotation rotation) {
+        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
 
     @Override
-    protected BlockState mirror(BlockState pState, Mirror pMirror) {
-        return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));
+    protected BlockState mirror(BlockState state, Mirror mirror) {
+        return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 
     @Nullable
@@ -72,15 +75,15 @@ public class SmelterControllerBlock extends BaseEntityBlock {
 
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return new SmelterControllerBlockEntity(blockPos, blockState);
+        return new SimpleSmelterBlockEntity(blockPos, blockState);
     }
 
     @Override
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof SmelterControllerBlockEntity controller) {
-                controller.drops(); // if you have inventory
+            if (blockEntity instanceof SimpleSmelterBlockEntity simpleSmelterBlockEntity) {
+                simpleSmelterBlockEntity.drops();
             }
         }
         super.onRemove(state, level, pos, newState, isMoving);
@@ -91,8 +94,8 @@ public class SmelterControllerBlock extends BaseEntityBlock {
                                           Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (!level.isClientSide()) {
             BlockEntity entity = level.getBlockEntity(pos);
-            if (entity instanceof SmelterControllerBlockEntity controller) {
-                ((ServerPlayer) player).openMenu(new SimpleMenuProvider(controller, Component.literal("Smelter Controller")), pos);
+            if (entity instanceof SimpleSmelterBlockEntity controller) {
+                ((ServerPlayer) player).openMenu(new SimpleMenuProvider(controller, Component.literal("Simple Smelter")), pos);
             } else {
                 throw new IllegalStateException("Container provider is missing!");
             }
@@ -119,6 +122,9 @@ public class SmelterControllerBlock extends BaseEntityBlock {
         double x = pos.getX() + 0.5;
         double y = pos.getY();
         double z = pos.getZ() + 0.5;
+        if (random.nextDouble() < 0.1) {
+            level.playLocalSound(x, y, z, SoundEvents.FURNACE_FIRE_CRACKLE, SoundSource.BLOCKS, 1.0f , 1.0f, false);
+        }
 
         Direction facing = state.getValue(FACING);
         Direction.Axis axis = facing.getAxis();
@@ -128,7 +134,16 @@ public class SmelterControllerBlock extends BaseEntityBlock {
         double dz = axis == Direction.Axis.Z ? facing.getStepZ() * 0.52 : offset;
         double dy = random.nextDouble() * 6.0 / 16.0;
 
-        level.addParticle(ParticleTypes.SMOKE, x + dx, y + dy + 0.5, z + dz, 0, 0, 0);
-        level.addParticle(ParticleTypes.FLAME, x + dx, y + dy + 0.5, z + dz, 0, 0, 0);
+        level.addParticle(ParticleTypes.SMOKE, x + dx, y + dy, z + dz, 0, 0, 0);
+        level.addParticle(ParticleTypes.FLAME, x + dx, y + dy, z + dz, 0, 0, 0);
+
+        double xTop = pos.getX() + 0.5 + (random.nextGaussian() * 0.1);
+        double yTop = y + 1.0 + (random.nextDouble() * 0.1);
+        double zTop = pos.getZ() + 0.5 + (random.nextGaussian() * 0.1);
+
+        level.addParticle(ParticleTypes.SMOKE, xTop, yTop, zTop, 0, 0, 0);
+        level.addParticle(ParticleTypes.FLAME, xTop, yTop, zTop, 0, 0, 0);
+
+
     }
 }

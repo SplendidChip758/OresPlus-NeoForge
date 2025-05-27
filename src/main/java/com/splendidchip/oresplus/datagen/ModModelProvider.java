@@ -1,6 +1,7 @@
 package com.splendidchip.oresplus.datagen;
 
 import com.splendidchip.oresplus.OresPlus;
+import com.splendidchip.oresplus.block.ModBlockItems;
 import com.splendidchip.oresplus.block.ModBlocks;
 import com.splendidchip.oresplus.item.ModItems;
 import com.splendidchip.oresplus.item.ModTestItems;
@@ -8,13 +9,16 @@ import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.client.data.models.blockstates.*;
-import net.minecraft.client.data.models.model.ModelTemplates;
-import net.minecraft.client.data.models.model.TextureSlot;
-import net.minecraft.client.data.models.model.TexturedModel;
+import net.minecraft.client.data.models.model.*;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.neoforged.fml.common.Mod;
+
+import java.util.stream.Stream;
 
 
 public class ModModelProvider extends ModelProvider {
@@ -41,6 +45,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.TEST_BLOCK_3.get());
         blockModels.createTrivialCube(ModBlocks.TEST_BLOCK_4.get());
 
+        // Crusher Block
         blockModels.blockStateOutput.accept(
                 MultiVariantGenerator.multiVariant(
                         ModBlocks.CRUSHER_BLOCK.get()).with(PropertyDispatch.property(BlockStateProperties.HORIZONTAL_FACING)
@@ -85,6 +90,26 @@ public class ModModelProvider extends ModelProvider {
                         )
         );
 
+        // Simple Smelter
+        blockModels.blockStateOutput.accept(
+                MultiVariantGenerator.multiVariant(ModBlocks.SIMPLE_SMELTER_BLOCK.get())
+                        .with(PropertyDispatch.properties(BlockStateProperties.HORIZONTAL_FACING, BlockStateProperties.LIT)
+                                .select(Direction.NORTH, false, variant(ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/simple_smelter"), 0))
+                                .select(Direction.NORTH, true, variant(ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/simple_smelter_on"), 0))
+                                .select(Direction.EAST, false, variant(ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/simple_smelter"), 90))
+                                .select(Direction.EAST, true, variant(ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/simple_smelter_on"), 90))
+                                .select(Direction.SOUTH, false, variant(ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/simple_smelter"), 180))
+                                .select(Direction.SOUTH, true, variant(ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/simple_smelter_on"), 180))
+                                .select(Direction.WEST, false, variant(ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/simple_smelter"), 270))
+                                .select(Direction.WEST, true, variant(ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/simple_smelter_on"), 270))
+                        )
+        );
+
+        blockModels.registerSimpleItemModel(ModBlockItems.SIMPLE_SMELTER_BLOCK_ITEM.get(),
+                ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/simple_smelter"));
+
+
+
         // Smelter Controller
         // Unlit model
         ResourceLocation smelterControllerUnlitModel = TexturedModel.ORIENTABLE.updateTexture(mapping -> mapping
@@ -115,7 +140,6 @@ public class ModModelProvider extends ModelProvider {
                                 .select(Direction.WEST, true, variant(smelterControllerlitModel, 270))
                         )
         );
-
 
         //Items
         itemModels.generateFlatItem(ModItems.ALUMINA.get(), ModelTemplates.FLAT_ITEM);
@@ -163,5 +187,13 @@ public class ModModelProvider extends ModelProvider {
         return Variant.variant()
                 .with(VariantProperties.MODEL, model)
                 .with(VariantProperties.Y_ROT, VariantProperties.Rotation.values()[yRot / 90]);
+    }
+
+    @Override
+    protected Stream<? extends Holder<Item>> getKnownItems() {
+        return Stream.concat(
+                ModItems.ITEMS.getEntries().stream(),
+                ModBlockItems.ITEMS.getEntries().stream()
+        );
     }
 }

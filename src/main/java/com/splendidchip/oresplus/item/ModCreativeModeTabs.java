@@ -56,6 +56,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.LIMESTONE_BLOCK.get());
                         output.accept(ModBlocks.REFRACTORY_BRICKS.get());
                         output.accept(ModBlocks.SIMPLE_KILN_BLOCK.get());
+                        output.accept(ModBlocks.SIMPLE_SMELTER_BLOCK.get());
                         output.accept(ModBlocks.SMELTER_CONTROLLER_BLOCK.get());
                     }).build());
 
