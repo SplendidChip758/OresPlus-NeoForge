@@ -102,6 +102,62 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_refractory_brick", has(ModItems.REFRACTORY_BRICK))
                 .save(this.output);
 
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.UPGRADE_MODULE_CASING.get())
+                .pattern("XYX")
+                .pattern("Y Y")
+                .pattern("XYX")
+                .define('X', Items.IRON_INGOT)
+                .define('Y', Items.REDSTONE)
+                .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.SMELTER_UPGRADE_CORE.get())
+                .pattern("XYX")
+                .pattern("YZY")
+                .pattern("XYX")
+                .define('X', Items.IRON_INGOT)
+                .define('Y', Items.REDSTONE)
+                .define('Z', Items.BLAZE_POWDER)
+                .unlockedBy("has_refractory_brick", has(ModItems.REFRACTORY_BRICK))
+                .save(this.output);
+
+        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.SMELTER_UPGRADE_MODULE.get())
+                .requires(ModItems.UPGRADE_MODULE_CASING)
+                .requires(ModItems.SMELTER_UPGRADE_CORE)
+                .unlockedBy("has_refractory_brick", has(ModItems.REFRACTORY_BRICK))
+                .save(this.output);
+
+        // Steel Armor
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.COMBAT, ModItems.STEEL_HELMET.get())
+                .pattern("XXX")
+                .pattern("X X")
+                .define('X', ModItems.STEEL_INGOT)
+                .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.COMBAT, ModItems.STEEL_CHESTPLATE.get())
+                .pattern("X X")
+                .pattern("XXX")
+                .pattern("XXX")
+                .define('X', ModItems.STEEL_INGOT)
+                .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.COMBAT, ModItems.STEEL_LEGGINGS.get())
+                .pattern("XXX")
+                .pattern("X X")
+                .pattern("X X")
+                .define('X', ModItems.STEEL_INGOT)
+                .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT))
+                .save(this.output);
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.COMBAT, ModItems.STEEL_BOOTS.get())
+                .pattern("X X")
+                .pattern("X X")
+                .define('X', ModItems.STEEL_INGOT)
+                .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT))
+                .save(this.output);
+
     }
 
     public static class Runner extends RecipeProvider.Runner {

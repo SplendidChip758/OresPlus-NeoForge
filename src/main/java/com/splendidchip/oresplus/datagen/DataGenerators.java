@@ -46,6 +46,7 @@ public class DataGenerators {
         event.createProvider(ModDataMapProvider::new);
 
         event.createProvider(ModModelProvider::new);
+        event.createProvider(ModEquipmentInfoProvider::new);
 
         event.createProvider(ModDatapackProvider::new);
     }

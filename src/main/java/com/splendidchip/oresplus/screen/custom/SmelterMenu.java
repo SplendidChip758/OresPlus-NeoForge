@@ -62,6 +62,9 @@ public class SmelterMenu extends AbstractContainerMenu {
                 }
             }
         });
+        // Add upgrade slot to GUI (e.g., top-right corner)
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 5, 152, 17));
+
 
         addDataSlots(data);
     }

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "oresplus:refractory_brick",
+    "Y": "minecraft:furnace",
+    "Z": "minecraft:cobblestone"
+  },
+  "pattern": [
+    "X X",
+    "XYX",
+    "ZZZ"
+  ],
+  "result": {
+    "count": 1,
+    "id": "oresplus:simple_smelter_block"
+  }
+}

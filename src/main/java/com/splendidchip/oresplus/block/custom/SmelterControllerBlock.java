@@ -108,7 +108,7 @@ public class SmelterControllerBlock extends BaseEntityBlock {
             return null;
         }
 
-        return createTickerHelper(blockEntityType, ModBlockEntities.SIMPLE_SMELTER_BLOCK_ENTITY.get(),
+        return createTickerHelper(blockEntityType, ModBlockEntities.SMELTER_CONTROLLER_BLOCK_ENTITY.get(),
                 (level1, blockPos, blockState, blockEntity) -> blockEntity.tick(level1, blockPos, blockState, blockEntity));
     }
 

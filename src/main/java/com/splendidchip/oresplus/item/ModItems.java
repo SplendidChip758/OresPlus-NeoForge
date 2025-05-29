@@ -1,10 +1,20 @@
 package com.splendidchip.oresplus.item;
 
 import com.splendidchip.oresplus.OresPlus;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.equipment.ArmorType;
+import net.minecraft.world.item.equipment.Equippable;
+import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(OresPlus.MOD_ID);
@@ -89,6 +99,24 @@ public class ModItems {
             Item::new,
             new Item.Properties());
 
+    public static final DeferredItem<Item> UPGRADE_MODULE_CASING = ITEMS.registerItem("upgrade_module_casing",
+            Item::new,
+            new Item.Properties());
+
+    public static final DeferredItem<Item> SMELTER_UPGRADE_CORE = ITEMS.registerItem("smelter_upgrade_core",
+            Item::new,
+            new Item.Properties());
+
+    public static final DeferredItem<Item> SMELTER_UPGRADE_MODULE = ITEMS.registerItem("smelter_upgrade_module",
+            properties -> new Item(properties.stacksTo(16)){
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+                    tooltipComponents.add(Component.translatable("item.oresplus.smelter_upgrade_module.tooltip"));
+                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+                }
+    });
+
+
     // Tools and weapons
     public static final DeferredItem<SwordItem> PIG_IRON_SWORD = ITEMS.registerItem(
             "pig_iron_sword",
@@ -136,6 +164,24 @@ public class ModItems {
     public static final DeferredItem<HoeItem> STEEL_HOE = ITEMS.registerItem(
             "steel_hoe",
             props -> new HoeItem(ModToolTeirs.STEEL_TOOL_MATERIAL, -2.0f, -1.0f, props)
+    );
+
+    // Armor Items
+    public static final DeferredItem<ArmorItem> STEEL_HELMET = ITEMS.registerItem(
+            "steel_helmet",
+            props -> new ArmorItem(ModArmorMaterials.STEEL_ARMOR_MATERIAL, ArmorType.HELMET, props)
+    );
+    public static final DeferredItem<ArmorItem> STEEL_CHESTPLATE = ITEMS.registerItem(
+            "steel_chestplate",
+            props -> new ArmorItem(ModArmorMaterials.STEEL_ARMOR_MATERIAL, ArmorType.CHESTPLATE, props.equippable(EquipmentSlot.CHEST))
+    );
+    public static final DeferredItem<ArmorItem> STEEL_LEGGINGS = ITEMS.registerItem(
+            "steel_leggings",
+            props -> new ArmorItem(ModArmorMaterials.STEEL_ARMOR_MATERIAL, ArmorType.LEGGINGS, props)
+    );
+    public static final DeferredItem<ArmorItem> STEEL_BOOTS = ITEMS.registerItem(
+            "steel_boots",
+            props -> new ArmorItem(ModArmorMaterials.STEEL_ARMOR_MATERIAL, ArmorType.BOOTS, props)
     );
 
 

@@ -3,12 +3,13 @@
   "category": "misc",
   "key": {
     "X": "oresplus:refractory_brick",
-    "Y": "minecraft:furnace"
+    "Y": "minecraft:furnace",
+    "Z": "oresplus:pig_iron_ingot"
   },
   "pattern": [
-    "XXX",
-    "XYX",
-    "XXX"
+    "XZX",
+    "ZYZ",
+    "XZX"
   ],
   "result": {
     "count": 1,

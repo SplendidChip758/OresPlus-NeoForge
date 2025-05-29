@@ -2,6 +2,7 @@ package com.splendidchip.oresplus.block.entity;
 
 import com.splendidchip.oresplus.block.ModBlocks;
 //import com.splendidchip.oresplus.screen.custom.SmelterMenu;
+import com.splendidchip.oresplus.item.ModItems;
 import com.splendidchip.oresplus.recipe.ModRecipes;
 import com.splendidchip.oresplus.recipe.simpleKiln.SimpleKilnRecipe;
 import com.splendidchip.oresplus.recipe.smelter.SmelterRecipe;
@@ -47,7 +48,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class SmelterControllerBlockEntity extends BlockEntity implements MenuProvider, WorldlyContainer {
-    public final ItemStackHandler itemHandler = new ItemStackHandler(5) {
+    public final ItemStackHandler itemHandler = new ItemStackHandler(6) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -62,6 +63,7 @@ public class SmelterControllerBlockEntity extends BlockEntity implements MenuPro
     private static final int FLUX_SLOT = 2;
     private static final int FUEL_SLOT = 3;
     private static final int OUTPUT_SLOT = 4;
+    private static final int UPGRADE_SLOT = 5;
 
     protected final ContainerData data;
     private int burnTime = 0;
@@ -322,7 +324,7 @@ public class SmelterControllerBlockEntity extends BlockEntity implements MenuPro
     }
 
     private Optional<RecipeHolder<SmelterRecipe>> getCurrentRecipe() {
-        return level.getServer()
+        Optional<RecipeHolder<SmelterRecipe>> recipe = level.getServer()
                 .getRecipeManager()
                 .getRecipeFor(
                         ModRecipes.SMELTER_TYPE.get(),
@@ -333,6 +335,21 @@ public class SmelterControllerBlockEntity extends BlockEntity implements MenuPro
                         ),
                         level
                 );
+
+        if (recipe.isEmpty()) return Optional.empty();
+
+        // Check if the result is steel and upgrade is missing
+        ItemStack result = recipe.get().value().getResult();
+        ItemStack upgrade = itemHandler.getStackInSlot(UPGRADE_SLOT);
+
+        boolean isSteel = result.getItem() == ModItems.STEEL_INGOT.get();
+        boolean hasUpgrade = !upgrade.isEmpty() && upgrade.getItem() == ModItems.SMELTER_UPGRADE_MODULE.get();
+
+        if (isSteel && !hasUpgrade) {
+            return Optional.empty(); // Block steel crafting without upgrade
+        }
+
+        return recipe;
     }
 
     private boolean canInsertAmountIntoOutputSlot(int count) {

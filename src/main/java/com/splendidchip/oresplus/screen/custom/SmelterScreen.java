@@ -17,6 +17,8 @@ public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
             ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "textures/gui/smelter/progress_arrow.png");
     private static final ResourceLocation FIRE_TEXTURE =
             ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "textures/gui/smelter/lit_progress.png");
+    private static final ResourceLocation SLOT_TEXTURE =
+            ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "textures/gui/item_slot.png");
 
     public SmelterScreen(SmelterMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
@@ -32,6 +34,8 @@ public class SmelterScreen extends AbstractContainerScreen<SmelterMenu> {
         int y = (height - imageHeight) / 2;
 
         guiGraphics.blit(RenderType::guiTextured, GUI_TEXTURE, x, y, 0, 0, imageWidth, imageHeight, 256, 256);
+        guiGraphics.blit(RenderType::guiTextured, SLOT_TEXTURE, leftPos + 151, topPos + 16, 0, 0, 18, 18, 18, 18); // adjust texture coordinates
+
 
         int centeredX = leftPos + 25 + 9 - font.width("Flux") / 2;
         guiGraphics.drawString(this.font, "Flux", centeredX, topPos + 43, 0x404040, false);

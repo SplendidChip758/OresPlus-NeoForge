@@ -98,7 +98,7 @@ public class ToolRecipeProvider extends RecipeProvider {
                 .pattern("XX ")
                 .pattern("XY ")
                 .pattern(" Y ")
-                .define('X', ModItems.PIG_IRON_INGOT)
+                .define('X', ModItems.STEEL_INGOT)
                 .define('Y', Items.STICK)
                 .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT))
                 .save(this.output);

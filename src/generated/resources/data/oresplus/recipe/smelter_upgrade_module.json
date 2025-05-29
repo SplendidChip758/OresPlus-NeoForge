@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "oresplus:upgrade_module_casing",
+    "oresplus:smelter_upgrade_core"
+  ],
+  "result": {
+    "count": 1,
+    "id": "oresplus:smelter_upgrade_module"
+  }
+}

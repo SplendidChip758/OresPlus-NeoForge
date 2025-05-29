@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "oresplus:item/steel_helmet",
+    "layer1": "minecraft:trims/items/steel_trim_resin"
+  }
+}

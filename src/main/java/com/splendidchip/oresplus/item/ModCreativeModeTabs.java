@@ -40,6 +40,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BRICK_MOLD.get());
                         output.accept(ModItems.PIG_IRON_INGOT.get());
                         output.accept(ModItems.STEEL_INGOT.get());
+                        output.accept(ModItems.UPGRADE_MODULE_CASING.get());
+                        output.accept(ModItems.SMELTER_UPGRADE_CORE.get());
+                        output.accept(ModItems.SMELTER_UPGRADE_MODULE.get());
                     }).build());
 
     public static final Supplier<CreativeModeTab> ORESPLUS_BLOCKS_TAB = CREATIVE_MODE_TABS.register("oresplus_blocks_tab",
@@ -82,6 +85,10 @@ public class ModCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.PIG_IRON_SWORD.get());
                         output.accept(ModItems.STEEL_SWORD.get());
+                        output.accept(ModItems.STEEL_HELMET.get());
+                        output.accept(ModItems.STEEL_CHESTPLATE.get());
+                        output.accept(ModItems.STEEL_LEGGINGS.get());
+                        output.accept(ModItems.STEEL_BOOTS.get());
                     }).build());
 
 

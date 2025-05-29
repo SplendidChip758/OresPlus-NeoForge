@@ -3,6 +3,7 @@ package com.splendidchip.oresplus.datagen;
 import com.splendidchip.oresplus.OresPlus;
 import com.splendidchip.oresplus.block.ModBlockItems;
 import com.splendidchip.oresplus.block.ModBlocks;
+import com.splendidchip.oresplus.item.ModArmorMaterials;
 import com.splendidchip.oresplus.item.ModItems;
 import com.splendidchip.oresplus.item.ModTestItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
@@ -15,6 +16,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.equipment.trim.ArmorTrim;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.fml.common.Mod;
 
@@ -162,6 +164,9 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.BRICK_MOLD.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.PIG_IRON_INGOT.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.STEEL_INGOT.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.SMELTER_UPGRADE_CORE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.UPGRADE_MODULE_CASING.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.SMELTER_UPGRADE_MODULE.get(), ModelTemplates.FLAT_ITEM);
 
         //Tools
         itemModels.generateFlatItem(ModItems.PIG_IRON_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
@@ -174,6 +179,13 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.STEEL_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.STEEL_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.STEEL_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+
+        //Armor
+        itemModels.generateTrimmableItem(ModItems.STEEL_HELMET.get(), ModArmorMaterials.STEEL_ARMOR_MATERIAL.assetId(), "steel", false);
+        itemModels.generateTrimmableItem(ModItems.STEEL_CHESTPLATE.get(), ModArmorMaterials.STEEL_ARMOR_MATERIAL.assetId(), "steel", false);
+        itemModels.generateTrimmableItem(ModItems.STEEL_LEGGINGS.get(), ModArmorMaterials.STEEL_ARMOR_MATERIAL.assetId(), "steel", false);
+        itemModels.generateTrimmableItem(ModItems.STEEL_BOOTS.get(), ModArmorMaterials.STEEL_ARMOR_MATERIAL.assetId(), "steel", false);
+
 
         //Test Items
         itemModels.generateFlatItem(ModTestItems.TEST_ITEM_1.get(), ModelTemplates.FLAT_ITEM);
