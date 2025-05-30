@@ -53,7 +53,7 @@ public class ModConfiguredFeatures {
         List<OreConfiguration.TargetBlockState> overworldLimestoneOres = List.of(OreConfiguration.target(stoneReplaceables, ModBlocks.LIMESTONE_BLOCK.get().defaultBlockState()));
         register(context, OVERWORLD_LIMESTONE_ORE_KEY, Feature.ORE, new OreConfiguration(overworldLimestoneOres, 64, 0.25f));
 
-        List<OreConfiguration.TargetBlockState> branchingCoalTargets = List.of(OreConfiguration.target(stoneReplaceables, Blocks.COAL_ORE.defaultBlockState()));
+        List<OreConfiguration.TargetBlockState> branchingCoalTargets = List.of(OreConfiguration.target(stoneReplaceables, Blocks.COAL_BLOCK.defaultBlockState()));
         register(context, BRANCHING_COAL_VEIN, ModFeatures.BRANCHING_COAL_VEIN.get(), new OreConfiguration(branchingCoalTargets, 64));
 
     }
