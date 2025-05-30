@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "X": "oresplus:pig_iron_ingot",
+    "X": "oresplus:steel_ingot",
     "Y": "minecraft:stick"
   },
   "pattern": [
