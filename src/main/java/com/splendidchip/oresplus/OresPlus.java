@@ -15,6 +15,7 @@ import com.splendidchip.oresplus.screen.custom.SimpleKilnScreen;
 import com.splendidchip.oresplus.screen.custom.SimpleSmelterScreen;
 import com.splendidchip.oresplus.screen.custom.SmelterScreen;
 import com.splendidchip.oresplus.villager.ModVillagers;
+import com.splendidchip.oresplus.worldgen.ModFeatures;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -65,6 +66,8 @@ public class OresPlus {
 
         ModRecipes.register(modEventBus);
         ModRecipeBookCategory.register(modEventBus);
+
+        ModFeatures.FEATURES.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);

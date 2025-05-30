@@ -40,6 +40,12 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> REMOVE_IRON_ORE = ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS,
             ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "remove_iron_ore"));
 
+    public static final ResourceKey<BiomeModifier> REMOVE_COAL_ORE = registerKey("remove_coal_ore");
+
+
+    public static final ResourceKey<BiomeModifier> ADD_BRANCHING_COAL_VEIN = registerKey("add_branching_coal_vein");
+
+
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);
@@ -126,6 +132,11 @@ public class ModBiomeModifiers {
         context.register(ADD_LIMESTONE_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.LIMESTONE_ORE_PLACED_KEY)),
+                GenerationStep.Decoration.UNDERGROUND_ORES));
+
+        context.register(ADD_BRANCHING_COAL_VEIN, new BiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.BRANCHING_COAL_VEIN_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
 
     }
