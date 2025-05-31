@@ -30,6 +30,9 @@ public class ModPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> LIMESTONE_ORE_PLACED_KEY = registerKey("limestone_ore_placed");
 
+    public static final ResourceKey<PlacedFeature> BRANCHING_COAL_VEIN_PLACED_KEY = registerKey("branching_coal_vein_placed");
+
+
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -56,6 +59,10 @@ public class ModPlacedFeatures {
 
         register(context, LIMESTONE_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_LIMESTONE_ORE_KEY),
                 ModOrePlacement.rareOrePlacement(6, HeightRangePlacement.uniform(VerticalAnchor.absolute(20), VerticalAnchor.absolute(80))));
+
+        register(context, BRANCHING_COAL_VEIN_PLACED_KEY,
+                configuredFeatures.getOrThrow(ModConfiguredFeatures.BRANCHING_COAL_VEIN),
+                ModOrePlacement.rareOrePlacement(12, HeightRangePlacement.triangle(VerticalAnchor.absolute(24), VerticalAnchor.absolute(96))));
 
     }
 

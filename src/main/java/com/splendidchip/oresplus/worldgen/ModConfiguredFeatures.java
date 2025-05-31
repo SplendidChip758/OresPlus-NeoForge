@@ -8,6 +8,7 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.OreVeinifier;
@@ -25,6 +26,8 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_HEMATITE_ORE_KEY = registerKey("hematite_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_MAGNETITE_ORE_KEY = registerKey("magnetite_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_LIMESTONE_ORE_KEY = registerKey("limestone_ore");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BRANCHING_COAL_VEIN = registerKey("branching_coal_vein");
+
 
 
 
@@ -49,6 +52,9 @@ public class ModConfiguredFeatures {
 
         List<OreConfiguration.TargetBlockState> overworldLimestoneOres = List.of(OreConfiguration.target(stoneReplaceables, ModBlocks.LIMESTONE_BLOCK.get().defaultBlockState()));
         register(context, OVERWORLD_LIMESTONE_ORE_KEY, Feature.ORE, new OreConfiguration(overworldLimestoneOres, 64, 0.25f));
+
+        List<OreConfiguration.TargetBlockState> branchingCoalTargets = List.of(OreConfiguration.target(stoneReplaceables, Blocks.COAL_BLOCK.defaultBlockState()));
+        register(context, BRANCHING_COAL_VEIN, ModFeatures.BRANCHING_COAL_VEIN.get(), new OreConfiguration(branchingCoalTargets, 64));
 
     }
 
