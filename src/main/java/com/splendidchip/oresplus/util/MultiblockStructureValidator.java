@@ -6,6 +6,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import com.splendidchip.oresplus.block.ModBlocks;
 
 public class MultiblockStructureValidator {
 
@@ -32,7 +33,8 @@ public class MultiblockStructureValidator {
                             return false;
                         }
                     } else if (isShell) {
-                        if (!state.is(casingBlock)) {
+                        // Allow either casing block or IO block as shell
+                        if (!state.is(casingBlock) && !state.is(ModBlocks.SMELTER_IO_BLOCK.get())) {
                             return false;
                         }
                     } else {

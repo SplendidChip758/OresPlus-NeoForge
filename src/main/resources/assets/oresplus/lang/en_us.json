@@ -35,6 +35,9 @@
   "item.oresplus.steel_axe": "Steel Axe",
   "item.oresplus.steel_hoe": "Steel Hoe",
 
+  "item.oresplus.pig_iron_wrench": "Pig Iron Wrench",
+  "item.oresplus.steel_wrench": "Steel Wrench",
+
   "item.oresplus.steel_helmet": "Steel Helmet",
   "item.oresplus.steel_chestplate": "Steel Chestplate",
   "item.oresplus.steel_leggings": "Steel Leggings",
@@ -50,9 +53,14 @@
   "block.oresplus.refractory_bricks": "Refractory Bricks",
   "block.oresplus.simple_kiln_block": "Simple Kiln",
   "block.oresplus.simple_smelter_block": "Simple Smelter",
-  "block.oresplus.smelter_controller_block": "Smelter",
 
+  "block.oresplus.smelter_controller_block": "Smelter",
   "block.oresplus.smelter_invalid_structure": "Structure is incomplete or invalid!",
+
+  "block.oresplus.smelter_io_block": "Smelter IO Port",
+  "block.oresplus.smelter_io_block.mode_input": "Mode set to: Input",
+  "block.oresplus.smelter_io_block.mode_output": "Mode set to: Output",
+  "block.oresplus.smelter_io_block.need_wrench": "You need a wrench to change mode",
 
   "creativetab.oresplus.oresplus_items": "OresPlus Items",
   "creativetab.oresplus.oresplus_blocks": "OresPlus Block",

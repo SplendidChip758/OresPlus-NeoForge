@@ -61,6 +61,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.SIMPLE_KILN_BLOCK.get());
                         output.accept(ModBlocks.SIMPLE_SMELTER_BLOCK.get());
                         output.accept(ModBlocks.SMELTER_CONTROLLER_BLOCK.get());
+                        output.accept(ModBlocks.SMELTER_IO_BLOCK.get());
                     }).build());
 
     public static final Supplier<CreativeModeTab> ORESPLUS_TOOLS_TAB = CREATIVE_MODE_TABS.register("oresplus_tools_tab",
@@ -76,6 +77,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.STEEL_SHOVEL.get());
                         output.accept(ModItems.STEEL_AXE.get());
                         output.accept(ModItems.STEEL_HOE.get());
+                        output.accept(ModItems.PIG_IRON_WRENCH.get());
+                        output.accept(ModItems.STEEL_WRENCH.get());
                     }).build());
 
     public static final Supplier<CreativeModeTab> ORESPLUS_COMBAT_TAB = CREATIVE_MODE_TABS.register("oresplus_combat_tab",

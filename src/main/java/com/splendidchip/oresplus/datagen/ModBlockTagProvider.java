@@ -31,7 +31,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.CRUSHER_BLOCK.get())
                 .add(ModBlocks.SIMPLE_KILN_BLOCK.get())
                 .add(ModBlocks.SIMPLE_SMELTER_BLOCK.get())
-                .add(ModBlocks.SMELTER_CONTROLLER_BLOCK.get());
+                .add(ModBlocks.SMELTER_CONTROLLER_BLOCK.get())
+                .add(ModBlocks.SMELTER_IO_BLOCK.get());
 
         tag(ModTags.Blocks.BAUXITE_ORE_REPLACABLES)
                 .add(Blocks.STONE)

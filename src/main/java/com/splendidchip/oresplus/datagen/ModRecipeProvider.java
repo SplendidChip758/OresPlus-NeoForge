@@ -86,6 +86,16 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_refractory_bricks", has(ModItems.REFRACTORY_BRICK))
                 .save(this.output);
 
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModBlocks.SMELTER_IO_BLOCK.get())
+                .pattern("XZX")
+                .pattern("ZYZ")
+                .pattern("XZX")
+                .define('X', ModItems.REFRACTORY_BRICK)
+                .define('Y', Items.REDSTONE)
+                .define('Z', ModItems.PIG_IRON_INGOT)
+                .unlockedBy("has_refractory_bricks", has(ModItems.REFRACTORY_BRICK))
+                .save(this.output);
+
         ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.REFRACTORY_CEMENT.get())
                 .requires(ModItems.CRUSHED_BAUXITE)
                 .requires(ModItems.LIMESTONE_DUST)

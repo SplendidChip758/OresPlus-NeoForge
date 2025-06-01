@@ -112,7 +112,21 @@ public class ToolRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT))
                 .save(this.output);
 
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.PIG_IRON_WRENCH.get())
+                .pattern("X X")
+                .pattern(" X ")
+                .pattern(" X ")
+                .define('X', ModItems.PIG_IRON_INGOT)
+                .unlockedBy("has_pig_iron_ingot", has(ModItems.PIG_IRON_INGOT))
+                .save(this.output);
 
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ModItems.STEEL_WRENCH.get())
+                .pattern("X X")
+                .pattern(" X ")
+                .pattern(" X ")
+                .define('X', ModItems.STEEL_INGOT)
+                .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT))
+                .save(this.output);
     }
 
     public static class Runner extends RecipeProvider.Runner {

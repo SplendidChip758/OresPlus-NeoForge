@@ -3,6 +3,8 @@ package com.splendidchip.oresplus.datagen;
 import com.splendidchip.oresplus.OresPlus;
 import com.splendidchip.oresplus.block.ModBlockItems;
 import com.splendidchip.oresplus.block.ModBlocks;
+import com.splendidchip.oresplus.block.custom.SmelterIOBlock;
+import com.splendidchip.oresplus.block.entity.SmelterIOBlockEntity;
 import com.splendidchip.oresplus.item.ModArmorMaterials;
 import com.splendidchip.oresplus.item.ModItems;
 import com.splendidchip.oresplus.item.ModTestItems;
@@ -143,6 +145,27 @@ public class ModModelProvider extends ModelProvider {
                         )
         );
 
+        // Input model
+        ResourceLocation smelterInputModel = TexturedModel.CUBE.updateTexture(mapping -> mapping
+                        .put(TextureSlot.ALL, modLocation("block/smelter_io_block_input")))
+                .createWithSuffix(ModBlocks.SMELTER_IO_BLOCK.get(), "_input", blockModels.modelOutput);
+
+        // Output model
+        ResourceLocation smelterOutputModel = TexturedModel.CUBE.updateTexture(mapping -> mapping
+                        .put(TextureSlot.ALL, modLocation("block/smelter_io_block_output")))
+                .createWithSuffix(ModBlocks.SMELTER_IO_BLOCK.get(), "_output", blockModels.modelOutput);
+
+        blockModels.blockStateOutput.accept(
+                MultiVariantGenerator.multiVariant(ModBlocks.SMELTER_IO_BLOCK.get())
+                        .with(PropertyDispatch.property(SmelterIOBlock.MODE)
+                                .select(SmelterIOBlockEntity.Mode.INPUT, Variant.variant().with(VariantProperties.MODEL, smelterInputModel))
+                                .select(SmelterIOBlockEntity.Mode.OUTPUT, Variant.variant().with(VariantProperties.MODEL, smelterOutputModel))
+                        )
+        );
+        blockModels.registerSimpleItemModel(ModBlockItems.SMELTER_IO_BLOCK_ITEM.get(),
+                ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/smelter_io_block_input"));
+
+
         //Items
         itemModels.generateFlatItem(ModItems.ALUMINA.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.ALUMINUM_INGOT.get(), ModelTemplates.FLAT_ITEM);
@@ -179,6 +202,9 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.STEEL_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.STEEL_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.STEEL_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+
+        itemModels.generateFlatItem(ModItems.PIG_IRON_WRENCH.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.STEEL_WRENCH.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
 
         //Armor
         itemModels.generateTrimmableItem(ModItems.STEEL_HELMET.get(), ModArmorMaterials.STEEL_ARMOR_MATERIAL.assetId(), "steel", false);

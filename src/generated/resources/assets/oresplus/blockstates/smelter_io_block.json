@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "mode=input": {
+      "model": "oresplus:block/smelter_io_block_input"
+    },
+    "mode=output": {
+      "model": "oresplus:block/smelter_io_block_output"
+    }
+  }
+}

@@ -11,6 +11,7 @@
     "oresplus:crusher_block",
     "oresplus:simple_kiln_block",
     "oresplus:simple_smelter_block",
-    "oresplus:smelter_controller_block"
+    "oresplus:smelter_controller_block",
+    "oresplus:smelter_io_block"
   ]
 }

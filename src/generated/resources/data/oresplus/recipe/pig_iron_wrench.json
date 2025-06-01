@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "oresplus:pig_iron_ingot"
+  },
+  "pattern": [
+    "X X",
+    " X ",
+    " X "
+  ],
+  "result": {
+    "count": 1,
+    "id": "oresplus:pig_iron_wrench"
+  }
+}
