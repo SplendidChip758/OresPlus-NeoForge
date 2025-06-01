@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "oresplus:refractory_brick",
+    "Y": "minecraft:redstone",
+    "Z": "oresplus:pig_iron_ingot"
+  },
+  "pattern": [
+    "XZX",
+    "ZYZ",
+    "XZX"
+  ],
+  "result": {
+    "count": 1,
+    "id": "oresplus:smelter_io_block"
+  }
+}

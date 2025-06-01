@@ -46,6 +46,14 @@ public class ModBlockEntities {
             )
     );
 
+    public static final Supplier<BlockEntityType<SmelterIOBlockEntity>> SMELTER_IO_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
+            "smelter_io_block_entity",
+            () -> new BlockEntityType<>(
+                    SmelterIOBlockEntity::new,
+                    ModBlocks.SMELTER_IO_BLOCK.get()
+            )
+    );
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITY_TYPES.register(eventBus);
     }

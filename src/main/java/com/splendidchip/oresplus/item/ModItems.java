@@ -116,6 +116,13 @@ public class ModItems {
                 }
     });
 
+    public static final DeferredItem<Item> PIG_IRON_WRENCH = ITEMS.registerItem("pig_iron_wrench",
+            Item::new,
+            new Item.Properties());
+
+    public static final DeferredItem<Item> STEEL_WRENCH = ITEMS.registerItem("steel_wrench",
+            Item::new,
+            new Item.Properties());
 
     // Tools and weapons
     public static final DeferredItem<SwordItem> PIG_IRON_SWORD = ITEMS.registerItem(
