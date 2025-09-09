@@ -6,6 +6,7 @@ import com.splendidchip.oresplus.block.custom.SimpleKilnBlock;
 import com.splendidchip.oresplus.block.custom.SimpleSmelterBlock;
 import com.splendidchip.oresplus.block.custom.SmelterControllerBlock;
 import com.splendidchip.oresplus.block.custom.SmelterIOBlock;
+import com.splendidchip.oresplus.block.custom.ItemPipeBlock;
 import net.neoforged.bus.api.IEventBus;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -80,6 +81,11 @@ public class ModBlocks {
             SmelterIOBlock::new,
             BlockBehaviour.Properties.of()
                     .strength(3.5F).requiresCorrectToolForDrops().noOcclusion());
+
+    public static final DeferredBlock<ItemPipeBlock> ITEM_PIPE_BLOCK = BLOCKS.registerBlock("item_pipe_block",
+            ItemPipeBlock::new,
+            BlockBehaviour.Properties.of()
+                    .strength(2.0F).requiresCorrectToolForDrops().noOcclusion());
 
     //Test Blocks
     public static final DeferredBlock<Block> TEST_BLOCK_1 = BLOCKS.registerBlock("test_block_1",

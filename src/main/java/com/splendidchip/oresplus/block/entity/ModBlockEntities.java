@@ -54,6 +54,14 @@ public class ModBlockEntities {
             )
     );
 
+    public static final Supplier<BlockEntityType<ItemPipeBlockEntity>> ITEM_PIPE_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
+            "item_pipe_block_entity",
+            () -> new BlockEntityType<>(
+                    ItemPipeBlockEntity::new,
+                    ModBlocks.ITEM_PIPE_BLOCK.get()
+            )
+    );
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITY_TYPES.register(eventBus);
     }

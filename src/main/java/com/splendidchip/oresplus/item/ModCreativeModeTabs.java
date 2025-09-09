@@ -62,6 +62,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.SIMPLE_SMELTER_BLOCK.get());
                         output.accept(ModBlocks.SMELTER_CONTROLLER_BLOCK.get());
                         output.accept(ModBlocks.SMELTER_IO_BLOCK.get());
+                        output.accept(ModBlocks.ITEM_PIPE_BLOCK.get());
                     }).build());
 
     public static final Supplier<CreativeModeTab> ORESPLUS_TOOLS_TAB = CREATIVE_MODE_TABS.register("oresplus_tools_tab",
