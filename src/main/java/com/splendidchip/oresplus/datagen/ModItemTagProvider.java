@@ -7,6 +7,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.Tags;
@@ -29,6 +30,12 @@ public class ModItemTagProvider extends ItemTagsProvider {
         tag(ModTags.Items.FLUXES)
                 .add(ModItems.LIMESTONE_DUST.get())
                 .add(ModItems.QUICK_LIME.get());
+
+        tag(ModTags.Items.SMELTER_FULES)
+                .add(ModItems.COKE.get())
+                .add(Items.COAL)
+                .add(Items.COAL_BLOCK)
+                .add(Items.CHARCOAL);
 
         tag(ModTags.Items.PIG_IRON_REPAIRABLE)
                 .add(ModItems.PIG_IRON_INGOT.get());

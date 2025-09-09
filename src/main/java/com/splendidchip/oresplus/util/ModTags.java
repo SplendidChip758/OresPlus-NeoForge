@@ -28,6 +28,7 @@ public class ModTags {
 
         public static final TagKey<Item> DUSTS = createTag("dusts");
         public static final TagKey<Item> FLUXES = createTag("fluxes");
+        public static final TagKey<Item> SMELTER_FULES = createTag("smelter_fules");
         public static final TagKey<Item> PIG_IRON_REPAIRABLE = createTag("pig_iron_repairable");
         public static final TagKey<Item> STEEL_REPAIRABLE = createTag("steel_repairable");
 
