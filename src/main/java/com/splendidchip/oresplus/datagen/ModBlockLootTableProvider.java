@@ -34,6 +34,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.SIMPLE_SMELTER_BLOCK.get());
         dropSelf(ModBlocks.SMELTER_CONTROLLER_BLOCK.get());
         dropSelf(ModBlocks.SMELTER_IO_BLOCK.get());
+        dropSelf(ModBlocks.ITEM_PIPE_BLOCK.get());
 
         dropSelf(ModBlocks.HEMATITE_ORE.get());
         dropSelf(ModBlocks.MAGNETITE_ORE.get());

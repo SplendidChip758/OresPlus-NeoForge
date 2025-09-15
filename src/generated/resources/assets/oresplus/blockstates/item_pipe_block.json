@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "oresplus:block/item_pipe",
+      "y": 0
+    },
+    "facing=east": {
+      "model": "oresplus:block/item_pipe",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "oresplus:block/item_pipe",
+      "y": 0
+    },
+    "facing=south": {
+      "model": "oresplus:block/item_pipe",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "oresplus:block/item_pipe",
+      "y": 0
+    },
+    "facing=west": {
+      "model": "oresplus:block/item_pipe",
+      "y": 270
+    }
+  }
+}

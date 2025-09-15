@@ -53,6 +53,7 @@
   "block.oresplus.refractory_bricks": "Refractory Bricks",
   "block.oresplus.simple_kiln_block": "Simple Kiln",
   "block.oresplus.simple_smelter_block": "Simple Smelter",
+  "block.oresplus.item_pipe_block": "Item Pipe",
 
   "block.oresplus.smelter_controller_block": "Smelter",
   "block.oresplus.smelter_invalid_structure": "Structure is incomplete or invalid!",

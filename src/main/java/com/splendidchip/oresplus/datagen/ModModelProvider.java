@@ -3,6 +3,7 @@ package com.splendidchip.oresplus.datagen;
 import com.splendidchip.oresplus.OresPlus;
 import com.splendidchip.oresplus.block.ModBlockItems;
 import com.splendidchip.oresplus.block.ModBlocks;
+import com.splendidchip.oresplus.block.custom.ItemPipeBlock;
 import com.splendidchip.oresplus.block.custom.SmelterIOBlock;
 import com.splendidchip.oresplus.block.entity.SmelterIOBlockEntity;
 import com.splendidchip.oresplus.item.ModArmorMaterials;
@@ -23,6 +24,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.fml.common.Mod;
 
 import java.util.stream.Stream;
+
+import static net.minecraft.world.level.block.state.properties.BlockStateProperties.*;
 
 
 public class ModModelProvider extends ModelProvider {
@@ -52,7 +55,7 @@ public class ModModelProvider extends ModelProvider {
         // Crusher Block
         blockModels.blockStateOutput.accept(
                 MultiVariantGenerator.multiVariant(
-                        ModBlocks.CRUSHER_BLOCK.get()).with(PropertyDispatch.property(BlockStateProperties.HORIZONTAL_FACING)
+                        ModBlocks.CRUSHER_BLOCK.get()).with(PropertyDispatch.property(HORIZONTAL_FACING)
                         .select(Direction.NORTH, Variant.variant().with(VariantProperties.MODEL, ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/crusher_block")))
                         .select(Direction.SOUTH, Variant.variant().with(VariantProperties.MODEL, ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/crusher_block"))
                                 .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
@@ -82,7 +85,7 @@ public class ModModelProvider extends ModelProvider {
 
         blockModels.blockStateOutput.accept(
                 MultiVariantGenerator.multiVariant(ModBlocks.SIMPLE_KILN_BLOCK.get())
-                        .with(PropertyDispatch.properties(BlockStateProperties.HORIZONTAL_FACING, BlockStateProperties.LIT)
+                        .with(PropertyDispatch.properties(HORIZONTAL_FACING, LIT)
                                 .select(Direction.NORTH, false, variant(simpleKilnUnlitModel, 0))
                                 .select(Direction.NORTH, true, variant(simpleKilnLitModel, 0))
                                 .select(Direction.EAST, false, variant(simpleKilnUnlitModel, 90))
@@ -97,7 +100,7 @@ public class ModModelProvider extends ModelProvider {
         // Simple Smelter
         blockModels.blockStateOutput.accept(
                 MultiVariantGenerator.multiVariant(ModBlocks.SIMPLE_SMELTER_BLOCK.get())
-                        .with(PropertyDispatch.properties(BlockStateProperties.HORIZONTAL_FACING, BlockStateProperties.LIT)
+                        .with(PropertyDispatch.properties(HORIZONTAL_FACING, LIT)
                                 .select(Direction.NORTH, false, variant(ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/simple_smelter"), 0))
                                 .select(Direction.NORTH, true, variant(ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/simple_smelter_on"), 0))
                                 .select(Direction.EAST, false, variant(ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/simple_smelter"), 90))
@@ -111,7 +114,6 @@ public class ModModelProvider extends ModelProvider {
 
         blockModels.registerSimpleItemModel(ModBlockItems.SIMPLE_SMELTER_BLOCK_ITEM.get(),
                 ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/simple_smelter"));
-
 
 
         // Smelter Controller
@@ -133,7 +135,7 @@ public class ModModelProvider extends ModelProvider {
 
         blockModels.blockStateOutput.accept(
                 MultiVariantGenerator.multiVariant(ModBlocks.SMELTER_CONTROLLER_BLOCK.get())
-                        .with(PropertyDispatch.properties(BlockStateProperties.HORIZONTAL_FACING, BlockStateProperties.LIT)
+                        .with(PropertyDispatch.properties(HORIZONTAL_FACING, LIT)
                                 .select(Direction.NORTH, false, variant(smelterControllerUnlitModel, 0))
                                 .select(Direction.NORTH, true, variant(smelterControllerlitModel, 0))
                                 .select(Direction.EAST, false, variant(smelterControllerUnlitModel, 90))
@@ -145,6 +147,7 @@ public class ModModelProvider extends ModelProvider {
                         )
         );
 
+        //smelter IO block
         // Input model
         ResourceLocation smelterInputModel = TexturedModel.CUBE.updateTexture(mapping -> mapping
                         .put(TextureSlot.ALL, modLocation("block/smelter_io_block_input")))
@@ -165,6 +168,22 @@ public class ModModelProvider extends ModelProvider {
         blockModels.registerSimpleItemModel(ModBlockItems.SMELTER_IO_BLOCK_ITEM.get(),
                 ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/smelter_io_block_input"));
 
+
+        // Item Pipe
+        blockModels.blockStateOutput.accept(
+                MultiVariantGenerator.multiVariant(
+                        ModBlocks.ITEM_PIPE_BLOCK.get()).with(PropertyDispatch.property(FACING)
+                        .select(Direction.NORTH, variant(ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/item_pipe"), 0))
+                        .select(Direction.EAST, variant(ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/item_pipe"), 90))
+                        .select(Direction.SOUTH, variant(ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/item_pipe"), 180))
+                        .select(Direction.WEST, variant(ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/item_pipe"), 270))
+                        .select(Direction.UP, variant(ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/item_pipe"), 0))
+                        .select(Direction.DOWN, variant(ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/item_pipe"), 0))
+                )
+        );
+
+        blockModels.registerSimpleItemModel(ModBlockItems.ITEM_PIPE_BLOCK_ITEM.get(),
+                ResourceLocation.fromNamespaceAndPath(OresPlus.MOD_ID, "block/item_pipe"));
 
         //Items
         itemModels.generateFlatItem(ModItems.ALUMINA.get(), ModelTemplates.FLAT_ITEM);

@@ -74,7 +74,7 @@ public class ItemPipeBlockEntity extends BlockEntity {
                 to.setItem(slot, stack);
                 to.setChanged();
                 return true;
-            } else if (ItemStack.isSameItemSameTags(existing, stack) && existing.getCount() < existing.getMaxStackSize()) {
+            } else if (ItemStack.isSameItem(existing, stack) && existing.getCount() < existing.getMaxStackSize()) {
                 existing.grow(1);
                 to.setChanged();
                 return true;
