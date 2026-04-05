@@ -2,7 +2,7 @@ package com.splendidchip.oresplus.screen.custom;
 
 import com.splendidchip.oresplus.block.ModBlocks;
 
-import com.splendidchip.oresplus.block.entity.CrusherBlockEntity;
+import com.splendidchip.oresplus.block.entity.custom.CrusherBlockEntity;
 import com.splendidchip.oresplus.screen.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;

@@ -1,7 +1,7 @@
 package com.splendidchip.oresplus.screen.custom;
 
 import com.splendidchip.oresplus.block.ModBlocks;
-import com.splendidchip.oresplus.block.entity.SimpleKilnBlockEntity;
+import com.splendidchip.oresplus.block.entity.custom.SimpleKilnBlockEntity;
 import com.splendidchip.oresplus.recipe.ModRecipes;
 import com.splendidchip.oresplus.screen.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;

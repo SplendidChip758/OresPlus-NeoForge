@@ -56,6 +56,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.HEMATITE_ORE.get());
                         output.accept(ModBlocks.MAGNETITE_ORE.get());
                         output.accept(ModBlocks.CRUSHER_BLOCK.get());
+                        output.accept(ModBlocks.ITEM_PIPE.get());
                         output.accept(ModBlocks.LIMESTONE_BLOCK.get());
                         output.accept(ModBlocks.REFRACTORY_BRICKS.get());
                         output.accept(ModBlocks.SIMPLE_KILN_BLOCK.get());

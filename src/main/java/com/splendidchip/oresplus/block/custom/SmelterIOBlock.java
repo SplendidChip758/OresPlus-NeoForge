@@ -19,7 +19,7 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.Nullable;
-import com.splendidchip.oresplus.block.entity.SmelterIOBlockEntity;
+import com.splendidchip.oresplus.block.entity.custom.SmelterIOBlockEntity;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import com.mojang.serialization.MapCodec;

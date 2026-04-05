@@ -1,0 +1,23 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"particle": "oresplus:block/item_pipe",
+		"pipe": "oresplus:block/item_pipe"
+	},
+	"elements": [
+		{
+			"from": [5, 0, 5],
+			"to": [11, 5, 11],
+			"faces": {
+				"north": {"uv": [6, 0, 10, 5], "texture": "#pipe"},
+				"east": {"uv": [6, 0, 10, 5], "texture": "#pipe"},
+				"south": {"uv": [6, 0, 10, 5], "texture": "#pipe"},
+				"west": {"uv": [6, 0, 10, 5], "texture": "#pipe"},
+				"up": {"uv": [6, 6, 10, 10], "texture": "#pipe"},
+				"down": {"uv": [6, 6, 10, 10], "texture": "#pipe"}
+			}
+		}
+	]
+}

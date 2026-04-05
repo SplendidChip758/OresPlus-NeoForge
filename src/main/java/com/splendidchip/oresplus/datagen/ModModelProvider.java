@@ -4,7 +4,7 @@ import com.splendidchip.oresplus.OresPlus;
 import com.splendidchip.oresplus.block.ModBlockItems;
 import com.splendidchip.oresplus.block.ModBlocks;
 import com.splendidchip.oresplus.block.custom.SmelterIOBlock;
-import com.splendidchip.oresplus.block.entity.SmelterIOBlockEntity;
+import com.splendidchip.oresplus.block.entity.custom.SmelterIOBlockEntity;
 import com.splendidchip.oresplus.item.ModArmorMaterials;
 import com.splendidchip.oresplus.item.ModItems;
 import com.splendidchip.oresplus.item.ModTestItems;
@@ -18,9 +18,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.equipment.trim.ArmorTrim;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.neoforged.fml.common.Mod;
 
 import java.util.stream.Stream;
 

@@ -2,7 +2,7 @@ package com.splendidchip.oresplus.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import com.splendidchip.oresplus.block.entity.ModBlockEntities;
-import com.splendidchip.oresplus.block.entity.SmelterControllerBlockEntity;
+import com.splendidchip.oresplus.block.entity.custom.SmelterControllerBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;

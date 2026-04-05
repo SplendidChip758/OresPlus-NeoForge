@@ -2,6 +2,7 @@ package com.splendidchip.oresplus.block.entity;
 
 import com.splendidchip.oresplus.OresPlus;
 import com.splendidchip.oresplus.block.ModBlocks;
+import com.splendidchip.oresplus.block.entity.custom.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
@@ -19,6 +20,14 @@ public class ModBlockEntities {
             () -> new BlockEntityType<>(
                     CrusherBlockEntity::new,
                     ModBlocks.CRUSHER_BLOCK.get()
+            )
+    );
+
+    public static final Supplier<BlockEntityType<ItemPipeBlockEntity>> ITEM_PIPE_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register(
+            "item_pipe_block_entity",
+            () -> new BlockEntityType<>(
+                    ItemPipeBlockEntity::new,
+                    ModBlocks.ITEM_PIPE.get()
             )
     );
 

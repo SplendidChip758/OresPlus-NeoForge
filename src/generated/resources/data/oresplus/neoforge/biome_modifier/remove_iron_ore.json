@@ -7,7 +7,7 @@
     "minecraft:ore_iron_upper"
   ],
   "steps": [
-    "local_modifications",
-    "underground_ores"
+    "underground_ores",
+    "local_modifications"
   ]
 }

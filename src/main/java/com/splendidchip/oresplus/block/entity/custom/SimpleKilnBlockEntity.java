@@ -1,9 +1,10 @@
-package com.splendidchip.oresplus.block.entity;
+package com.splendidchip.oresplus.block.entity.custom;
 
+import com.splendidchip.oresplus.block.entity.ModBlockEntities;
 import com.splendidchip.oresplus.recipe.ModRecipes;
-import com.splendidchip.oresplus.recipe.smelter.SmelterRecipe;
-import com.splendidchip.oresplus.recipe.smelter.SmelterRecipeInput;
-import com.splendidchip.oresplus.screen.custom.SimpleSmelterMenu;
+import com.splendidchip.oresplus.recipe.simpleKiln.SimpleKilnRecipe;
+import com.splendidchip.oresplus.recipe.simpleKiln.SimpleKilnRecipeInput;
+import com.splendidchip.oresplus.screen.custom.SimpleKilnMenu;
 import it.unimi.dsi.fastutil.objects.Reference2IntMap;
 import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
 import net.minecraft.core.BlockPos;
@@ -20,10 +21,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
-import net.minecraft.world.Containers;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.WorldlyContainer;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -35,18 +33,19 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class SimpleSmelterBlockEntity extends BlockEntity implements MenuProvider, WorldlyContainer {
-
-    public final ItemStackHandler itemHandler = new ItemStackHandler(4) {
+public class SimpleKilnBlockEntity extends BlockEntity implements MenuProvider, WorldlyContainer {
+    public final ItemStackHandler itemHandler = new ItemStackHandler(3) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -57,9 +56,8 @@ public class SimpleSmelterBlockEntity extends BlockEntity implements MenuProvide
     };
 
     private static final int INPUT_SLOT = 0;
-    private static final int FLUX_SLOT = 1;
-    private static final int FUEL_SLOT = 2;
-    private static final int OUTPUT_SLOT = 3;
+    private static final int FUEL_SLOT = 1;
+    private static final int OUTPUT_SLOT = 2;
 
     protected final ContainerData data;
     private int burnTime = 0;
@@ -69,10 +67,11 @@ public class SimpleSmelterBlockEntity extends BlockEntity implements MenuProvide
 
     private final Reference2IntOpenHashMap<ResourceKey<Recipe<?>>> recipesUsed;
 
-    public SimpleSmelterBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.SIMPLE_SMELTER_BLOCK_ENTITY.get(), pos, state);
+    public SimpleKilnBlockEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntities.SIMPLE_KILN_BLOCK_ENTITY.get(), pos, state);
 
         this.data = new ContainerData() {
+            @Override
             public int get(int index) {
                 return switch (index) {
                     case 0 -> burnTime;
@@ -83,6 +82,7 @@ public class SimpleSmelterBlockEntity extends BlockEntity implements MenuProvide
                 };
             }
 
+            @Override
             public void set(int index, int value) {
                 switch (index) {
                     case 0 -> burnTime = value;
@@ -92,23 +92,24 @@ public class SimpleSmelterBlockEntity extends BlockEntity implements MenuProvide
                 }
             }
 
+            @Override
             public int getCount() {
                 return 4;
             }
         };
 
-        this.recipesUsed = new Reference2IntOpenHashMap<>();
+        this.recipesUsed = new Reference2IntOpenHashMap();
     }
 
     @Override
     public Component getDisplayName() {
-        return Component.translatable("block.oresplus.simple_smelter_block");
+        return Component.translatable("block.oresplus.simple_kiln_block");
     }
 
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-        return new SimpleSmelterMenu(i, inventory, this, this.data);
+        return new SimpleKilnMenu(i, inventory, this, this.data);
     }
 
     public void drops() {
@@ -150,40 +151,42 @@ public class SimpleSmelterBlockEntity extends BlockEntity implements MenuProvide
         }
     }
 
-    public static void tick(Level level, BlockPos pos, BlockState state, SimpleSmelterBlockEntity smelter) {
-        boolean wasBurning = smelter.burnTime > 0;
+    public static void tick(Level level, BlockPos pos, BlockState state, SimpleKilnBlockEntity kiln) {
+        boolean wasBurning = kiln.burnTime > 0;
         boolean stateChanged = false;
 
-        if (smelter.burnTime > 0) smelter.burnTime--;
+        if (kiln.burnTime > 0) {
+            kiln.burnTime--;
+        }
 
-        ItemStack fuel = smelter.itemHandler.getStackInSlot(FUEL_SLOT);
-        Optional<RecipeHolder<SmelterRecipe>> recipeOpt = smelter.getCurrentRecipe();
+        ItemStack fuel = kiln.itemHandler.getStackInSlot(FUEL_SLOT);
+        Optional<RecipeHolder<SimpleKilnRecipe>> recipeOpt = kiln.getCurrentRecipe();
 
-        if (smelter.burnTime == 0 && !fuel.isEmpty() && recipeOpt.isPresent() && smelter.hasRecipe()) {
-            int burn = smelter.getBurnTime(fuel);
-            if (burn > 0) {
-                smelter.burnTime = smelter.burnTimeTotal = burn;
+        if (kiln.burnTime == 0 && !fuel.isEmpty() && recipeOpt.isPresent() && kiln.hasRecipe()) {
+            int burn = kiln.getBurnTime(fuel);
+            if (burn > 0) { // ✅ Only burn if fuel is valid
+                kiln.burnTime = kiln.burnTimeTotal = burn;
                 fuel.shrink(1);
                 stateChanged = true;
             }
         }
 
-        if (smelter.burnTime > 0 && recipeOpt.isPresent() && smelter.hasRecipe()) {
-            smelter.cookTime++;
-            smelter.cookTimeTotal = recipeOpt.get().value().getCookTime();
+        if (kiln.burnTime > 0 && recipeOpt.isPresent() && kiln.hasRecipe()) {
+            kiln.cookTime++;
+            kiln.cookTimeTotal = recipeOpt.get().value().getCookTime();
 
-            if (smelter.cookTime >= smelter.cookTimeTotal) {
-                smelter.cookTime = 0;
-                smelter.craftItem();
+            if (kiln.cookTime >= kiln.cookTimeTotal) {
+                kiln.cookTime = 0;
+                kiln.craftItem();
                 stateChanged = true;
             }
         } else {
-            smelter.cookTime = 0;
+            kiln.cookTime = 0;
         }
 
-        if (wasBurning != smelter.burnTime > 0) {
+        if (wasBurning != kiln.burnTime > 0) {
             stateChanged = true;
-            level.setBlock(pos, state.setValue(BlockStateProperties.LIT, smelter.burnTime > 0), 3);
+            level.setBlock(pos, state.setValue(BlockStateProperties.LIT, kiln.burnTime > 0), 3);
         }
 
         if (stateChanged) {
@@ -192,16 +195,28 @@ public class SimpleSmelterBlockEntity extends BlockEntity implements MenuProvide
     }
 
     private int getBurnTime(ItemStack fuel) {
-        return fuel.getBurnTime(ModRecipes.SMELTER_TYPE.get(), level.fuelValues());
+        return fuel.getBurnTime(ModRecipes.SIMPLE_KILN_TYPE.get(), level.fuelValues());
+    }
+
+    public int getLitProgress() {
+        return burnTimeTotal == 0 ? 0 : burnTime * 13 / burnTimeTotal;
+    }
+
+    public int getCookProgress() {
+        return cookTimeTotal == 0 ? 0 : cookTime * 24 / cookTimeTotal;
+    }
+
+    public boolean isLit() {
+        return burnTime > 0;
     }
 
     private void craftItem() {
-        Optional<RecipeHolder<SmelterRecipe>> recipe = getCurrentRecipe();
+        Optional<RecipeHolder<SimpleKilnRecipe>> recipe = getCurrentRecipe();
         ItemStack output = recipe.get().value().getResult();
 
         itemHandler.extractItem(INPUT_SLOT, 1, false);
-        itemHandler.extractItem(FLUX_SLOT, 1, false);
         itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem(), itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + output.getCount()));
+
         setRecipeUsed(recipe.get());
     }
 
@@ -236,8 +251,8 @@ public class SimpleSmelterBlockEntity extends BlockEntity implements MenuProvide
                 result.add(holder);
 
                 float xpPer = 0.0f;
-                if (holder.value() instanceof SmelterRecipe smelterRecipe) {
-                    xpPer = smelterRecipe.getExperience();
+                if (holder.value() instanceof SimpleKilnRecipe kilnRecipe) {
+                    xpPer = kilnRecipe.getExperience();
                 }
 
                 createExperience(level, popVec, count, xpPer);
@@ -257,24 +272,20 @@ public class SimpleSmelterBlockEntity extends BlockEntity implements MenuProvide
     }
 
     private boolean hasRecipe() {
-        Optional<RecipeHolder<SmelterRecipe>> recipe = getCurrentRecipe();
-        if (recipe.isEmpty()) return false;
+        Optional<RecipeHolder<SimpleKilnRecipe>> recipe = getCurrentRecipe();
+        if(recipe.isEmpty()) {
+            return false;
+        }
+
         ItemStack output = recipe.get().value().getResult();
-        return canInsertAmountIntoOutputSlot(output.getCount()) &&
-                canInsertItemIntoOutputSlot(output) &&
-                !itemHandler.getStackInSlot(INPUT_SLOT).isEmpty() &&
-                // If the recipe requires flux, check for it; otherwise, allow empty
-                (!recipe.get().value().getFlux().isPresent() || !itemHandler.getStackInSlot(FLUX_SLOT).isEmpty());
+        return canInsertAmountIntoOutputSlot(output.getCount())
+                && canInsertItemIntoOutputSlot(output)
+                && !itemHandler.getStackInSlot(INPUT_SLOT).isEmpty();
     }
 
-    private Optional<RecipeHolder<SmelterRecipe>> getCurrentRecipe() {
+    private Optional<RecipeHolder<SimpleKilnRecipe>> getCurrentRecipe() {
         return level.getServer().getRecipeManager()
-                .getRecipeFor(ModRecipes.SMELTER_TYPE.get(),
-                        new SmelterRecipeInput(
-                                itemHandler.getStackInSlot(INPUT_SLOT),
-                                ItemStack.EMPTY, // No input2 for simple smelter
-                                itemHandler.getStackInSlot(FLUX_SLOT)),
-                        level);
+                .getRecipeFor(ModRecipes.SIMPLE_KILN_TYPE.get(), new SimpleKilnRecipeInput(itemHandler.getStackInSlot(INPUT_SLOT)), level);
     }
 
     private boolean canInsertItemIntoOutputSlot(ItemStack output) {
@@ -311,11 +322,13 @@ public class SimpleSmelterBlockEntity extends BlockEntity implements MenuProvide
 
     @Override
     public int[] getSlotsForFace(Direction side) {
-        return switch (side) {
-            case DOWN -> new int[]{OUTPUT_SLOT};
-            case UP -> new int[]{INPUT_SLOT};
-            default -> new int[]{FUEL_SLOT, FLUX_SLOT};
-        };
+        if (side == Direction.DOWN) {
+            return new int[]{OUTPUT_SLOT};
+        } else if (side == Direction.UP) {
+            return new int[]{INPUT_SLOT};
+        } else {
+            return new int[]{FUEL_SLOT};
+        }
     }
 
     @Override

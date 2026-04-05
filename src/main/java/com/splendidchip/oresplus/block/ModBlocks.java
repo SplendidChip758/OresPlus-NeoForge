@@ -2,6 +2,7 @@ package com.splendidchip.oresplus.block;
 
 import com.splendidchip.oresplus.OresPlus;
 import com.splendidchip.oresplus.block.custom.CrusherBlock;
+import com.splendidchip.oresplus.block.custom.ItemPipeBlock;
 import com.splendidchip.oresplus.block.custom.SimpleKilnBlock;
 import com.splendidchip.oresplus.block.custom.SimpleSmelterBlock;
 import com.splendidchip.oresplus.block.custom.SmelterControllerBlock;
@@ -60,6 +61,11 @@ public class ModBlocks {
             CrusherBlock::new,
             BlockBehaviour.Properties.of()
                     .strength(3.5F).requiresCorrectToolForDrops().noOcclusion());
+
+    public static final DeferredBlock<ItemPipeBlock> ITEM_PIPE = BLOCKS.registerBlock("item_pipe",
+            ItemPipeBlock::new,
+            BlockBehaviour.Properties.of()
+                    .strength(1.5F).requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion());
 
     public static final DeferredBlock<SimpleKilnBlock> SIMPLE_KILN_BLOCK = BLOCKS.registerBlock("simple_kiln_block",
             SimpleKilnBlock::new,

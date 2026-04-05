@@ -1,6 +1,7 @@
-package com.splendidchip.oresplus.block.entity;
+package com.splendidchip.oresplus.block.entity.custom;
 
 import com.splendidchip.oresplus.block.custom.SmelterIOBlock;
+import com.splendidchip.oresplus.block.entity.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;

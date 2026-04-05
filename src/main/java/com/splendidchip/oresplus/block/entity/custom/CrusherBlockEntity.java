@@ -1,5 +1,6 @@
-package com.splendidchip.oresplus.block.entity;
+package com.splendidchip.oresplus.block.entity.custom;
 
+import com.splendidchip.oresplus.block.entity.ModBlockEntities;
 import com.splendidchip.oresplus.recipe.crusher.CrusherRecipe;
 import com.splendidchip.oresplus.recipe.crusher.CrusherRecipeInput;
 import com.splendidchip.oresplus.recipe.ModRecipes;

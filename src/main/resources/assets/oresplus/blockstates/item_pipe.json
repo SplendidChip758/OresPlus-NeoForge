@@ -1,0 +1,25 @@
+{
+  "multipart": [
+    { "apply": { "model": "oresplus:block/item_pipe/item_pipe_center" } },
+
+    { "when": { "north": "true", "north_input": "false" }, "apply": { "model": "oresplus:block/item_pipe/item_pipe_arm_north" } },
+    { "when": { "north": "true", "north_input": "true" }, "apply": { "model": "oresplus:block/item_pipe/item_pipe_arm_north_input" } },
+
+    { "when": { "east": "true", "east_input": "false" }, "apply": { "model": "oresplus:block/item_pipe/item_pipe_arm_east" } },
+    { "when": { "east": "true", "east_input": "true" }, "apply": { "model": "oresplus:block/item_pipe/item_pipe_arm_east_input" } },
+
+    { "when": { "south": "true", "south_input": "false" }, "apply": { "model": "oresplus:block/item_pipe/item_pipe_arm_south" } },
+    { "when": { "south": "true", "south_input": "true" }, "apply": { "model": "oresplus:block/item_pipe/item_pipe_arm_south_input" } },
+
+    { "when": { "west": "true", "west_input": "false" }, "apply": { "model": "oresplus:block/item_pipe/item_pipe_arm_west" } },
+    { "when": { "west": "true", "west_input": "true" }, "apply": { "model": "oresplus:block/item_pipe/item_pipe_arm_west_input" } },
+
+    { "when": { "up": "true", "up_input": "false" }, "apply": { "model": "oresplus:block/item_pipe/item_pipe_arm_up" } },
+    { "when": { "up": "true", "up_input": "true" }, "apply": { "model": "oresplus:block/item_pipe/item_pipe_arm_up_input" } },
+
+    { "when": { "down": "true", "down_input": "false" }, "apply": { "model": "oresplus:block/item_pipe/item_pipe_arm_down" } },
+    { "when": { "down": "true", "down_input": "true" }, "apply": { "model": "oresplus:block/item_pipe/item_pipe_arm_down_input" } }
+  ]
+}
+
+

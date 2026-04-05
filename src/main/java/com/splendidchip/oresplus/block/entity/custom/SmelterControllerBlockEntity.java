@@ -1,6 +1,7 @@
-package com.splendidchip.oresplus.block.entity;
+package com.splendidchip.oresplus.block.entity.custom;
 
 import com.splendidchip.oresplus.block.ModBlocks;
+import com.splendidchip.oresplus.block.entity.ModBlockEntities;
 import com.splendidchip.oresplus.item.ModItems;
 import com.splendidchip.oresplus.recipe.ModRecipes;
 import com.splendidchip.oresplus.recipe.smelter.SmelterRecipe;
@@ -62,11 +63,6 @@ public class SmelterControllerBlockEntity extends BlockEntity implements MenuPro
     private static final int FUEL_SLOT = 3;
     private static final int OUTPUT_SLOT = 4;
     private static final int UPGRADE_SLOT = 5;
-
-    private static final int IO_INPUT_SLOT_1 = 0;
-    private static final int IO_INPUT_SLOT_2 = 1;
-    private static final int IO_OUTPUT_SLOT_1 = 2;
-    private static final int IO_OUTPUT_SLOT_2 = 3;
 
     protected final ContainerData data;
     private int burnTime = 0;
@@ -177,7 +173,7 @@ public class SmelterControllerBlockEntity extends BlockEntity implements MenuPro
                 for (int dz = -1; dz <= 1; dz++) {
                     BlockPos current = center.offset(dx, dy, dz);
                     BlockEntity be = level.getBlockEntity(current);
-                    if (be instanceof com.splendidchip.oresplus.block.entity.SmelterIOBlockEntity io) {
+                    if (be instanceof SmelterIOBlockEntity io) {
                         // No longer pull/push items from IO block inventory, as IO is now a passthrough
                         // All automation is handled by the IO block's passthrough WorldlyContainer
                         // Nothing to do here

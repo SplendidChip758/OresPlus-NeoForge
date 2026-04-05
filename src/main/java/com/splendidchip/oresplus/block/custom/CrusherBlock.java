@@ -1,7 +1,7 @@
 package com.splendidchip.oresplus.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import com.splendidchip.oresplus.block.entity.CrusherBlockEntity;
+import com.splendidchip.oresplus.block.entity.custom.CrusherBlockEntity;
 import com.splendidchip.oresplus.block.entity.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

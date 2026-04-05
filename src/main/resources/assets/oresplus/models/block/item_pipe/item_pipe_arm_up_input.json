@@ -1,0 +1,37 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"particle": "oresplus:block/item_pipe",
+		"pipe": "oresplus:block/item_pipe"
+	},
+	"elements": [
+		{
+			"from": [5, 11, 5],
+			"to": [11, 15, 11],
+			"faces": {
+				"north": {"uv": [6, 11, 10, 16], "texture": "#pipe"},
+				"east": {"uv": [6, 11, 10, 16], "texture": "#pipe"},
+				"south": {"uv": [6, 11, 10, 16], "texture": "#pipe"},
+				"west": {"uv": [6, 11, 10, 16], "texture": "#pipe"},
+				"up": {"uv": [6, 6, 10, 10], "texture": "#pipe"},
+				"down": {"uv": [6, 6, 10, 10], "texture": "#pipe"}
+			}
+		},
+		{
+			"from": [4, 15, 4],
+			"to": [12, 16, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 15, 4]},
+			"color": 4,
+			"faces": {
+				"north": {"uv": [0, 1, 8, 2], "texture": "#missing"},
+				"east": {"uv": [0, 1, 8, 2], "texture": "#missing"},
+				"south": {"uv": [0, 1, 8, 2], "texture": "#missing"},
+				"west": {"uv": [0, 1, 8, 2], "texture": "#missing"},
+				"up": {"uv": [0, 0, 8, 8], "texture": "#missing"},
+				"down": {"uv": [0, 0, 8, 8], "texture": "#missing"}
+			}
+		}
+	]
+}

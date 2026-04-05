@@ -53,6 +53,11 @@ public class ModBlockItems {
             new Item.Properties()
     );
 
+    public static final DeferredItem<BlockItem> ITEM_PIPE_ITEM = ITEMS.registerSimpleBlockItem(
+            ModBlocks.ITEM_PIPE,
+            new Item.Properties()
+    );
+
     public static final DeferredItem<BlockItem> SIMPLE_KILN_BLOCK_ITEM = ITEMS.registerSimpleBlockItem(
             ModBlocks.SIMPLE_KILN_BLOCK,
             new Item.Properties()
